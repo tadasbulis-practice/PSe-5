@@ -10,7 +10,7 @@ public class StudentProfile
   public List<double> Grades { get; set; }
 
   
-  public double average() => Grades.Average();
+  private double average() => Grades.Average();
 
   public void printInfo()
   {

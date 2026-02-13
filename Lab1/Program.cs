@@ -28,7 +28,7 @@ StudentProfile student3 = new StudentProfile()
     Grades = [18.2,19,17,16.8,18]
 };
 
-Group group = new Group
+Group var group = new Group
 {
     name = "group1"
 };

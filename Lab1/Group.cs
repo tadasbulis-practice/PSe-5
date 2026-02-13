@@ -3,7 +3,7 @@
 public class Group
 {
     public string name { get; set; }
-    private List<StudentProfile> students = new List<StudentProfile>();
+    private List<StudentProfile> students = [];
 
     public void addStudent(StudentProfile student)
     {
