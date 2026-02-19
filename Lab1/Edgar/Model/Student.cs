@@ -37,6 +37,8 @@ public class StudentProfile
             + ", group: "
             + Group
             + ", lecture date: "
-            + LectureDate;
+            + LectureDate
+            + "average grades : "
+            + Average();
     }
 }
