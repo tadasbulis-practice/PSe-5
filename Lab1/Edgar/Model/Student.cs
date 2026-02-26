@@ -1,4 +1,4 @@
-namespace ConsoleApp1.Edgar.model;
+namespace lab1.Edgar.model;
 
 public class StudentProfile
 {

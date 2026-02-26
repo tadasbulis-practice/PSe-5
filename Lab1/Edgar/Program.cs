@@ -1,6 +1,6 @@
-﻿using ConsoleApp1.Edgar.model;
+﻿using lab1.Edgar.model;
 
-namespace ConsoleApp1.Edgar;
+namespace lab1.Edgar;
 
 internal class Program
 {
