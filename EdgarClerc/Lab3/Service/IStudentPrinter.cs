@@ -4,5 +4,5 @@ namespace lab3.Service;
 
 public interface IStudentPrinter
 {
-    public void PrintGroup(Group group);
+    public string PrintGroup(Group group);
 }

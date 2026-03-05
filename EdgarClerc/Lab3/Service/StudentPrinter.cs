@@ -5,9 +5,12 @@ namespace Lab3.Service;
 
 public class StudentPrinter : IStudentPrinter
 {
-    public void PrintGroup(Group group)
+    public string PrintGroup(Group group)
     {
+        string str = "";
         foreach (var student in group.Students)
-            Console.WriteLine(student.ToString());
+            str += student + "\n";
+
+        return str;
     }
 }

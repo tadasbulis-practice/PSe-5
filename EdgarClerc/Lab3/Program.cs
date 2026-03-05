@@ -42,6 +42,6 @@ internal class Program
         group.AddStudent(student2);
         group.AddStudent(student3);
 
-        studentPrinter.PrintGroup(group);
+        Console.WriteLine(studentPrinter.PrintGroup(group));
     }
 }
