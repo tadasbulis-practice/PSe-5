@@ -15,4 +15,16 @@ Rules how we gonna work with Labs, how to deliver them to our Group repository
 	- make sure that your feature branch and development branch doesn't has conflicts: 
 		We switch to develop, Pull it to your local repository, and merge deveop into your feature branch to be sure there is no code conflicts between develop and your feature branch.
 Then we make feature final commit and push changes to remote feature branch.		
-5. 
+5. Making Pull Request (PR):
+	- make sure you have Pushed your feature branch with your code changes to origin (cloud).
+	- Go with browser to your GitHub repository.
+	- Select your feature branch or go to Pull Requests
+	- create New Pull Request 
+		- select destination branch (always develop in our case)
+		- select our feature branch which we gonna make PR for.
+		- optional: we can check and compare code changes which are between develop and our feature.
+		- Press Create Pull.
+	- IMPORTNAT: Here we need to select peaople who gonna do Code reviews - Assignees: and add your whole team, but in our case it's enought to add me (Tadas Bulis)
+	- Press Create Pull Request again.
+6.Code Review:
+	- to be added later by all team.
