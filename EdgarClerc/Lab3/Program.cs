@@ -1,7 +1,7 @@
-﻿using lab3.Edgar.model;
-using Lab3.Edgar.Service;
+﻿using lab3.model;
+using Lab3.Service;
 
-namespace lab3.Edgar;
+namespace lab3;
 
 internal class Program
 {

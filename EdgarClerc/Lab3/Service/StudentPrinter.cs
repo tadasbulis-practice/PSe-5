@@ -1,7 +1,7 @@
-﻿using lab3.Edgar.model;
-using lab3.Edgar.Service;
+﻿using lab3.model;
+using lab3.Service;
 
-namespace Lab3.Edgar.Service;
+namespace Lab3.Service;
 
 public class StudentPrinter : IStudentPrinter
 {

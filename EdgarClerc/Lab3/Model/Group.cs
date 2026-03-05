@@ -1,4 +1,4 @@
-﻿namespace lab3.Edgar.model;
+﻿namespace lab3.model;
 
 public class Group
 {

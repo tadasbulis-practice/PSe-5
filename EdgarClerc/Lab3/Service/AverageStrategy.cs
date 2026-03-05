@@ -1,6 +1,6 @@
-﻿using lab3.Edgar.model;
+﻿using lab3.model;
 
-namespace Lab3.Edgar.Service;
+namespace Lab3.Service;
 
 public class AverageStrategy : IAverageStrategy
 {

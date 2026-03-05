@@ -1,6 +1,6 @@
-﻿using lab3.Edgar.model;
+﻿using lab3.model;
 
-namespace lab3.Edgar.Service;
+namespace lab3.Service;
 
 public interface IStudentPrinter
 {
