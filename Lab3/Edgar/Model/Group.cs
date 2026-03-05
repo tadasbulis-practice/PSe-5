@@ -17,11 +17,12 @@ public class Group
         Students.Add(student);
     }
 
-    public void PrintToString()
+    public override string ToString()
     {
-        Console.WriteLine("Group :  " + _name);
-        Console.WriteLine("Students :");
+        var str = "Group name : " + _name + "\n Students :";
         foreach (var student in Students)
-            Console.WriteLine(student.ToString());
+            str += "\n" + student;
+
+        return str;
     }
 }
