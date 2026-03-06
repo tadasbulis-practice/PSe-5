@@ -1,15 +1,11 @@
-﻿using lab3.model;
-using Lab3.Service;
+﻿using lab1.Edgar.model;
 
-namespace lab3;
+namespace lab1.Edgar;
 
 internal class Program
 {
     private static void Main()
     {
-        var studentPrinter = new StudentPrinter();
-        var averageStrategy = new AverageStrategy();
-
         var student1 = new StudentProfile(
             "edgar",
             "clerc",
@@ -34,14 +30,12 @@ internal class Program
             [18.2, 19, 17, 16.8, 18]
         );
 
-        averageStrategy.Average(student1);
-
         var group = new Group("group1");
 
         group.AddStudent(student1);
         group.AddStudent(student2);
         group.AddStudent(student3);
 
-        Console.WriteLine(studentPrinter.PrintGroup(group));
+        group.PrintToString();
     }
 }

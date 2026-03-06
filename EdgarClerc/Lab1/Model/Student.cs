@@ -1,4 +1,4 @@
-namespace lab3.model;
+namespace lab1.Edgar.model;
 
 public class StudentProfile
 {
@@ -21,7 +21,12 @@ public class StudentProfile
     private string LastName { get; }
     private string Group { get; }
     private DateOnly LectureDate { get; }
-    public List<double> Grades { get; }
+    private List<double> Grades { get; }
+
+    private double Average()
+    {
+        return Grades.Average();
+    }
 
     public override string ToString()
     {
@@ -32,6 +37,8 @@ public class StudentProfile
             + ", group: "
             + Group
             + ", lecture date: "
-            + LectureDate;
+            + LectureDate
+            + "average grades : "
+            + Average();
     }
 }
