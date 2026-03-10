@@ -13,7 +13,7 @@ Group group = new("PS-5");
 IStudentService service = new StudentService(new WeightedAverageStrategy());
 
 
-IMenuService.ShowMenuGetChoice();
+
 
 
 service.AddStudent(group, new Student(1, "Jonas", new List<int> {8, 9, 10}));
