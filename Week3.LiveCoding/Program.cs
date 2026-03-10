@@ -3,7 +3,7 @@ using Week3.LiveCoding.Services;
 
 Console.WriteLine("=== Week 3 Live Coding Demo ===");
 
-Group group = new("PS-5");
+Group group = new("PSe-5");
 
 // Change implementation here:
 // IStudentService service = new StudentService();

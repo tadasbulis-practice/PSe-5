@@ -10,3 +10,13 @@ public class AverageStrategy : IGradeStrategy
         return student.Grades.Average();
     }
 }
+public class MedianAverageStrategy : IAverageStrategy
+{
+    public double Calculate(List<int> grades)
+    {
+        var sorted = grades.OrderBy(x => x).ToList();
+        int mid = sorted.Count / 2;
+        return sorted[mid];
+    }
+}
+
