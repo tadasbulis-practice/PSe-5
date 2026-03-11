@@ -1,5 +1,6 @@
 ﻿using JohnBastille.Lab_3.Models;
 using JohnBastille.Lab_3.Services;
+using JohnBastille.Lab_3.Interfaces;
 
 Console.WriteLine("=====LAB_3=====");
 
