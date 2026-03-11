@@ -7,7 +7,7 @@ using System;
 
 
 
-public class StudentFinderService : StudentFinder
+public class StudentFinderService : IStudentFinder
 {
     public Student? FindByName(Group group, string name)
     {
