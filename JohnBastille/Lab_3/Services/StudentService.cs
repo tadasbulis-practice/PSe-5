@@ -1,6 +1,10 @@
-using Week3.LiveCoding.Models;
+﻿using JohnBastille.Lab_3.Models;
 
-namespace Week3.LiveCoding.Services;
+
+namespace JohnBastille.Lab_3.Services;
+namespace JohnBastille.Lab_3.Interfaces
+
+
 
 public class StudentService : IStudentService
 {

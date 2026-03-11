@@ -1,7 +1,8 @@
+﻿namespace JohnBastille.Lab_3.Services;
 
-using Week3.LiveCoding.Advanced.Models;
+using JohnBastille.Lab_3.Models;
+using System;
 
-namespace Week3.LiveCoding.Advanced.Services;
 
 public interface IStudentService
 {

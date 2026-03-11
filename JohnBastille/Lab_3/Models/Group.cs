@@ -1,5 +1,6 @@
+﻿namespace JohnBastille.Lab_3.Models;
 
-namespace Week3.LiveCoding.Advanced.Models;
+
 
 public class Group
 {
