@@ -9,6 +9,9 @@ Group group = new("Program systems");
 IStudentService service = new StudentService();
 
 Student student = new(1,"John Bastille");
+Student student2 = new(2, "Jack Smith");
+Student student3 = new(3, "Harry Ballzonya");
+
 
 service.AddStudent(group, student);
 service.PrintAll(group);
