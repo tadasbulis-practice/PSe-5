@@ -1,14 +1,12 @@
-﻿namespace JohnBastille.Lab_3.Interfaces;
+﻿using JohnBastille.Lab_3.Models;
 
-using JohnBastille.Lab_3.Models;
-
-
-public interface IStudentFinder
+namespace JohnBastille.Lab_3.Interfaces
 {
-    Student? FindByName(Group group, string name);
+    public interface IStudentFinder
+    {
+        Student? Find(List<Student> students, string query);
+    }
 }
 
-
-	
 
 

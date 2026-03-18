@@ -1,21 +1,27 @@
-﻿namespace JohnBastille.Lab_3.Models;
+﻿using JohnBastille.Lab_3.Interfaces;
 
-
-public class Student
+namespace JohnBastille.Lab_3.Models
 {
-	public int Id { get; }
-	public string Name { get; }
-	public Student(int id, string name)
+    public class Student
+    {
+        private static int _nextId = 1;
 
-	{
-		Id = id;
-		Name = name;
-	}
+        public string Name { get; set; }
+        public int Age { get; set; }
+        public int Id { get; }
+        public List<int> Grades { get; set; } = new();
 
-	public string Describe()
-	{
-		return $"ID: {Id}, Name: {Name}";
-	}
+        private readonly IAverageStrategy _averageStrategy;
 
+        public Student(IAverageStrategy averageStrategy)
+        {
+            _averageStrategy = averageStrategy;
+            Id = _nextId++;
+        }
 
+        public double GetAverage()
+        {
+            return _averageStrategy.CalculateAverage(Grades);
+        }
+    }
 }
