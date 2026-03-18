@@ -1,3 +1,28 @@
+Program Flow
+- Program.cs initializes strategies and the student list
+- ConsoleMenuService displays the menu
+- User selects an option
+- Menu delegates work to:
+- Finder
+- Printer
+- Validator
+- Average strategy
+- Students are stored in a shared list
+
+#User selects Search Student
+-Menu asks for a name
+-Finder searches the list
+-Printer displays the result
+
+
+#User selects Add Student
+- Menu asks for name and age
+- Validator checks input
+- Student is created with the chosen average strategy
+- Student is added to the list
+- 
+
+
 # PSe-5
 PSe-5 workshops
 
