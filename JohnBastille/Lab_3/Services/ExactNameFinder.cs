@@ -1,8 +1,8 @@
 ﻿using JohnBastille.Lab_3.Interfaces;
 using JohnBastille.Lab_3.Models;
+namespace Lab_3.Services;
 
-namespace JohnBastille.Lab_3.Services
-{
+
     public class ExactNameFinder : IStudentFinder
     {
         public Student? Find(List<Student> students, string query)
@@ -11,6 +11,6 @@ namespace JohnBastille.Lab_3.Services
                 s.Name.Equals(query, StringComparison.OrdinalIgnoreCase));
         }
     }
-}
-}
+
+
 

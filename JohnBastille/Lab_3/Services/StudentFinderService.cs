@@ -9,6 +9,11 @@ using System;
 
 public class StudentFinderService : IStudentFinder
 {
+    public Student? Find(List<Student> students, string query)
+    {
+        throw new NotImplementedException();
+    }
+
     public Student? FindByName(Group group, string name)
     {
         foreach (var student in group.Students)

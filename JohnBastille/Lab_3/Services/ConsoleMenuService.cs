@@ -83,6 +83,16 @@ public class ConsoleMenuService : IMenuService
             Age = age
         };
 
+        Console.Write("Enter grades separated by spaces: ");
+        string gradeInput = Console.ReadLine();
+        var gradeStrings = gradeInput.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+
+        foreach (var g in gradeStrings)
+        {
+            if (int.TryParse(g, out int grade))
+                student.Grades.Add(grade);
+        }
+
         _students.Add(student);
         Console.WriteLine("Student added.");
     }

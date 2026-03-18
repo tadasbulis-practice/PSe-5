@@ -1,4 +1,6 @@
-﻿public class SimpleStudentPrinter : IStudentPrinter
+﻿using JohnBastille.Lab_3.Interfaces;
+using JohnBastille.Lab_3.Models;
+public class SimpleStudentPrinter : IStudentPrinter
 {
     public void Print(Student student)
     {

@@ -20,7 +20,19 @@ Program Flow
 - Validator checks input
 - Student is created with the chosen average strategy
 - Student is added to the list
-- 
+
+This project demonstrates:
+- Clean separation of concerns
+- Interface‑driven design
+- Runtime‑swappable behaviors
+- Proper use of polymorphism
+- Strategy pattern implementation
+- Dependency injection
+- Modular and testable architecture
+It fulfills all LAB‑3 requirements and provides a flexible foundation for future extensions.
+
+
+ 
 
 
 # PSe-5
