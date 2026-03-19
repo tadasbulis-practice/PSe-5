@@ -17,4 +17,23 @@ app.MapGet("/api/info", () =>
     });
 });
 
+app.MapGet("/api/getStudent", async () =>
+{
+    var random = new Random();
+    int delaySeconds = random.Next(1, 6); // 1–5 seconds
+
+    await Task.Delay(delaySeconds * 1000);
+
+    return Results.Json(new
+    {
+        firstName = "Tadas",
+        LastName = "Bulis",
+        status = "ok",
+        delay = delaySeconds,
+        message = "Response delayed intentionally",
+        timestampUtc = DateTime.UtcNow
+    });
+});
+
+
 app.Run();
