@@ -1,4 +1,4 @@
-namespace lab3.model;
+namespace lab4.model;
 
 public class Group
 {

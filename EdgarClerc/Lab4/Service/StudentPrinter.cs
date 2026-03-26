@@ -1,7 +1,7 @@
-using lab3.model;
-using lab3.Service;
+using lab4.model;
+using lab4.Service;
 
-namespace Lab3.Service;
+namespace Lab4.Service;
 
 public class StudentPrinter : IStudentPrinter
 {

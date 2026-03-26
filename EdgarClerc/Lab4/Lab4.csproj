@@ -4,6 +4,6 @@
     <TargetFramework>net10.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <RootNamespace>Lab3</RootNamespace>
+    <RootNamespace>Lab4</RootNamespace>
   </PropertyGroup>
 </Project>

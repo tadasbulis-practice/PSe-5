@@ -1,6 +1,6 @@
-using lab3.model;
+using lab4.model;
 
-namespace lab3.Service;
+namespace lab4.Service;
 
 public interface IStudentPrinter
 {

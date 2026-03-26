@@ -1,7 +1,7 @@
-using lab3.model;
-using Lab3.Service;
+using lab4.model;
+using Lab4.Service;
 
-namespace lab3;
+namespace lab4;
 
 internal class Program
 {
@@ -9,6 +9,7 @@ internal class Program
     {
         var studentPrinter = new StudentPrinter();
         var averageStrategy = new AverageStrategy();
+        var fakeAverage = new FakeAverageStrategy();
 
         var student1 = new StudentProfile(
             "edgar",
@@ -34,7 +35,8 @@ internal class Program
             [18.2, 19, 17, 16.8, 18]
         );
 
-        averageStrategy.Average(student1);
+        Console.WriteLine("true average : " + averageStrategy.Average(student1));
+        Console.WriteLine("false average : " + fakeAverage.Average(student1));
 
         var group = new Group("group1");
 

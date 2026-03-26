@@ -5,8 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="11b163a6-9f27-4fa5-8758-9d0f217e62fd" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/EdgarClerc/Lab3/Service/FakeAverageStrategy.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EdgarClerc/Lab4/Service/FakeAverageStrategy.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EdgarClerc/Lab3/Service/FakeAverageStrategy.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/EdgarClerc/Lab4/Lab4.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/EdgarClerc/Lab4/Lab4.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EdgarClerc/Lab4/Model/Group.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EdgarClerc/Lab4/Model/Group.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EdgarClerc/Lab4/Model/Student.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EdgarClerc/Lab4/Model/Student.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EdgarClerc/Lab4/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EdgarClerc/Lab4/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EdgarClerc/Lab4/Service/AverageStrategy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EdgarClerc/Lab4/Service/AverageStrategy.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EdgarClerc/Lab4/Service/IAverageStrategy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EdgarClerc/Lab4/Service/IAverageStrategy.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EdgarClerc/Lab4/Service/IStudentPrinter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EdgarClerc/Lab4/Service/IStudentPrinter.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EdgarClerc/Lab4/Service/StudentPrinter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EdgarClerc/Lab4/Service/StudentPrinter.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,10 +49,11 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/EdgarClerc/Lab3/Program.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/EdgarClerc/Lab3/Service/AverageStrategy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/EdgarClerc/Lab3/Service/FakeAverageStrategy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/EdgarClerc/Lab3/Service/IAverageStrategy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/EdgarClerc/Lab3/Service/IStudentPrinter.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/EdgarClerc/Lab3/Service/StudentPrinter.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/EdgarClerc/Lab4/Program.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/EdgarClerc/Lab4/Service/AverageStrategy.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="McpProjectServerCommands">
     <commands />
@@ -58,26 +68,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    ".NET File.Unnamed.executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.MCP Project settings loaded": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
-    "git-widget-placeholder": "#2 on Edgar",
-    "junie.onboarding.icon.badge.shown": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "to.speed.mode.migration.done": "true",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;.NET File.Unnamed.executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;#2 on Edgar&quot;,
+    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="Unnamed" type="RunDotNetFile" factoryName="RunDotNetFile">
       <option name="filePath" value="C:\Users\edgar\Documents\Dev\OOP-cs\EdgarClerc\Lab1\Program.cs" />
@@ -96,6 +106,8 @@
       <updated>1772713508009</updated>
       <workItem from="1772713508951" duration="681000" />
       <workItem from="1773935331169" duration="5489000" />
+      <workItem from="1773944930970" duration="381000" />
+      <workItem from="1774534758031" duration="2057000" />
     </task>
     <task id="LOCAL-00001" summary="fix for mr">
       <option name="closed" value="true" />
@@ -105,7 +117,15 @@
       <option name="project" value="LOCAL" />
       <updated>1772715446143</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="lab4 start">
+      <option name="closed" value="true" />
+      <created>1773944984082</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1773944984082</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -127,7 +147,8 @@
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="fix for mr" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix for mr" />
+    <MESSAGE value="lab4 start" />
+    <option name="LAST_COMMIT_MESSAGE" value="lab4 start" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -1,6 +1,6 @@
-using lab3.model;
+using lab4.model;
 
-namespace Lab3.Service;
+namespace Lab4.Service;
 
 public interface IAverageStrategy
 {
