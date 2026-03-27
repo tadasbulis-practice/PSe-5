@@ -4,17 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="11b163a6-9f27-4fa5-8758-9d0f217e62fd" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/EdgarClerc/Lab5/Implementations/Printer/FileStudentPrinter.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EdgarClerc/Lab5/Implementations/Printer/JsonStudentPrinter.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EdgarClerc/Lab5/Implementations/Repository/FileStudentRepository.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EdgarClerc/Lab5/Implementations/Strategy/MedianAverageStrategy.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EdgarClerc/Lab5/Implementations/Strategy/WeightedAverageStrategy.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EdgarClerc/Lab5/Lab5.csproj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EdgarClerc/Lab5/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EdgarClerc/Lab4/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/EdgarClerc/Lab4/readme.md" afterDir="false" />
-    </list>
+    <list default="true" id="11b163a6-9f27-4fa5-8758-9d0f217e62fd" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -52,6 +42,8 @@
     <setting file="file://$PROJECT_DIR$/EdgarClerc/Lab3/Service/StudentPrinter.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/EdgarClerc/Lab4/Program.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/EdgarClerc/Lab4/Service/AverageStrategy.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/EdgarClerc/Lab5/Implementations/Menu/ConsoleMenuService.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/EdgarClerc/Lab5/Implementations/Printer/FileStudentPrinter.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="McpProjectServerCommands">
     <commands />
@@ -107,7 +99,7 @@
       <workItem from="1773935331169" duration="5489000" />
       <workItem from="1773944930970" duration="381000" />
       <workItem from="1774534758031" duration="3117000" />
-      <workItem from="1774629539663" duration="3057000" />
+      <workItem from="1774629539663" duration="3130000" />
     </task>
     <task id="LOCAL-00001" summary="fix for mr">
       <option name="closed" value="true" />
@@ -133,7 +125,15 @@
       <option name="project" value="LOCAL" />
       <updated>1774537592460</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="lab 5">
+      <option name="closed" value="true" />
+      <created>1774639838588</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1774639838588</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -157,7 +157,8 @@
     <MESSAGE value="fix for mr" />
     <MESSAGE value="lab4 start" />
     <MESSAGE value="lab 4 added fake average strategy" />
-    <option name="LAST_COMMIT_MESSAGE" value="lab 4 added fake average strategy" />
+    <MESSAGE value="lab 5" />
+    <option name="LAST_COMMIT_MESSAGE" value="lab 5" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
