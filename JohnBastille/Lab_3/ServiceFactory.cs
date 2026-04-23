@@ -1,5 +1,6 @@
 using JohnBastille.Lab_3.Interfaces;
 using JohnBastille.Lab_3.Models;
+using Lab_3.Services;
 using JohnBastille.Lab_3.Services;
 
 namespace JohnBastille.Lab_3;
@@ -49,7 +50,7 @@ public static class ServiceFactory
 
         var menu = new ConsoleMenuService(students, finder, printer, validator, averageStrategy);
 
-        return new ApplicationServices(students, menu);
+        return new ApplicationServices(students, menu, finder, printer, validator, averageStrategy);
     }
 
     /// <summary>
@@ -81,7 +82,23 @@ public static class ServiceFactory
 
         var menu = new AlternativeMenuService(students, finder, printer, validator, averageStrategy);
 
-        return new ApplicationServices(students, menu);
+        return new ApplicationServices(students, menu, finder, printer, validator, averageStrategy);
+    }
+
+    /// <summary>
+    /// Creates services with web simulation menu for web UI testing.
+    /// </summary>
+    public static ApplicationServices CreateWebSimulationServices()
+    {
+        var students = new List<Student>();
+        var finder = new ExactNameFinder();
+        var printer = new SimpleStudentPrinter();
+        var validator = new BasicStudentValidator();
+        var averageStrategy = new SimpleAverageStrategy();
+
+        var menu = new WebMenuSimulationService(students, finder, printer, validator, averageStrategy);
+
+        return new ApplicationServices(students, menu, finder, printer, validator, averageStrategy);
     }
 }
 

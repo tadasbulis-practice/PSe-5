@@ -66,10 +66,12 @@ public class ConsoleMenuService : IMenuService
     private void AddStudent()
     {
         Console.Write("Enter name: ");
-        string name = Console.ReadLine();
+        string? nameInput = Console.ReadLine();
+        string name = nameInput ?? string.Empty;
 
         Console.Write("Enter age: ");
-        string ageInput = Console.ReadLine();
+        string? ageInputRaw = Console.ReadLine();
+        string ageInput = ageInputRaw ?? string.Empty;
 
         if (!_validator.Validate(name, ageInput, out int age))
         {
@@ -100,7 +102,8 @@ public class ConsoleMenuService : IMenuService
     private void SearchStudent()
     {
         Console.Write("Enter search query: ");
-        string query = Console.ReadLine();
+        string? queryInput = Console.ReadLine();
+        string query = queryInput ?? string.Empty;
 
         var student = _finder.Find(_students, query);
 

@@ -6,7 +6,7 @@ namespace JohnBastille.Lab_3.Models
     {
         private static int _nextId = 1;
 
-        public string Name { get; set; }
+        public string? Name { get; set; }
         public int Age { get; set; }
         public int Id { get; }
         public List<int> Grades { get; set; } = new();
