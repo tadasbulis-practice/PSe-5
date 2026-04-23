@@ -1,28 +1,30 @@
-﻿using JohnBastille.Lab_3.Interfaces;
-using JohnBastille.Lab_3.Models;
-using Lab_3.Services;
+﻿using JohnBastille.Lab_3;
+using JohnBastille.Lab_3.Interfaces;
 
 Console.WriteLine("===== LAB 3 =====");
 
-// Shared student list
-List<Student> students = new List<Student>();
+// Determine which services to use based on command line arguments
+// This demonstrates logical branches: production vs test vs alternative modes
+ApplicationServices services;
 
-// Choose strategy implementations
-IStudentFinder finder = new ExactNameFinder();               // or PartialNameFinder
-IStudentPrinter printer = new SimpleStudentPrinter();        // one implementation is fine
-IStudentValidator validator = new BasicStudentValidator();   // or StrictStudentValidator
-IAverageStrategy averageStrategy = new SimpleAverageStrategy(); // or WeightedAverageStrategy
+if (args.Length > 0 && args[0] == "test")
+{
+    Console.WriteLine("Running in TEST mode with fake/stub implementations");
+    services = ServiceFactory.CreateTestServices();
+}
+else if (args.Length > 0 && args[0] == "alternative")
+{
+    Console.WriteLine("Running in ALTERNATIVE mode with partial name finder");
+    services = ServiceFactory.CreateAlternativeServices();
+}
+else
+{
+    Console.WriteLine("Running in PRODUCTION mode");
+    services = ServiceFactory.CreateProductionServices();
+}
 
-// Inject everything into the menu
-IMenuService menu = new ConsoleMenuService(
-    students,
-    finder,
-    printer,
-    validator,
-    averageStrategy
-);
-
-// Main loop
+// Main application loop - no business logic here, just orchestration
+IMenuService menu = services.MenuService;
 while (true)
 {
     menu.ShowMainMenu();
