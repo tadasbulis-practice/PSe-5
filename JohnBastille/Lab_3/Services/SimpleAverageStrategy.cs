@@ -1,4 +1,6 @@
-﻿public class SimpleAverageStrategy : IAverageStrategy
+﻿namespace Lab_3.Services;
+
+public class SimpleAverageStrategy : IAverageStrategy
 {
     public double CalculateAverage(List<int> grades)
     {

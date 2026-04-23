@@ -1,4 +1,6 @@
-﻿public class BasicStudentValidator : IStudentValidator
+﻿namespace Lab_3.Services;
+
+public class BasicStudentValidator : IStudentValidator
 {
     public bool Validate(string name, string ageInput, out int age)
     {
@@ -16,6 +18,7 @@
         return true;
     }
 }
+
 public class StrictStudentValidator : IStudentValidator
 {
     public bool Validate(string name, string ageInput, out int age)

@@ -1,15 +1,13 @@
-﻿namespace JohnBastille.Lab_3.Services;
-
-using JohnBastille.Lab_3.Interfaces;
+﻿using JohnBastille.Lab_3.Interfaces;
 using JohnBastille.Lab_3.Models;
 
+namespace Lab_3.Services;
 
 public class StudentService : IStudentService
 {
     public void AddStudent(Group group, Student student)
     {
         group.Students.Add(student);
-        
     }
 
     public void PrintAll(Group group)
@@ -18,7 +16,7 @@ public class StudentService : IStudentService
 
         foreach (var s in group.Students)
         {
-            
+            // Implementation can be added here
         }
     }
 }

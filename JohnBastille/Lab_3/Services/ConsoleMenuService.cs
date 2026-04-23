@@ -86,7 +86,8 @@ public class ConsoleMenuService : IMenuService
         };
 
         Console.Write("Enter grades separated by spaces: ");
-        string gradeInput = Console.ReadLine();
+        string? gradeInputRaw = Console.ReadLine();
+        string gradeInput = gradeInputRaw ?? string.Empty;
         var gradeStrings = gradeInput.Split(' ', StringSplitOptions.RemoveEmptyEntries);
 
         foreach (var g in gradeStrings)
@@ -126,7 +127,10 @@ public class ConsoleMenuService : IMenuService
 
         foreach (var student in _students)
         {
-            _printer.Print(student);
+            if (student != null)
+            {
+                _printer.Print(student);
+            }
         }
     }
 }

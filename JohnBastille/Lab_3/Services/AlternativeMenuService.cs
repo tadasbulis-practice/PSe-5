@@ -1,7 +1,7 @@
 using JohnBastille.Lab_3.Interfaces;
 using JohnBastille.Lab_3.Models;
 
-namespace JohnBastille.Lab_3.Services;
+namespace Lab_3.Services;
 
 /// <summary>
 /// Alternative menu service implementation that provides different user experience.

@@ -3,6 +3,8 @@ using System.Linq;
 using JohnBastille.Lab_3.Models;
 using JohnBastille.Lab_3.Interfaces;
 
+namespace Lab_3.Services;
+
 public class PartialNameFinder : IStudentFinder
 {
     public Student? Find(List<Student> students, string query)
