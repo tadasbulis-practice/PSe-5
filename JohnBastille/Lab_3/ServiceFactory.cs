@@ -23,7 +23,7 @@ public static class ServiceFactory
 
         var menu = new ConsoleMenuService(students, finder, printer, validator, averageStrategy);
 
-        return new ApplicationServices(students, menu);
+        return new ApplicationServices(students, menu, finder, printer, validator, averageStrategy);
     }
 
     /// <summary>
@@ -69,23 +69,29 @@ public static class ServiceFactory
     }
 
     /// <summary>
-    /// Creates services with web simulation menu.
+    /// Creates services with alternative implementations to demonstrate logical branches.
     /// </summary>
-    public static ApplicationServices CreateWebSimulationServices()
+    public static ApplicationServices CreateAlternativeServices()
     {
         var students = new List<Student>();
-        var finder = new PartialNameFinder();
+        var finder = new PartialNameFinder(); // Different finder implementation
         var printer = new SimpleStudentPrinter();
         var validator = new BasicStudentValidator();
         var averageStrategy = new SimpleAverageStrategy();
 
-        var menu = new WebMenuSimulationService(students, finder, printer, validator, averageStrategy);
+        var menu = new AlternativeMenuService(students, finder, printer, validator, averageStrategy);
 
         return new ApplicationServices(students, menu);
     }
 }
 
 /// <summary>
-/// Container for application services.
+/// Container for application services with single implementations.
 /// </summary>
-public record ApplicationServices(List<Student> Students, IMenuService MenuService);
+public record ApplicationServices(
+    List<Student> Students,
+    IMenuService MenuService,
+    IStudentFinder Finder,
+    IStudentPrinter Printer,
+    IStudentValidator Validator,
+    IAverageStrategy AverageStrategy);
