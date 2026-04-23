@@ -53,17 +53,33 @@ public static class ServiceFactory
     }
 
     /// <summary>
-    /// Creates services with alternative implementations to demonstrate logical branches.
+    /// Creates services with debug menu for development and testing.
     /// </summary>
-    public static ApplicationServices CreateAlternativeServices()
+    public static ApplicationServices CreateDebugServices()
     {
         var students = new List<Student>();
-        var finder = new PartialNameFinder(); // Different finder implementation
+        var finder = new ExactNameFinder();
         var printer = new SimpleStudentPrinter();
         var validator = new BasicStudentValidator();
         var averageStrategy = new SimpleAverageStrategy();
 
-        var menu = new ConsoleMenuService(students, finder, printer, validator, averageStrategy);
+        var menu = new DebugMenuService(students, finder, printer, validator, averageStrategy);
+
+        return new ApplicationServices(students, menu, finder, printer, validator, averageStrategy);
+    }
+
+    /// <summary>
+    /// Creates services with web simulation menu.
+    /// </summary>
+    public static ApplicationServices CreateWebSimulationServices()
+    {
+        var students = new List<Student>();
+        var finder = new PartialNameFinder();
+        var printer = new SimpleStudentPrinter();
+        var validator = new BasicStudentValidator();
+        var averageStrategy = new SimpleAverageStrategy();
+
+        var menu = new WebMenuSimulationService(students, finder, printer, validator, averageStrategy);
 
         return new ApplicationServices(students, menu);
     }
