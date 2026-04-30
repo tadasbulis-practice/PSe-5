@@ -6,8 +6,6 @@ using Avalonia.Platform.Storage;
 using Lab10.Implementations.FileServices;
 using Lab10.Interfaces;
 using Lab10.Models;
-using MsBox.Avalonia;
-using MsBox.Avalonia.Enums;
 
 namespace Lab10.Views;
 
@@ -20,7 +18,7 @@ namespace Lab10.Views;
 ///   DataGridView      →  DataGrid                 (separate Avalonia package)
 ///   MenuStrip         →  Menu                     (top-level container)
 ///   ToolStrip         →  StackPanel of Buttons
-///   MessageBox.Show() →  MsBox.Avalonia (async)
+///   MessageBox.Show() →  MessageDialog.ShowAsync (our small helper)
 ///   SaveFileDialog    →  StorageProvider.SaveFilePickerAsync
 ///
 /// All Models / Repositories / FileServices / Exceptions are unchanged.
@@ -129,8 +127,10 @@ public class MainWindow : Window
 
         if (_repository.GetById(dlg.Result.Id) != null)
         {
-            await ShowAsync($"A student with Id {dlg.Result.Id} already exists.",
-                            "Duplicate Id", Icon.Warning);
+            await MessageDialog.ShowAsync(this,
+                "Duplicate Id",
+                $"A student with Id {dlg.Result.Id} already exists.",
+                DialogIcon.Warning);
             return;
         }
 
@@ -158,12 +158,11 @@ public class MainWindow : Window
         var s = SelectedStudent();
         if (s is null) return;
 
-        var box = MessageBoxManager.GetMessageBoxStandard(
+        var answer = await MessageDialog.ShowAsync(this,
             "Confirm delete",
             $"Delete student {s.FullName} (Id {s.Id})?",
-            ButtonEnum.YesNo, Icon.Question);
-        var answer = await box.ShowWindowDialogAsync(this);
-        if (answer != ButtonResult.Yes) return;
+            DialogIcon.Question, DialogButtons.YesNo);
+        if (answer != DialogResult.Yes) return;
 
         _repository.Remove(s.Id);
         _students.Remove(s);
@@ -190,12 +189,13 @@ public class MainWindow : Window
         try
         {
             service.Save(_students.ToList(), picked.Path.LocalPath);
-            await ShowAsync($"Saved {_students.Count} students.",
-                            "Saved", Icon.Info);
+            await MessageDialog.ShowAsync(this,
+                "Saved", $"Saved {_students.Count} students.", DialogIcon.Info);
         }
         catch (IOException ex)
         {
-            await ShowAsync(ex.Message, "Could not save", Icon.Error);
+            await MessageDialog.ShowAsync(this,
+                "Could not save", ex.Message, DialogIcon.Error);
         }
     }
 
@@ -219,12 +219,13 @@ public class MainWindow : Window
         {
             var loaded = service.Load(files[0].Path.LocalPath);
             ReplaceAll(loaded);
-            await ShowAsync($"Loaded {loaded.Count} students.",
-                            "Loaded", Icon.Info);
+            await MessageDialog.ShowAsync(this,
+                "Loaded", $"Loaded {loaded.Count} students.", DialogIcon.Info);
         }
         catch (IOException ex)
         {
-            await ShowAsync(ex.Message, "Could not open", Icon.Error);
+            await MessageDialog.ShowAsync(this,
+                "Could not open", ex.Message, DialogIcon.Error);
         }
     }
 
@@ -241,10 +242,5 @@ public class MainWindow : Window
         }
     }
 
-    // ── MessageBox helper (Avalonia equivalent of WinForms MessageBox.Show) ──
-    private Task ShowAsync(string text, string title, Icon icon)
-    {
-        var box = MessageBoxManager.GetMessageBoxStandard(title, text, ButtonEnum.Ok, icon);
-        return box.ShowWindowDialogAsync(this);
-    }
+    // MessageBox helper lives in Views/MessageDialog.cs
 }

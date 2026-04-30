@@ -9,7 +9,8 @@ It runs on **Windows, macOS, and Linux** with the same .NET 8 SDK.
 dotnet run --project Lab10.csproj
 ```
 
-The first run will download the Avalonia and MsBox.Avalonia packages.
+The first run will download the Avalonia packages (no third-party MessageBox
+package — `Views/MessageDialog.cs` is our own ~120-line helper).
 
 > macOS users on Apple Silicon — make sure your `dotnet --version` is 8.x.
 > If it is missing, install it from <https://dotnet.microsoft.com/download>.
@@ -25,7 +26,7 @@ The first run will download the Avalonia and MsBox.Avalonia packages.
 | Grid                   | `DataGridView`                       | `DataGrid` (separate Avalonia package)      |
 | Menu / Toolbar         | `MenuStrip`, `ToolStrip`             | `Menu`, `StackPanel` of `Button`s           |
 | Modal dialog           | `form.ShowDialog()` returns enum     | `await window.ShowDialog(owner)`            |
-| MessageBox             | `MessageBox.Show(...)`               | `MsBox.Avalonia` (async)                    |
+| MessageBox             | `MessageBox.Show(...)`               | `MessageDialog.ShowAsync(...)` (own helper) |
 | File dialogs           | `SaveFileDialog`, `OpenFileDialog`   | `Window.StorageProvider.SaveFilePickerAsync` |
 
 Everything else — **Models, Repositories, FileServices, Exceptions** — is

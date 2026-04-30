@@ -2,8 +2,6 @@ using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Layout;
 using Lab10.Models;
-using MsBox.Avalonia;
-using MsBox.Avalonia.Enums;
 
 namespace Lab10.Views;
 
@@ -130,9 +128,8 @@ public class StudentEditWindow : Window
         }
         catch (ArgumentException ex)
         {
-            var box = MessageBoxManager.GetMessageBoxStandard(
-                "Validation error", ex.Message, ButtonEnum.Ok, Icon.Warning);
-            await box.ShowWindowDialogAsync(this);
+            await MessageDialog.ShowAsync(this,
+                "Validation error", ex.Message, DialogIcon.Warning);
             // Stay open so the user can fix the input.
         }
     }

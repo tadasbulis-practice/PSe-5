@@ -13,6 +13,7 @@
     <OutputType>WinExe</OutputType>           <!-- WinExe also works on Mac/Linux; just hides console -->
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>   <!-- auto-imports System, System.Collections.Generic, System.Linq, System.Threading.Tasks, System.Net.Http, etc. -->
     <RootNamespace>Lab10</RootNamespace>
     <AssemblyName>Lab10</AssemblyName>
   </PropertyGroup>
@@ -22,7 +23,7 @@
     <PackageReference Include="Avalonia.Desktop"       Version="11.1.5" />
     <PackageReference Include="Avalonia.Themes.Fluent" Version="11.1.5" />
     <PackageReference Include="Avalonia.Controls.DataGrid" Version="11.1.5" />
-    <PackageReference Include="MsBox.Avalonia"         Version="3.1.5.1" />
+    <!-- No MessageBox NuGet — we roll our own in Views/MessageDialog.cs (~50 lines) -->
   </ItemGroup>
 
 </Project>
