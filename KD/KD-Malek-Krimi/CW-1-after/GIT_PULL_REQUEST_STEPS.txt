@@ -1,0 +1,64 @@
+GitHub Pull Request steps for CW1
+=================================
+
+Repository:
+https://github.com/tadasbulis-practice/PS-5
+
+Commands:
+
+1. Clone the repository:
+
+git clone https://github.com/tadasbulis-practice/PS-5.git
+cd PS-5
+
+2. Switch to development and update it:
+
+git checkout development
+git pull origin development
+
+3. Create your branch:
+
+git checkout -b feature/KD-Malek-Krimi
+
+4. Create the required folder:
+
+mkdir -p KD/KD-Malek-Krimi
+
+5. Copy the completed solution into:
+
+KD/KD-Malek-Krimi/
+
+For example, copy the CW-1-after folder into that location.
+
+6. Check the files:
+
+git status
+
+7. Commit:
+
+git add KD/KD-Malek-Krimi
+git commit -m "CW1: complete layered student application"
+
+Optional separate commits:
+
+git commit -m "Task 1: extract models services UI and interface"
+git commit -m "Task 2: add LINQ and no-LINQ report methods"
+git commit -m "Task 3: add stub repository and runtime args"
+git commit -m "Drills: complete plain LINQ exercises"
+
+8. Push:
+
+git push -u origin feature/KD-Malek-Krimi
+
+9. Open a Pull Request on GitHub:
+
+base: development
+compare: feature/KD-Malek-Krimi
+
+title: KD Malek Krimi CW1
+
+10. Before submitting, test locally:
+
+dotnet build
+dotnet run
+dotnet run -- --stub
