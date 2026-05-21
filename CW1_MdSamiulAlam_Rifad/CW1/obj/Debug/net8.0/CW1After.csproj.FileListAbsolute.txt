@@ -1,0 +1,14 @@
+D:\New folder (2)\CW1_Firstname_Lastname\CW1After\bin\Debug\net8.0\CW1After.exe
+D:\New folder (2)\CW1_Firstname_Lastname\CW1After\bin\Debug\net8.0\CW1After.deps.json
+D:\New folder (2)\CW1_Firstname_Lastname\CW1After\bin\Debug\net8.0\CW1After.runtimeconfig.json
+D:\New folder (2)\CW1_Firstname_Lastname\CW1After\bin\Debug\net8.0\CW1After.dll
+D:\New folder (2)\CW1_Firstname_Lastname\CW1After\bin\Debug\net8.0\CW1After.pdb
+D:\New folder (2)\CW1_Firstname_Lastname\CW1After\obj\Debug\net8.0\CW1After.GeneratedMSBuildEditorConfig.editorconfig
+D:\New folder (2)\CW1_Firstname_Lastname\CW1After\obj\Debug\net8.0\CW1After.AssemblyInfoInputs.cache
+D:\New folder (2)\CW1_Firstname_Lastname\CW1After\obj\Debug\net8.0\CW1After.AssemblyInfo.cs
+D:\New folder (2)\CW1_Firstname_Lastname\CW1After\obj\Debug\net8.0\CW1After.csproj.CoreCompileInputs.cache
+D:\New folder (2)\CW1_Firstname_Lastname\CW1After\obj\Debug\net8.0\CW1After.dll
+D:\New folder (2)\CW1_Firstname_Lastname\CW1After\obj\Debug\net8.0\refint\CW1After.dll
+D:\New folder (2)\CW1_Firstname_Lastname\CW1After\obj\Debug\net8.0\CW1After.pdb
+D:\New folder (2)\CW1_Firstname_Lastname\CW1After\obj\Debug\net8.0\CW1After.genruntimeconfig.cache
+D:\New folder (2)\CW1_Firstname_Lastname\CW1After\obj\Debug\net8.0\ref\CW1After.dll
