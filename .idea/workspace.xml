@@ -4,7 +4,31 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="11b163a6-9f27-4fa5-8758-9d0f217e62fd" name="Changes" comment="" />
+    <list default="true" id="11b163a6-9f27-4fa5-8758-9d0f217e62fd" name="Changes" comment="updated readme">
+      <change afterPath="$PROJECT_DIR$/EdgarClerc/Lab6/Implementations/Adapter/StudentValidatorAdapter.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EdgarClerc/Lab6/Implementations/Menu/ConsoleMenuService.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EdgarClerc/Lab6/Implementations/Printer/ConsoleStudentPrinter.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EdgarClerc/Lab6/Implementations/Printer/FileStudentPrinter.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EdgarClerc/Lab6/Implementations/Printer/JsonStudentPrinter.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EdgarClerc/Lab6/Implementations/Repository/MemoryStudentRepository.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EdgarClerc/Lab6/Implementations/Strategy/MedianAverageStrategy.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EdgarClerc/Lab6/Implementations/Strategy/SimpleAverageStrategy.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EdgarClerc/Lab6/Implementations/Strategy/WeightedAverageStrategy.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EdgarClerc/Lab6/Interfaces/IAverageStrategy.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EdgarClerc/Lab6/Interfaces/IMenuService.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EdgarClerc/Lab6/Interfaces/IStudentPrinter.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EdgarClerc/Lab6/Interfaces/IStudentRepository.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EdgarClerc/Lab6/Interfaces/IStudentValidator.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EdgarClerc/Lab6/Lab6.csproj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EdgarClerc/Lab6/Legacy/LegacyStudentValidation.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EdgarClerc/Lab6/Models/Group.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EdgarClerc/Lab6/Models/Student.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EdgarClerc/Lab6/Program.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EdgarClerc/Lab6/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EdgarClerc/Lab6/Services/StudentService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EdgarClerc/Lab5/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/EdgarClerc/Lab5/readme.md" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -12,6 +36,10 @@
   </component>
   <component name="DpaMonitoringSettings">
     <option name="firstShow" value="false" />
+  </component>
+  <component name="EmbeddingIndexingInfo">
+    <option name="cachedIndexableFilesCount" value="574" />
+    <option name="fileBasedEmbeddingIndicesEnabled" value="true" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
@@ -40,10 +68,14 @@
     <setting file="file://$PROJECT_DIR$/EdgarClerc/Lab3/Service/IAverageStrategy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/EdgarClerc/Lab3/Service/IStudentPrinter.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/EdgarClerc/Lab3/Service/StudentPrinter.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/EdgarClerc/Lab4/Program.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/EdgarClerc/Lab4/Program.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/EdgarClerc/Lab4/Service/AverageStrategy.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/EdgarClerc/Lab5/Implementations/Menu/ConsoleMenuService.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/EdgarClerc/Lab5/Implementations/Printer/FileStudentPrinter.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/EdgarClerc/Lab6/Implementations/Menu/ConsoleMenuService.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/EdgarClerc/Lab6/Implementations/Repository/FileStudentRepository.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/EdgarClerc/Lab6/Program.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/EdgarClerc/Lab6/Services/StudentService.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="McpProjectServerCommands">
     <commands />
@@ -58,27 +90,35 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    ".NET File.Unnamed.executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.MCP Project settings loaded": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
-    "git-widget-placeholder": "#2 on Edgar",
-    "junie.onboarding.icon.badge.shown": "true",
-    "last_opened_file_path": "C:/Users/edgar/Documents/Dev/OOP-cs",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "to.speed.mode.migration.done": "true",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;.NET File.Unnamed.executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;#2 on Edgar&quot;,
+    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/edgar/Documents/Dev/OOP-cs&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
+  <component name="RecapSpentCounter">
+    <option name="endsOfQuotaMs" value="1780305972451" />
+    <option name="spentUsd" value="0.00315425" />
+  </component>
+  <component name="RecapUselessUpdatesCounter">
+    <option name="suspendCountdown" value="8" />
+  </component>
   <component name="RunManager">
     <configuration name="Unnamed" type="RunDotNetFile" factoryName="RunDotNetFile">
       <option name="filePath" value="C:\Users\edgar\Documents\Dev\OOP-cs\EdgarClerc\Lab1\Program.cs" />
@@ -99,7 +139,10 @@
       <workItem from="1773935331169" duration="5489000" />
       <workItem from="1773944930970" duration="381000" />
       <workItem from="1774534758031" duration="3117000" />
-      <workItem from="1774629539663" duration="3130000" />
+      <workItem from="1774629539663" duration="3771000" />
+      <workItem from="1775116966177" duration="319000" />
+      <workItem from="1775125592281" duration="53000" />
+      <workItem from="1779799445713" duration="4412000" />
     </task>
     <task id="LOCAL-00001" summary="fix for mr">
       <option name="closed" value="true" />
@@ -133,7 +176,15 @@
       <option name="project" value="LOCAL" />
       <updated>1774639838588</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="updated readme lab 4 and 5">
+      <option name="closed" value="true" />
+      <created>1774640070901</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1774640070901</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -158,7 +209,9 @@
     <MESSAGE value="lab4 start" />
     <MESSAGE value="lab 4 added fake average strategy" />
     <MESSAGE value="lab 5" />
-    <option name="LAST_COMMIT_MESSAGE" value="lab 5" />
+    <MESSAGE value="updated readme lab 4 and 5" />
+    <MESSAGE value="updated readme" />
+    <option name="LAST_COMMIT_MESSAGE" value="updated readme" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
