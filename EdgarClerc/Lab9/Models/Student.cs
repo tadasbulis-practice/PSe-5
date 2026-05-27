@@ -22,6 +22,10 @@ public class Student
         int enrollmentYear
     )
     {
+        if (id < 0)
+        {
+            throw new ArgumentException("Id must be positive", id.ToString());
+        }
         Id = id;
         FirstName = firstName;
         LastName = lastName;

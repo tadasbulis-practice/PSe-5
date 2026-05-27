@@ -23,12 +23,27 @@ class Program
         // ══════════════════════════════════════════════════════════════
 
         const string apiUrl = "http://localhost:6001";
-        const bool useApi = false; // ← set true when Docker is running
+        const bool useApi = true; // ← set true when Docker is running
 
-        const bool useLogging = true;
-        IStudentRepository repository = useLogging
-            ? new LoggedStudentRepository()
-            : new MemoryStudentRepository();
+        IStudentRepository repository;
+        try
+        {
+            repository = useApi ? new ApiStudentRepository(apiUrl) : new MemoryStudentRepository();
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine("Error, could not connect to database : " + e.StackTrace);
+            try
+            {
+                Console.WriteLine("Loading fallback repository ...");
+                repository = new MemoryStudentRepository();
+            }
+            catch (Exception e2)
+            {
+                Console.WriteLine("Error, could not load demo data : " + e2.StackTrace);
+                return;
+            }
+        }
 
         IStudentPrinter printer = new ConsoleStudentPrinter();
         IAverageStrategy strategy = new SimpleAverageStrategy();

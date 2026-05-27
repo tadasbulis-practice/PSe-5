@@ -1,5 +1,7 @@
 using System.Net.Http.Json;
+using System.Text.Json;
 using Lab9.DTOs;
+using Lab9.Exceptions;
 using Lab9.Models;
 
 namespace Lab9.Implementations.Repository;
@@ -30,8 +32,19 @@ public class ApiStudentRepository : StudentRepositoryBase
     public ApiStudentRepository(string baseUrl)
         : base("Faculty of Technology")
     {
-        _http = new HttpClient { BaseAddress = new Uri(baseUrl) };
-        LoadFromApi().GetAwaiter().GetResult();
+        try
+        {
+            _http = new HttpClient { BaseAddress = new Uri(baseUrl) };
+            LoadFromApi().GetAwaiter().GetResult();
+        }
+        catch (HttpRequestException e)
+        {
+            throw new RepositoryException("Error while fetching student data from database : ", e);
+        }
+        catch (JsonException e)
+        {
+            throw new RepositoryException("Error while parsing student data from database : ", e);
+        }
     }
 
     private async Task LoadFromApi()

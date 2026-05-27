@@ -24,6 +24,24 @@ public class MemoryStudentRepository : StudentRepositoryBase
             new Student(4, "Diana", "Lee", "diana@uni.lt", "Informatics", 2023),
             new Student(5, "Eve", "Williams", "eve@uni.lt", "Informatics", 2023),
             new Student(6, "Frank", "Miller", "frank@uni.lt", "Informatics", 2024),
+            new GraduateStudent(
+                7,
+                "Frank",
+                "Miller",
+                "frank@uni.lt",
+                "Informatics",
+                2024,
+                thesisTitle: "Best thesis of my life"
+            ),
+            new GraduateStudent(
+                8,
+                "Edgar",
+                "Clerc",
+                "Edgar@uni.lt",
+                "Informatics",
+                2024,
+                thesisTitle: ""
+            ),
         };
 
         foreach (var s in seed)

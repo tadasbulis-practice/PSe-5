@@ -15,6 +15,13 @@ public class GraduateStudent : Student
     )
         : base(id, firstName, lastName, email, studyProgram, year)
     {
+        if (thesisTitle.Length < 1)
+        {
+            throw new ArgumentException(
+                "Thesis title must be at least 1 character long",
+                thesisTitle
+            );
+        }
         ThesisTitle = thesisTitle;
     }
 
