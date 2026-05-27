@@ -4,36 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="11b163a6-9f27-4fa5-8758-9d0f217e62fd" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/EdgarClerc/Lab8/DTOs/ApiFacultyDto.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EdgarClerc/Lab8/DTOs/ApiGroupDto.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EdgarClerc/Lab8/DTOs/ApiStudentDto.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EdgarClerc/Lab8/Implementations/Adapter/StudentValidatorAdapter.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EdgarClerc/Lab8/Implementations/Menu/ConsoleMenuService.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EdgarClerc/Lab8/Implementations/Printer/ConsoleStudentPrinter.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EdgarClerc/Lab8/Implementations/Repository/ApiStudentRepository.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EdgarClerc/Lab8/Implementations/Repository/LoggedStudentRepository.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EdgarClerc/Lab8/Implementations/Repository/MemoryStudentRepository.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EdgarClerc/Lab8/Implementations/Repository/StudentRepositoryBase.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EdgarClerc/Lab8/Implementations/Strategy/SimpleAverageStrategy.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EdgarClerc/Lab8/Interfaces/IAverageStrategy.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EdgarClerc/Lab8/Interfaces/IEntity.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EdgarClerc/Lab8/Interfaces/IMenuService.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EdgarClerc/Lab8/Interfaces/IRepository.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EdgarClerc/Lab8/Interfaces/IStudentPrinter.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EdgarClerc/Lab8/Interfaces/IStudentRepository.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EdgarClerc/Lab8/Interfaces/IStudentValidator.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EdgarClerc/Lab8/Lab8.csproj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EdgarClerc/Lab8/Legacy/LegacyStudentValidation.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EdgarClerc/Lab8/Models/Faculty.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EdgarClerc/Lab8/Models/GraduateStudent.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EdgarClerc/Lab8/Models/Group.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EdgarClerc/Lab8/Models/Student.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EdgarClerc/Lab8/Program.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EdgarClerc/Lab8/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EdgarClerc/Lab8/Services/StudentService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="11b163a6-9f27-4fa5-8758-9d0f217e62fd" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -127,7 +98,7 @@
     <option name="spentUsd" value="0.03522825" />
   </component>
   <component name="RecapUselessUpdatesCounter">
-    <option name="suspendCountdown" value="1" />
+    <option name="suspendCountdown" value="0" />
   </component>
   <component name="RunManager">
     <configuration name="Unnamed" type="RunDotNetFile" factoryName="RunDotNetFile">
