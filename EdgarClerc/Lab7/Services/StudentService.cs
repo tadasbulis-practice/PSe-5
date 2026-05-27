@@ -15,20 +15,21 @@ namespace Lab7.Services;
 public class StudentService
 {
     private readonly IStudentRepository _repository;
-    private readonly IStudentPrinter    _printer;
-    private readonly IAverageStrategy   _strategy;
-    private readonly IStudentValidator  _validator;
+    private readonly IStudentPrinter _printer;
+    private readonly IAverageStrategy _strategy;
+    private readonly IStudentValidator _validator;
 
     public StudentService(
         IStudentRepository repository,
-        IStudentPrinter    printer,
-        IAverageStrategy   strategy,
-        IStudentValidator  validator)
+        IStudentPrinter printer,
+        IAverageStrategy strategy,
+        IStudentValidator validator
+    )
     {
         _repository = repository;
-        _printer    = printer;
-        _strategy   = strategy;
-        _validator  = validator;
+        _printer = printer;
+        _strategy = strategy;
+        _validator = validator;
     }
 
     // ── Student operations ─────────────────────────────────────────
@@ -40,12 +41,13 @@ public class StudentService
             Console.WriteLine($"  Validation failed for {student.FullName}.");
     }
 
-    public IReadOnlyList<Student> GetAllStudents()   => _repository.GetAll();
-    public Student? FindStudentById(int id)          => _repository.GetById(id);
-    public bool RemoveStudent(int id)                => _repository.Remove(id);
+    public IReadOnlyList<Student> GetAllStudents() => _repository.GetAll();
 
-    public void PrintAllStudents()
-        => _printer.PrintStudents(_repository.GetAll());
+    public Student? FindStudentById(int id) => _repository.GetById(id);
+
+    public bool RemoveStudent(int id) => _repository.Remove(id);
+
+    public void PrintAllStudents() => _printer.PrintStudents(_repository.GetAll());
 
     public double CalculateGroupAverage()
     {
@@ -54,7 +56,7 @@ public class StudentService
     }
 
     // ── Group operations ───────────────────────────────────────────
-    public IReadOnlyList<Group> GetAllGroups()       => _repository.GetAllGroups();
+    public IReadOnlyList<Group> GetAllGroups() => _repository.GetAllGroups();
 
     public void PrintGroup(string groupCode)
     {
@@ -66,6 +68,7 @@ public class StudentService
     }
 
     // ── Faculty operations ─────────────────────────────────────────
-    public Faculty GetFaculty()  => _repository.GetFaculty();
-    public void PrintFaculty()   => _printer.PrintFaculty(_repository.GetFaculty());
+    public Faculty GetFaculty() => _repository.GetFaculty();
+
+    public void PrintFaculty() => _printer.PrintFaculty(_repository.GetFaculty());
 }

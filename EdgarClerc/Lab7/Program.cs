@@ -22,14 +22,14 @@ class Program
         // ══════════════════════════════════════════════════════════════
 
         const string apiUrl = "http://localhost:6001";
-        const bool   useApi = false;  // ← set true when Docker is running
+        const bool useApi = false; // ← set true when Docker is running
 
         IStudentRepository repository = useApi
             ? new ApiStudentRepository(apiUrl)
             : new MemoryStudentRepository();
 
-        IStudentPrinter   printer   = new ConsoleStudentPrinter();
-        IAverageStrategy  strategy  = new SimpleAverageStrategy();
+        IStudentPrinter printer = new ConsoleStudentPrinter();
+        IAverageStrategy strategy = new SimpleAverageStrategy();
         IStudentValidator validator = new StudentValidatorAdapter();
 
         var service = new StudentService(repository, printer, strategy, validator);

@@ -21,10 +21,11 @@ public class ConsoleMenuService : IMenuService
             Console.WriteLine("  1. Show all students");
             Console.WriteLine("  2. Find student by ID");
             Console.WriteLine("  3. Calculate group average");
+            Console.WriteLine("  4. Remove student by ID");
             Console.WriteLine("  ── Groups & Faculty ────────────────────");
-            Console.WriteLine("  4. List all groups");
-            Console.WriteLine("  5. Show group details");
-            Console.WriteLine("  6. Show full faculty structure");
+            Console.WriteLine("  5. List all groups");
+            Console.WriteLine("  6. Show group details");
+            Console.WriteLine("  7. Show full faculty structure");
             Console.WriteLine("  ───────────────────────────────────────");
             Console.WriteLine("  0. Exit");
             Console.Write("\n  Your choice: ");
@@ -40,29 +41,44 @@ public class ConsoleMenuService : IMenuService
                     if (int.TryParse(Console.ReadLine(), out var id))
                     {
                         var s = _service.FindStudentById(id);
-                        Console.WriteLine(s is null
-                            ? "  Not found."
-                            : $"\n  {s.Id,-5} {s.FullName,-25} {s.Email,-30} {s.StudyProgram} {s.EnrollmentYear}");
+                        Console.WriteLine(
+                            s is null
+                                ? "  Not found."
+                                : $"\n  {s.Id, -5} {s.FullName, -25} {s.Email, -30} {s.StudyProgram} {s.EnrollmentYear}"
+                        );
                     }
                     break;
 
                 case "3":
-                    Console.WriteLine($"\n  Average grade: {_service.CalculateGroupAverage():0.00}");
+                    Console.WriteLine(
+                        $"\n  Average grade: {_service.CalculateGroupAverage():0.00}"
+                    );
                     break;
 
                 case "4":
-                    var groups = _service.GetAllGroups();
-                    Console.WriteLine($"\n  Groups ({groups.Count} total):");
-                    foreach (var g in groups)
-                        Console.WriteLine($"  [{g.Code,-8}]  {g.StudyProgram,-25} {g.EnrollmentYear}  — {g.Students.Count} students");
+                    Console.Write("  Student ID: ");
+                    if (int.TryParse(Console.ReadLine(), out var removeId))
+                    {
+                        var s = _service.RemoveStudent(removeId);
+                        Console.WriteLine(s ? "  Student Removed." : " Student not removed.");
+                    }
                     break;
 
                 case "5":
+                    var groups = _service.GetAllGroups();
+                    Console.WriteLine($"\n  Groups ({groups.Count} total):");
+                    foreach (var g in groups)
+                        Console.WriteLine(
+                            $"  [{g.Code, -8}]  {g.StudyProgram, -25} {g.EnrollmentYear}  — {g.Students.Count} students"
+                        );
+                    break;
+
+                case "6":
                     Console.Write("  Group code (e.g. CS-23): ");
                     _service.PrintGroup(Console.ReadLine()?.Trim() ?? "");
                     break;
 
-                case "6":
+                case "7":
                     _service.PrintFaculty();
                     break;
 

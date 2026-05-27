@@ -4,7 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="11b163a6-9f27-4fa5-8758-9d0f217e62fd" name="Changes" comment="" />
+    <list default="true" id="11b163a6-9f27-4fa5-8758-9d0f217e62fd" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/EdgarClerc/Lab7/Interfaces/IEntity.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EdgarClerc/Lab7/Interfaces/IRepository.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EdgarClerc/Lab7/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EdgarClerc/Lab7/Implementations/Repository/ApiStudentRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EdgarClerc/Lab7/Implementations/Repository/ApiStudentRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EdgarClerc/Lab7/Implementations/Repository/MemoryStudentRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EdgarClerc/Lab7/Implementations/Repository/MemoryStudentRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EdgarClerc/Lab7/Interfaces/IStudentRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EdgarClerc/Lab7/Interfaces/IStudentRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EdgarClerc/Lab7/Lab7.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/EdgarClerc/Lab7/Lab7.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EdgarClerc/Lab7/Models/Faculty.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EdgarClerc/Lab7/Models/Faculty.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EdgarClerc/Lab7/Models/Group.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EdgarClerc/Lab7/Models/Group.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EdgarClerc/Lab7/Models/Student.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EdgarClerc/Lab7/Models/Student.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EdgarClerc/Lab7/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EdgarClerc/Lab7/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EdgarClerc/Lab7/Services/StudentService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EdgarClerc/Lab7/Services/StudentService.cs" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -51,8 +65,12 @@
     <setting file="file://$PROJECT_DIR$/EdgarClerc/Lab6/Implementations/Menu/ConsoleMenuService.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/EdgarClerc/Lab6/Program.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/EdgarClerc/Lab6/Services/StudentService.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/EdgarClerc/Lab7/Implementations/Repository/ApiStudentRepository.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/EdgarClerc/Lab7/Implementations/Repository/MemoryStudentRepository.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/EdgarClerc/Lab7/Interfaces/IStudentRepository.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/EdgarClerc/Lab7/Models/Faculty.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/EdgarClerc/Lab7/Models/Group.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/EdgarClerc/Lab7/Models/Student.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="McpProjectServerCommands">
     <commands />
@@ -91,10 +109,10 @@
 }</component>
   <component name="RecapSpentCounter">
     <option name="endsOfQuotaMs" value="1780305972451" />
-    <option name="spentUsd" value="0.010248249" />
+    <option name="spentUsd" value="0.014341999" />
   </component>
   <component name="RecapUselessUpdatesCounter">
-    <option name="suspendCountdown" value="4" />
+    <option name="suspendCountdown" value="3" />
   </component>
   <component name="RunManager">
     <configuration name="Unnamed" type="RunDotNetFile" factoryName="RunDotNetFile">
@@ -161,7 +179,15 @@
       <option name="project" value="LOCAL" />
       <updated>1774640070901</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="init lab 7">
+      <option name="closed" value="true" />
+      <created>1779875261757</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1779875261757</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -188,7 +214,8 @@
     <MESSAGE value="lab 5" />
     <MESSAGE value="updated readme lab 4 and 5" />
     <MESSAGE value="updated readme" />
-    <option name="LAST_COMMIT_MESSAGE" value="updated readme" />
+    <MESSAGE value="init lab 7" />
+    <option name="LAST_COMMIT_MESSAGE" value="init lab 7" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
