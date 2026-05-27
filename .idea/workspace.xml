@@ -4,31 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="11b163a6-9f27-4fa5-8758-9d0f217e62fd" name="Changes" comment="updated readme">
-      <change afterPath="$PROJECT_DIR$/EdgarClerc/Lab6/Implementations/Adapter/StudentValidatorAdapter.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EdgarClerc/Lab6/Implementations/Menu/ConsoleMenuService.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EdgarClerc/Lab6/Implementations/Printer/ConsoleStudentPrinter.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EdgarClerc/Lab6/Implementations/Printer/FileStudentPrinter.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EdgarClerc/Lab6/Implementations/Printer/JsonStudentPrinter.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EdgarClerc/Lab6/Implementations/Repository/MemoryStudentRepository.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EdgarClerc/Lab6/Implementations/Strategy/MedianAverageStrategy.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EdgarClerc/Lab6/Implementations/Strategy/SimpleAverageStrategy.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EdgarClerc/Lab6/Implementations/Strategy/WeightedAverageStrategy.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EdgarClerc/Lab6/Interfaces/IAverageStrategy.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EdgarClerc/Lab6/Interfaces/IMenuService.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EdgarClerc/Lab6/Interfaces/IStudentPrinter.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EdgarClerc/Lab6/Interfaces/IStudentRepository.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EdgarClerc/Lab6/Interfaces/IStudentValidator.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EdgarClerc/Lab6/Lab6.csproj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EdgarClerc/Lab6/Legacy/LegacyStudentValidation.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EdgarClerc/Lab6/Models/Group.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EdgarClerc/Lab6/Models/Student.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EdgarClerc/Lab6/Program.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EdgarClerc/Lab6/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EdgarClerc/Lab6/Services/StudentService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EdgarClerc/Lab5/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/EdgarClerc/Lab5/readme.md" afterDir="false" />
-    </list>
+    <list default="true" id="11b163a6-9f27-4fa5-8758-9d0f217e62fd" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -38,7 +14,7 @@
     <option name="firstShow" value="false" />
   </component>
   <component name="EmbeddingIndexingInfo">
-    <option name="cachedIndexableFilesCount" value="574" />
+    <option name="cachedIndexableFilesCount" value="672" />
     <option name="fileBasedEmbeddingIndicesEnabled" value="true" />
   </component>
   <component name="Git.Settings">
@@ -73,9 +49,10 @@
     <setting file="file://$PROJECT_DIR$/EdgarClerc/Lab5/Implementations/Menu/ConsoleMenuService.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/EdgarClerc/Lab5/Implementations/Printer/FileStudentPrinter.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/EdgarClerc/Lab6/Implementations/Menu/ConsoleMenuService.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/EdgarClerc/Lab6/Implementations/Repository/FileStudentRepository.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/EdgarClerc/Lab6/Program.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/EdgarClerc/Lab6/Services/StudentService.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/EdgarClerc/Lab7/Implementations/Repository/MemoryStudentRepository.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/EdgarClerc/Lab7/Interfaces/IStudentRepository.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="McpProjectServerCommands">
     <commands />
@@ -114,10 +91,10 @@
 }</component>
   <component name="RecapSpentCounter">
     <option name="endsOfQuotaMs" value="1780305972451" />
-    <option name="spentUsd" value="0.00315425" />
+    <option name="spentUsd" value="0.010248249" />
   </component>
   <component name="RecapUselessUpdatesCounter">
-    <option name="suspendCountdown" value="8" />
+    <option name="suspendCountdown" value="4" />
   </component>
   <component name="RunManager">
     <configuration name="Unnamed" type="RunDotNetFile" factoryName="RunDotNetFile">
