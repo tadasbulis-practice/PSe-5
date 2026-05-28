@@ -3,12 +3,12 @@
 public class Student
 {
     private int _id;
-    private string _name = "";
-    private string _email = "";
-    private string _groupCode = "";
-    private List<int> _grades = new();
+    private string _name;
+    private string _email;
+    private string _groupCode;
+    private List<int> _grades = new List<int>();
 
-    Student(int id, string name, string email, string groupCode, List<int> grades)
+    public Student(int id, string name, string email, string groupCode, List<int> grades)
     {
         _id = id;
         _name = name;

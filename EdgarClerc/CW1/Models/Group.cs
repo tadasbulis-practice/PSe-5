@@ -2,12 +2,12 @@
 
 public class Group
 {
-    private string Code = "";
-    private string Name = "";
+    private string _code;
+    private string _name;
 
-    Group(string code, string name)
+    public Group(string code, string name)
     {
-        Code = code;
-        Name = name;
+        _code = code;
+        _name = name;
     }
 }
