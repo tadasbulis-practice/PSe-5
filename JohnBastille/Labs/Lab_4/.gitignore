@@ -1,0 +1,88 @@
+###############################
+# Visual Studio / .NET
+###############################
+
+# Build results
+bin/
+obj/
+out/
+[Bb]uild/
+[Ll]og/
+
+# Visual Studio cache
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# NuGet
+*.nupkg
+*.snupkg
+packages/
+*.nuget.props
+*.nuget.targets
+
+# Auto-generated files
+Generated\ Files/
+TestResults/
+*.cache
+*.dbmdl
+*.jfm
+
+# Publish output
+publish/
+*.pubxml
+*.publishsettings
+
+# Resharper / Rider
+_ReSharper*/
+*.DotSettings.user
+.idea/
+
+###############################
+# C# Project Artifacts
+###############################
+
+# Backup & temp files
+*.bak
+*.tmp
+*.temp
+*.log
+
+# Entity Framework
+Migrations/
+
+###############################
+# Python (for your other labs)
+###############################
+
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+env/
+venv/
+ENV/
+.venv/
+*.egg-info/
+dist/
+build/
+
+###############################
+# OS / Editor Junk
+###############################
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# VS Code
+.vscode/
+.history/
