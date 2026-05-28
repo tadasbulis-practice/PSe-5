@@ -1,0 +1,14 @@
+C:\Users\Lenovo\source\lab1\Lab1\Lab1.App\bin\Debug\net10.0\Lab1.App.exe
+C:\Users\Lenovo\source\lab1\Lab1\Lab1.App\bin\Debug\net10.0\Lab1.App.deps.json
+C:\Users\Lenovo\source\lab1\Lab1\Lab1.App\bin\Debug\net10.0\Lab1.App.runtimeconfig.json
+C:\Users\Lenovo\source\lab1\Lab1\Lab1.App\bin\Debug\net10.0\Lab1.App.dll
+C:\Users\Lenovo\source\lab1\Lab1\Lab1.App\bin\Debug\net10.0\Lab1.App.pdb
+C:\Users\Lenovo\source\lab1\Lab1\Lab1.App\obj\Debug\net10.0\Lab1.App.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Lenovo\source\lab1\Lab1\Lab1.App\obj\Debug\net10.0\Lab1.App.AssemblyInfoInputs.cache
+C:\Users\Lenovo\source\lab1\Lab1\Lab1.App\obj\Debug\net10.0\Lab1.App.AssemblyInfo.cs
+C:\Users\Lenovo\source\lab1\Lab1\Lab1.App\obj\Debug\net10.0\Lab1.App.csproj.CoreCompileInputs.cache
+C:\Users\Lenovo\source\lab1\Lab1\Lab1.App\obj\Debug\net10.0\Lab1.App.dll
+C:\Users\Lenovo\source\lab1\Lab1\Lab1.App\obj\Debug\net10.0\refint\Lab1.App.dll
+C:\Users\Lenovo\source\lab1\Lab1\Lab1.App\obj\Debug\net10.0\Lab1.App.pdb
+C:\Users\Lenovo\source\lab1\Lab1\Lab1.App\obj\Debug\net10.0\Lab1.App.genruntimeconfig.cache
+C:\Users\Lenovo\source\lab1\Lab1\Lab1.App\obj\Debug\net10.0\ref\Lab1.App.dll
