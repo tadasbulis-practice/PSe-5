@@ -1,0 +1,14 @@
+/Users/malikkrimi/Desktop/c# oriented object /lab 3/Lab3/bin/Debug/net10.0/Lab3
+/Users/malikkrimi/Desktop/c# oriented object /lab 3/Lab3/bin/Debug/net10.0/Lab3.deps.json
+/Users/malikkrimi/Desktop/c# oriented object /lab 3/Lab3/bin/Debug/net10.0/Lab3.runtimeconfig.json
+/Users/malikkrimi/Desktop/c# oriented object /lab 3/Lab3/bin/Debug/net10.0/Lab3.dll
+/Users/malikkrimi/Desktop/c# oriented object /lab 3/Lab3/bin/Debug/net10.0/Lab3.pdb
+/Users/malikkrimi/Desktop/c# oriented object /lab 3/Lab3/obj/Debug/net10.0/Lab3.GeneratedMSBuildEditorConfig.editorconfig
+/Users/malikkrimi/Desktop/c# oriented object /lab 3/Lab3/obj/Debug/net10.0/Lab3.AssemblyInfoInputs.cache
+/Users/malikkrimi/Desktop/c# oriented object /lab 3/Lab3/obj/Debug/net10.0/Lab3.AssemblyInfo.cs
+/Users/malikkrimi/Desktop/c# oriented object /lab 3/Lab3/obj/Debug/net10.0/Lab3.csproj.CoreCompileInputs.cache
+/Users/malikkrimi/Desktop/c# oriented object /lab 3/Lab3/obj/Debug/net10.0/Lab3.dll
+/Users/malikkrimi/Desktop/c# oriented object /lab 3/Lab3/obj/Debug/net10.0/refint/Lab3.dll
+/Users/malikkrimi/Desktop/c# oriented object /lab 3/Lab3/obj/Debug/net10.0/Lab3.pdb
+/Users/malikkrimi/Desktop/c# oriented object /lab 3/Lab3/obj/Debug/net10.0/Lab3.genruntimeconfig.cache
+/Users/malikkrimi/Desktop/c# oriented object /lab 3/Lab3/obj/Debug/net10.0/ref/Lab3.dll
