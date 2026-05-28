@@ -1,7 +1,7 @@
-﻿using JohnBastille.Lab_5;
-using JohnBastille.Lab_5.Interfaces;
+﻿using JohnBastille.Lab_4;
+using JohnBastille.Lab_4.Interfaces;
 
-Console.WriteLine("===== LAB 3 =====");
+Console.WriteLine("===== LAB 4 =====");
 
 // Determine which services to use based on command line arguments
 // Demonstrates different menu service implementations
