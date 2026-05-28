@@ -98,15 +98,24 @@ public class ConsoleMenu
                         break;
                     }
 
-                    _service.Add(
-                        new Student(
-                            id: newId,
-                            name: newName,
-                            email: newEmail,
-                            groupCode: newGroup,
-                            grades: new()
-                        )
-                    );
+                    try
+                    {
+                        _service.Add(
+                            new Student(
+                                id: newId,
+                                name: newName,
+                                email: newEmail,
+                                groupCode: newGroup,
+                                grades: new()
+                            )
+                        );
+                    }
+                    catch
+                    {
+                        Console.WriteLine("Failed to add.");
+                        break;
+                    }
+
                     Console.WriteLine("Student added.");
                     break;
 

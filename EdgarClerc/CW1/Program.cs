@@ -45,8 +45,11 @@ public static class Program
     public static void Main()
     {
         bool reportWithLinq = false;
+        bool stubRepository = true;
 
-        IStudentRepository repository = new StudentRepository();
+        IStudentRepository repository = stubRepository
+            ? new StubStudentRepository()
+            : new StudentRepository();
         AverageStategy averageStategy = new AverageStategy();
         StudentValidator validator = new StudentValidator(repository);
         IReportService report = reportWithLinq
