@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="11b163a6-9f27-4fa5-8758-9d0f217e62fd" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/EdgarClerc/Lab9/Exceptions/RepositoryException.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EdgarClerc/Lab9/Implementations/Repository/ApiStudentRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EdgarClerc/Lab9/Implementations/Repository/ApiStudentRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EdgarClerc/Lab9/Implementations/Repository/MemoryStudentRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EdgarClerc/Lab9/Implementations/Repository/MemoryStudentRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EdgarClerc/Lab9/Models/GraduateStudent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EdgarClerc/Lab9/Models/GraduateStudent.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EdgarClerc/Lab9/Models/Student.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EdgarClerc/Lab9/Models/Student.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EdgarClerc/Lab9/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EdgarClerc/Lab9/Program.cs" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DpaMonitoringSettings">
+    <option name="firstShow" value="false" />
+  </component>
+  <component name="EmbeddingIndexingInfo">
+    <option name="cachedIndexableFilesCount" value="829" />
+    <option name="fileBasedEmbeddingIndicesEnabled" value="true" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="develop" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RESET_MODE" value="HARD" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;newedgar&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/tadasbulis-practice/PSe-5.git&quot;,
+    &quot;accountId&quot;: &quot;2c80b40e-b7fe-41ba-9c10-1b9adca73802&quot;
+  }
+}</component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/EdgarClerc/Lab3/Program.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/EdgarClerc/Lab3/Service/AverageStrategy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/EdgarClerc/Lab3/Service/IAverageStrategy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/EdgarClerc/Lab3/Service/IStudentPrinter.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/EdgarClerc/Lab3/Service/StudentPrinter.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/EdgarClerc/Lab4/Program.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/EdgarClerc/Lab4/Service/AverageStrategy.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/EdgarClerc/Lab5/Implementations/Menu/ConsoleMenuService.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/EdgarClerc/Lab5/Implementations/Printer/FileStudentPrinter.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/EdgarClerc/Lab6/Implementations/Menu/ConsoleMenuService.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/EdgarClerc/Lab6/Program.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/EdgarClerc/Lab6/Services/StudentService.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/EdgarClerc/Lab7/Implementations/Repository/ApiStudentRepository.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/EdgarClerc/Lab7/Implementations/Repository/MemoryStudentRepository.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/EdgarClerc/Lab7/Interfaces/IStudentRepository.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/EdgarClerc/Lab7/Models/Faculty.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/EdgarClerc/Lab7/Models/Group.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/EdgarClerc/Lab7/Models/Student.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/EdgarClerc/Lab9/DTOs/ApiFacultyDto.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/EdgarClerc/student-docker-lab-plus-mssql/SimpleStudentFrontend/Pages/_ViewImports.cshtml" root0="FORCE_HIGHLIGHTING" root1="SKIP_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="McpProjectServerCommands">
+    <commands />
+    <urls />
+  </component>
+  <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 7
+}</component>
+  <component name="ProjectId" id="3AWfzEXJGiM2ftO2DvvjgDXHpbF" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;.NET File.Unnamed.executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;#2 on Edgar&quot;,
+    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/edgar/Documents/Dev/OOP-cs&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RecapSpentCounter">
+    <option name="endsOfQuotaMs" value="1780305972451" />
+    <option name="spentUsd" value="0.03522825" />
+  </component>
+  <component name="RecapUselessUpdatesCounter">
+    <option name="suspendCountdown" value="0" />
+  </component>
+  <component name="RunManager">
+    <configuration name="Unnamed" type="RunDotNetFile" factoryName="RunDotNetFile">
+      <option name="filePath" value="C:\Users\edgar\Documents\Dev\OOP-cs\EdgarClerc\Lab1\Program.cs" />
+      <option name="programParameters" value="" />
+      <option name="terminalMode" value="Auto" />
+      <option name="workingDirectory" value="C:\Users\edgar\Documents\Dev\OOP-cs\EdgarClerc\Lab1" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="11b163a6-9f27-4fa5-8758-9d0f217e62fd" name="Changes" comment="" />
+      <created>1772713508009</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1772713508009</updated>
+      <workItem from="1772713508951" duration="681000" />
+      <workItem from="1773935331169" duration="5489000" />
+      <workItem from="1773944930970" duration="381000" />
+      <workItem from="1774534758031" duration="3117000" />
+      <workItem from="1774629539663" duration="3771000" />
+      <workItem from="1775116966177" duration="319000" />
+      <workItem from="1775125592281" duration="53000" />
+      <workItem from="1779799445713" duration="4412000" />
+    </task>
+    <task id="LOCAL-00001" summary="fix for mr">
+      <option name="closed" value="true" />
+      <created>1772715446143</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1772715446143</updated>
+    </task>
+    <task id="LOCAL-00002" summary="lab4 start">
+      <option name="closed" value="true" />
+      <created>1773944984082</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1773944984082</updated>
+    </task>
+    <task id="LOCAL-00003" summary="lab 4 added fake average strategy">
+      <option name="closed" value="true" />
+      <created>1774537592460</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1774537592460</updated>
+    </task>
+    <task id="LOCAL-00004" summary="lab 5">
+      <option name="closed" value="true" />
+      <created>1774639838588</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1774639838588</updated>
+    </task>
+    <task id="LOCAL-00005" summary="updated readme lab 4 and 5">
+      <option name="closed" value="true" />
+      <created>1774640070901</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1774640070901</updated>
+    </task>
+    <task id="LOCAL-00006" summary="init lab 7">
+      <option name="closed" value="true" />
+      <created>1779875261757</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1779875261757</updated>
+    </task>
+    <task id="LOCAL-00007" summary="init lab9">
+      <option name="closed" value="true" />
+      <created>1779893588749</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1779893588749</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
+  <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+    <MESSAGE value="fix for mr" />
+    <MESSAGE value="lab4 start" />
+    <MESSAGE value="lab 4 added fake average strategy" />
+    <MESSAGE value="lab 5" />
+    <MESSAGE value="updated readme lab 4 and 5" />
+    <MESSAGE value="updated readme" />
+    <MESSAGE value="init lab 7" />
+    <MESSAGE value="init lab9" />
+    <option name="LAST_COMMIT_MESSAGE" value="init lab9" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="DotNet_Exception_Breakpoints">
+          <properties exception="System.OperationCanceledException" breakIfHandledByOtherCode="false" displayValue="System.OperationCanceledException" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+        <breakpoint enabled="true" type="DotNet_Exception_Breakpoints">
+          <properties exception="System.Threading.Tasks.TaskCanceledException" breakIfHandledByOtherCode="false" displayValue="System.Threading.Tasks.TaskCanceledException" />
+          <option name="timeStamp" value="2" />
+        </breakpoint>
+        <breakpoint enabled="true" type="DotNet_Exception_Breakpoints">
+          <properties exception="System.Threading.ThreadAbortException" breakIfHandledByOtherCode="false" displayValue="System.Threading.ThreadAbortException" />
+          <option name="timeStamp" value="3" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>
