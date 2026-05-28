@@ -92,7 +92,9 @@ public class ConsoleMenu
                     }
                     else
                     {
-                        Console.WriteLine($"{newStudent.Name} — ERRORS: {string.Join("; ", newStErr)}");
+                        Console.WriteLine(
+                            $"{newStudent.Name} — ERRORS: {string.Join("; ", newStErr)}"
+                        );
                         break;
                     }
 
@@ -221,7 +223,6 @@ public class ConsoleMenu
                         Console.WriteLine($"{st6.Name} — ERRORS: {string.Join("; ", errors)}");
                     }
                     break;
-                    
 
                 // =========================================================
                 // LT: zemiau — TASK 2 zona. Visi trys punktai parasyti TIK su
@@ -236,7 +237,7 @@ public class ConsoleMenu
                     // LT: TOP 3 pagal vidurki — LINQ grandine
                     // EN: TOP 3 by average — LINQ chain
                     Console.WriteLine("--- Top 3 by average (LINQ) ---");
-                    var top3 = _service
+                    var top3 = _service.GetTopAvg();
                     foreach (var x in top3)
                         Console.WriteLine($"  {x.student.Name, -25} avg={x.avg:0.00}");
                     break;
@@ -247,12 +248,11 @@ public class ConsoleMenu
                     Console.Write("Group code / Grupes kodas (pvz. PI23): ");
                     var gc = Console.ReadLine() ?? "";
                     Console.WriteLine($"--- Students in {gc}, sorted by name (LINQ) ---");
-                    var inGroup = _students
-                        .Where(s => s.GroupCode == gc)
-                        .OrderBy(s => s.Name)
-                        .ToList();
+                    var inGroup = _service.GetStudentInGroup(gc);
+
                     if (inGroup.Count == 0)
                         Console.WriteLine("  (none)");
+
                     foreach (var s in inGroup)
                     {
                         double avg8 = s.Grades.Count == 0 ? 0.0 : s.Grades.Average();
@@ -265,21 +265,15 @@ public class ConsoleMenu
                     // LT: statistika — Count, Average, Sum, Max, Any, All (LINQ agregavimas)
                     // EN: statistics — Count, Average, Sum, Max, Any, All (LINQ aggregation)
                     Console.WriteLine("--- Statistics (LINQ) ---");
-                    IReadOnlyList<Student> students9 = _service.getAll();
-                    int totalStudents = students9.Count;
-                    int totalGrades = students9.Sum(s => s.Grades.Count);
-                    double meanOfMeans = students9.Average(s =>
-                        s.Grades.Count == 0 ? 0.0 : s.Grades.Average()
-                    );
-                    int maxGrade = students9.SelectMany(s => s.Grades).DefaultIfEmpty(0).Max();
-                    bool hasFailing = students9.Any(s => s.Grades.Any(g => g < 5));
-                    bool allHaveEmail = students9.All(s => !string.IsNullOrWhiteSpace(s.Email));
-                    Console.WriteLine($"  Total students : {totalStudents}");
-                    Console.WriteLine($"  Total grades   : {totalGrades}");
-                    Console.WriteLine($"  Mean of averages : {meanOfMeans:0.00}");
-                    Console.WriteLine($"  Max grade      : {maxGrade}");
-                    Console.WriteLine($"  Any failing (<5)? {hasFailing}");
-                    Console.WriteLine($"  All have email?  {allHaveEmail}");
+
+                    var stats = _service.GetStatistics();
+
+                    Console.WriteLine($"  Total students : {stats.totalStudents}");
+                    Console.WriteLine($"  Total grades   : {stats.totalGrades}");
+                    Console.WriteLine($"  Mean of averages : {stats.meanOfMeans:0.00}");
+                    Console.WriteLine($"  Max grade      : {stats.maxGrade}");
+                    Console.WriteLine($"  Any failing (<5)? {stats.hasFailing}");
+                    Console.WriteLine($"  All have email?  {stats.allHaveEmail}");
                     break;
 
                 default:

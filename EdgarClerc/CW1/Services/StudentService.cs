@@ -8,16 +8,19 @@ public class StudentService
     private readonly IStudentRepository _repository;
     private readonly AverageStategy _averageStategy;
     private readonly StudentValidator _validator;
+    private readonly ReportService _report;
 
     public StudentService(
         IStudentRepository repository,
         AverageStategy averageStategy,
-        StudentValidator validator
+        StudentValidator validator,
+        ReportService report
     )
     {
         _repository = repository;
         _averageStategy = averageStategy;
         _validator = validator;
+        _report = report;
     }
 
     public IReadOnlyList<Student> GetAll()
@@ -60,13 +63,25 @@ public class StudentService
         return _validator.ValidateStudent(student);
     }
 
-    public List<(Student student, double avg)> GetTop3Avg()
+    public List<(Student student, double avg)> GetTopAvg(int numberOfStudents = 3)
     {
-        return _repository
-            .FindAll()
-            .Select(s => (student: s, avg: _averageStategy.GetAverage(s)))
-            .OrderByDescending(x => x.avg)
-            .Take(3)
-            .ToList();
+        return _report.GetTopAvg(numberOfStudents);
+    }
+
+    public List<Student> GetStudentInGroup(string gc)
+    {
+        return _report.GetStudentsInGroupSortedByName(gc);
+    }
+
+    public (
+        int totalStudents,
+        int totalGrades,
+        double meanOfMeans,
+        int maxGrade,
+        bool hasFailing,
+        bool allHaveEmail
+    ) GetStatistics()
+    {
+        return _report.GetStatistics();
     }
 }
