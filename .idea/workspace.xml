@@ -5,13 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="11b163a6-9f27-4fa5-8758-9d0f217e62fd" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/EdgarClerc/Lab9/Exceptions/RepositoryException.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EdgarClerc/Lab9/Implementations/Repository/ApiStudentRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EdgarClerc/Lab9/Implementations/Repository/ApiStudentRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EdgarClerc/Lab9/Implementations/Repository/MemoryStudentRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EdgarClerc/Lab9/Implementations/Repository/MemoryStudentRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EdgarClerc/Lab9/Models/GraduateStudent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EdgarClerc/Lab9/Models/GraduateStudent.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EdgarClerc/Lab9/Models/Student.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EdgarClerc/Lab9/Models/Student.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EdgarClerc/Lab9/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EdgarClerc/Lab9/Program.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,7 +16,7 @@
     <option name="firstShow" value="false" />
   </component>
   <component name="EmbeddingIndexingInfo">
-    <option name="cachedIndexableFilesCount" value="829" />
+    <option name="cachedIndexableFilesCount" value="1048" />
     <option name="fileBasedEmbeddingIndicesEnabled" value="true" />
   </component>
   <component name="Git.Settings">
@@ -47,6 +41,7 @@
   }
 }</component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/EdgarClerc/CW1/Program.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/EdgarClerc/Lab3/Program.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/EdgarClerc/Lab3/Service/AverageStrategy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/EdgarClerc/Lab3/Service/IAverageStrategy.cs" root0="SKIP_HIGHLIGHTING" />
@@ -59,12 +54,12 @@
     <setting file="file://$PROJECT_DIR$/EdgarClerc/Lab6/Implementations/Menu/ConsoleMenuService.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/EdgarClerc/Lab6/Program.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/EdgarClerc/Lab6/Services/StudentService.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/EdgarClerc/Lab7/Implementations/Repository/ApiStudentRepository.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/EdgarClerc/Lab7/Implementations/Repository/MemoryStudentRepository.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/EdgarClerc/Lab7/Implementations/Repository/ApiStudentRepository.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/EdgarClerc/Lab7/Implementations/Repository/MemoryStudentRepository.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/EdgarClerc/Lab7/Interfaces/IStudentRepository.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/EdgarClerc/Lab7/Models/Faculty.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/EdgarClerc/Lab7/Models/Group.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/EdgarClerc/Lab7/Models/Student.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/EdgarClerc/Lab7/Models/Group.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/EdgarClerc/Lab7/Models/Student.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/EdgarClerc/Lab9/DTOs/ApiFacultyDto.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/EdgarClerc/student-docker-lab-plus-mssql/SimpleStudentFrontend/Pages/_ViewImports.cshtml" root0="FORCE_HIGHLIGHTING" root1="SKIP_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
   </component>
@@ -134,6 +129,7 @@
       <workItem from="1775116966177" duration="319000" />
       <workItem from="1775125592281" duration="53000" />
       <workItem from="1779799445713" duration="4412000" />
+      <workItem from="1779958704263" duration="315000" />
     </task>
     <task id="LOCAL-00001" summary="fix for mr">
       <option name="closed" value="true" />
@@ -191,7 +187,15 @@
       <option name="project" value="LOCAL" />
       <updated>1779893588749</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="init lab10">
+      <option name="closed" value="true" />
+      <created>1779900231122</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1779900231122</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -220,7 +224,8 @@
     <MESSAGE value="updated readme" />
     <MESSAGE value="init lab 7" />
     <MESSAGE value="init lab9" />
-    <option name="LAST_COMMIT_MESSAGE" value="init lab9" />
+    <MESSAGE value="init lab10" />
+    <option name="LAST_COMMIT_MESSAGE" value="init lab10" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
