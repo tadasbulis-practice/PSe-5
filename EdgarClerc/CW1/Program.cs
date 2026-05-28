@@ -44,10 +44,14 @@ public static class Program
 {
     public static void Main()
     {
+        bool reportWithLinq = false;
+
         IStudentRepository repository = new StudentRepository();
         AverageStategy averageStategy = new AverageStategy();
         StudentValidator validator = new StudentValidator(repository);
-        ReportService report = new ReportService(repository, averageStategy);
+        IReportService report = reportWithLinq
+            ? new ReportServiceLinq(repository, averageStategy)
+            : new ReportServiceWithoutLinq(repository, averageStategy);
 
         var studentService = new StudentService(repository, averageStategy, validator, report);
 

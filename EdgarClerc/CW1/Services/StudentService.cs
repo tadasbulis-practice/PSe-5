@@ -8,13 +8,13 @@ public class StudentService
     private readonly IStudentRepository _repository;
     private readonly AverageStategy _averageStategy;
     private readonly StudentValidator _validator;
-    private readonly ReportService _report;
+    private readonly IReportService _report;
 
     public StudentService(
         IStudentRepository repository,
         AverageStategy averageStategy,
         StudentValidator validator,
-        ReportService report
+        IReportService report
     )
     {
         _repository = repository;
@@ -63,9 +63,15 @@ public class StudentService
         return _validator.ValidateStudent(student);
     }
 
+    //Repport Service Call
+    public bool IsUsingLink()
+    {
+        return _report is ReportServiceLinq;
+    }
+
     public List<(Student student, double avg)> GetTopAvg(int numberOfStudents = 3)
     {
-        return _report.GetTopAvg(numberOfStudents);
+        return _report.GetTopByAverage(numberOfStudents);
     }
 
     public List<Student> GetStudentInGroup(string gc)

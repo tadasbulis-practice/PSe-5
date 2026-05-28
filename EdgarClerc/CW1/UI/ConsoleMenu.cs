@@ -264,7 +264,9 @@ public class ConsoleMenu
                 case "9":
                     // LT: statistika — Count, Average, Sum, Max, Any, All (LINQ agregavimas)
                     // EN: statistics — Count, Average, Sum, Max, Any, All (LINQ aggregation)
-                    Console.WriteLine("--- Statistics (LINQ) ---");
+
+                    string text = _service.IsUsingLink() ? "LINQ" : "WITHOUT LINQ";
+                    Console.WriteLine($"--- Statistics ({text}) ---");
 
                     var stats = _service.GetStatistics();
 

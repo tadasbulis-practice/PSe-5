@@ -3,18 +3,18 @@ using CW1.Models;
 
 namespace CW1.Services;
 
-public class ReportService
+public class ReportServiceLinq : IReportService
 {
     private readonly IStudentRepository _repository;
     private readonly AverageStategy _averageStategy;
 
-    public ReportService(IStudentRepository repository, AverageStategy averageStategy)
+    public ReportServiceLinq(IStudentRepository repository, AverageStategy averageStategy)
     {
         _repository = repository;
         _averageStategy = averageStategy;
     }
 
-    public List<(Student student, double avg)> GetTopAvg(int numberOfStudents = 3)
+    public List<(Student student, double avg)> GetTopByAverage(int numberOfStudents = 3)
     {
         return _repository
             .FindAll()
