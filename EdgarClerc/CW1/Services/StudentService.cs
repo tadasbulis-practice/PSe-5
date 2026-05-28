@@ -1,5 +1,6 @@
 ﻿using CW1.Interface;
 using CW1.Models;
+using CW1.Repository;
 
 namespace CW1.Services;
 
@@ -61,6 +62,11 @@ public class StudentService
     public List<string> Validate(Student student)
     {
         return _validator.ValidateStudent(student);
+    }
+
+    public bool IsUsingStubRepo()
+    {
+        return _repository is StubStudentRepository;
     }
 
     //Repport Service Call

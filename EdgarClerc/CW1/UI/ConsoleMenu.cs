@@ -16,6 +16,16 @@ public class ConsoleMenu
     {
         while (true)
         {
+            var stubText = _service.IsUsingStubRepo()
+                ? "Using StubStudentRepository (--stub)"
+                : "Using MemoryStudentRepository (Default)";
+            Console.WriteLine(stubText);
+
+            var linqText = _service.IsUsingLink()
+                ? "Using ReportServiceWithoutLinq (--nolinq)"
+                : "Using ReportServiceLinq (Default)";
+            Console.WriteLine(linqText);
+
             Console.WriteLine();
             Console.WriteLine("========== CW-1 Student Menu / Studentu meniu ==========");
             Console.WriteLine(" 1) List all students  /  Rodyti visus studentus");

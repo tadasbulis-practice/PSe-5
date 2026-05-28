@@ -42,10 +42,10 @@ namespace CW1;
 
 public static class Program
 {
-    public static void Main()
+    public static void Main(string[] args)
     {
-        bool reportWithLinq = false;
-        bool stubRepository = true;
+        bool reportWithLinq = args.Contains("--nolinq");
+        bool stubRepository = args.Contains("--stub");
 
         IStudentRepository repository = stubRepository
             ? new StubStudentRepository()
