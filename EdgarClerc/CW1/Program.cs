@@ -46,8 +46,9 @@ public static class Program
     {
         IStudentRepository repository = new StudentRepository();
         AverageStategy averageStategy = new AverageStategy();
+        StudentValidator validator = new StudentValidator(repository);
 
-        var studentService = new StudentService(repository, averageStategy);
+        var studentService = new StudentService(repository, averageStategy, validator);
 
         ConsoleMenu menu = new ConsoleMenu(studentService);
         menu.StartMenu();

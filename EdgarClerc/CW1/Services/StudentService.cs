@@ -7,11 +7,17 @@ public class StudentService
 {
     private readonly IStudentRepository _repository;
     private readonly AverageStategy _averageStategy;
+    private readonly StudentValidator _validator;
 
-    public StudentService(IStudentRepository repository, AverageStategy averageStategy)
+    public StudentService(
+        IStudentRepository repository,
+        AverageStategy averageStategy,
+        StudentValidator validator
+    )
     {
         _repository = repository;
         _averageStategy = averageStategy;
+        _validator = validator;
     }
 
     public IReadOnlyList<Student> GetAll()
@@ -47,6 +53,11 @@ public class StudentService
     public double GetAverage(Student student)
     {
         return _averageStategy.GetAverage(student);
+    }
+
+    public List<string> Validate(Student student)
+    {
+        return _validator.ValidateStudent(student);
     }
 
     public List<(Student student, double avg)> GetTop3Avg()

@@ -77,25 +77,22 @@ public class ConsoleMenu
                     Console.Write("Group code / Grupes kodas: ");
                     var newGroup = Console.ReadLine() ?? "";
 
-                    if (string.IsNullOrWhiteSpace(newName))
-                    {
-                        Console.WriteLine("Name required.");
-                        break;
-                    }
+                    Student newStudent = new Student(
+                        id: newId,
+                        name: newName,
+                        email: newEmail,
+                        groupCode: newGroup,
+                        grades: new()
+                    );
+                    List<string> newStErr = _service.Validate(newStudent);
 
-                    if (!newEmail.Contains('@') || !newEmail.Contains('.'))
+                    if (newStErr.Count == 0)
                     {
-                        Console.WriteLine("Bad email.");
-                        break;
+                        Console.WriteLine($"{newStudent.Name} — OK");
                     }
-
-                    try
+                    else
                     {
-                        _service.GetGroupByCode(newGroup);
-                    } 
-                    catch
-                    {
-                        Console.WriteLine("Group not found.");
+                        Console.WriteLine($"{newStudent.Name} — ERRORS: {string.Join("; ", newStErr)}");
                         break;
                     }
 
@@ -194,6 +191,7 @@ public class ConsoleMenu
                     break;
 
                 case "6":
+                    //validate student
                     Console.Write("Student ID: ");
                     if (!int.TryParse(Console.ReadLine(), out int vid))
                     {
@@ -212,25 +210,18 @@ public class ConsoleMenu
                         throw;
                     }
 
-                    var errors = new List<string>();
-                    if (string.IsNullOrWhiteSpace(st6.Name))
-                        errors.Add("Name empty");
-                    if (!st6.Email.Contains('@') || !st6.Email.Contains('.'))
-                        errors.Add("Bad email");
-                    if (_groups.All(g => g.Code != st6.GroupCode))
-                        errors.Add("Unknown group");
-                    foreach (var gr in st6.Grades)
-                        if (gr < 1 || gr > 10)
-                        {
-                            errors.Add($"Grade {gr} out of range");
-                            break;
-                        }
+                    List<string> errors = _service.Validate(st6);
 
                     if (errors.Count == 0)
+                    {
                         Console.WriteLine($"{st6.Name} — OK");
+                    }
                     else
+                    {
                         Console.WriteLine($"{st6.Name} — ERRORS: {string.Join("; ", errors)}");
+                    }
                     break;
+                    
 
                 // =========================================================
                 // LT: zemiau — TASK 2 zona. Visi trys punktai parasyti TIK su
