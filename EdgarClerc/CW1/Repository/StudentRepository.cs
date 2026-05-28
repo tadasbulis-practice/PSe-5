@@ -58,10 +58,18 @@ public class StudentRepository : IStudentRepository
 
     public IReadOnlyList<Student> FindAll() => _students.AsReadOnly();
 
+    public IReadOnlyList<Group> FindAllGroups() => _groups.AsReadOnly();
+
     public Student FindById(int id)
     {
         var student = _students.Find(s => s.Id == id);
         return student ?? throw new Exception("Student not found");
+    }
+
+    public Group FindGroupByCode(string code)
+    {
+        var group = _groups.Find(g => g.Code == code);
+        return group ?? throw new Exception("Group not found");
     }
 
     public void Add(Student student)

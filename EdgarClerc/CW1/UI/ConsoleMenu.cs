@@ -1,17 +1,18 @@
-﻿using CW1.Services;
+﻿using CW1.Models;
+using CW1.Services;
 
 namespace CW1.UI;
 
 public class ConsoleMenu
 {
-    StudentService _service;
+    private readonly StudentService _service;
 
     public ConsoleMenu(StudentService service)
     {
         _service = service;
     }
 
-    public static void StartMenu()
+    public void StartMenu()
     {
         while (true)
         {
@@ -40,18 +41,17 @@ public class ConsoleMenu
             switch (choice)
             {
                 case "1":
-
-                    foreach (var s in _students)
+                    IReadOnlyList<Student> students = _service.GetAll();
+                    foreach (var s in students)
                     {
-                        double avg =
-                            s.Grades.Count == 0 ? 0.0 : s.Grades.Sum() / (double)s.Grades.Count;
-
-                        Console.WriteLine(s.Email);
+                        double avg = _service.GetAverage(s);
+                        Console.WriteLine(s + $" avg={avg}");
                     }
 
                     break;
 
                 case "2":
+                    //add new student
                     Console.Write("New ID / Naujas ID: ");
                     if (!int.TryParse(Console.ReadLine(), out int newId))
                     {
@@ -59,10 +59,15 @@ public class ConsoleMenu
                         break;
                     }
 
-                    if (_students.Any(x => x.Id == newId))
+                    try
                     {
-                        Console.WriteLine("ID exists.");
+                        _service.GetById(newId);
+                        Console.WriteLine("ID already exists.");
                         break;
+                    }
+                    catch
+                    {
+                        Console.WriteLine("Id available");
                     }
 
                     Console.Write("Name / Vardas: ");
@@ -84,21 +89,24 @@ public class ConsoleMenu
                         break;
                     }
 
-                    if (_groups.All(g => g.Code != newGroup))
+                    try
+                    {
+                        _service.GetGroupByCode(newGroup);
+                    } 
+                    catch
                     {
                         Console.WriteLine("Group not found.");
                         break;
                     }
 
-                    _students.Add(
-                        new Student
-                        {
-                            Id = newId,
-                            Name = newName,
-                            Email = newEmail,
-                            GroupCode = newGroup,
-                            Grades = new List<int>(),
-                        }
+                    _service.Add(
+                        new Student(
+                            id: newId,
+                            name: newName,
+                            email: newEmail,
+                            groupCode: newGroup,
+                            grades: new()
+                        )
                     );
                     Console.WriteLine("Student added.");
                     break;
@@ -111,10 +119,14 @@ public class ConsoleMenu
                         break;
                     }
 
-                    var st3 = _students.FirstOrDefault(x => x.Id == gid);
-                    if (st3 == null)
+                    Student st3;
+                    try
                     {
-                        Console.WriteLine("Not found.");
+                        st3 = _service.GetById(gid);
+                    }
+                    catch
+                    {
+                        Console.WriteLine("Student not found.");
                         break;
                     }
 
@@ -143,15 +155,18 @@ public class ConsoleMenu
                         break;
                     }
 
-                    var st4 = _students.FirstOrDefault(x => x.Id == aid);
-                    if (st4 == null)
+                    Student st4;
+                    try
                     {
-                        Console.WriteLine("Not found.");
+                        st4 = _service.GetById(aid);
+                    }
+                    catch
+                    {
+                        Console.WriteLine("User Not found.");
                         break;
                     }
 
-                    double avg4 =
-                        st4.Grades.Count == 0 ? 0.0 : st4.Grades.Sum() / (double)st4.Grades.Count;
+                    double avg4 = _service.GetAverage(st4);
                     Console.WriteLine($"Average of {st4.Name} = {avg4:0.00}");
                     break;
 
@@ -163,19 +178,19 @@ public class ConsoleMenu
                         break;
                     }
 
-                    var st5 = _students.FirstOrDefault(x => x.Id == fid);
-                    if (st5 == null)
+                    Student st5;
+                    try
                     {
-                        Console.WriteLine("Not found.");
-                        break;
+                        st5 = _service.GetById(fid);
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine(e);
+                        throw;
                     }
 
-                    double avg5 =
-                        st5.Grades.Count == 0 ? 0.0 : st5.Grades.Sum() / (double)st5.Grades.Count;
-                    Console.WriteLine(
-                        $"  [{st5.Id}] {st5.Name} ({st5.GroupCode})  email={st5.Email}  avg={avg5:0.00}"
-                    );
-                    Console.WriteLine($"  Grades: [{string.Join(", ", st5.Grades)}]");
+                    double avg5 = _service.GetAverage(st5);
+                    Console.WriteLine(_service + $" avg={avg5:0.00}");
                     break;
 
                 case "6":
@@ -186,11 +201,15 @@ public class ConsoleMenu
                         break;
                     }
 
-                    var st6 = _students.FirstOrDefault(x => x.Id == vid);
-                    if (st6 == null)
+                    Student st6;
+                    try
                     {
-                        Console.WriteLine("Not found.");
-                        break;
+                        st6 = _service.GetById(vid);
+                    }
+                    catch
+                    {
+                        Console.WriteLine("User not found");
+                        throw;
                     }
 
                     var errors = new List<string>();
@@ -226,17 +245,9 @@ public class ConsoleMenu
                     // LT: TOP 3 pagal vidurki — LINQ grandine
                     // EN: TOP 3 by average — LINQ chain
                     Console.WriteLine("--- Top 3 by average (LINQ) ---");
-                    var top3 = _students
-                        .Select(s => new
-                        {
-                            Student = s,
-                            Avg = s.Grades.Count == 0 ? 0.0 : s.Grades.Average(),
-                        })
-                        .OrderByDescending(x => x.Avg)
-                        .Take(3)
-                        .ToList();
+                    var top3 = _service
                     foreach (var x in top3)
-                        Console.WriteLine($"  {x.Student.Name, -25} avg={x.Avg:0.00}");
+                        Console.WriteLine($"  {x.student.Name, -25} avg={x.avg:0.00}");
                     break;
 
                 case "8":
@@ -263,14 +274,15 @@ public class ConsoleMenu
                     // LT: statistika — Count, Average, Sum, Max, Any, All (LINQ agregavimas)
                     // EN: statistics — Count, Average, Sum, Max, Any, All (LINQ aggregation)
                     Console.WriteLine("--- Statistics (LINQ) ---");
-                    int totalStudents = _students.Count;
-                    int totalGrades = _students.Sum(s => s.Grades.Count);
-                    double meanOfMeans = _students.Average(s =>
+                    IReadOnlyList<Student> students9 = _service.getAll();
+                    int totalStudents = students9.Count;
+                    int totalGrades = students9.Sum(s => s.Grades.Count);
+                    double meanOfMeans = students9.Average(s =>
                         s.Grades.Count == 0 ? 0.0 : s.Grades.Average()
                     );
-                    int maxGrade = _students.SelectMany(s => s.Grades).DefaultIfEmpty(0).Max();
-                    bool hasFailing = _students.Any(s => s.Grades.Any(g => g < 5));
-                    bool allHaveEmail = _students.All(s => !string.IsNullOrWhiteSpace(s.Email));
+                    int maxGrade = students9.SelectMany(s => s.Grades).DefaultIfEmpty(0).Max();
+                    bool hasFailing = students9.Any(s => s.Grades.Any(g => g < 5));
+                    bool allHaveEmail = students9.All(s => !string.IsNullOrWhiteSpace(s.Email));
                     Console.WriteLine($"  Total students : {totalStudents}");
                     Console.WriteLine($"  Total grades   : {totalGrades}");
                     Console.WriteLine($"  Mean of averages : {meanOfMeans:0.00}");

@@ -14,9 +14,19 @@ public class StudentService
         _averageStategy = averageStategy;
     }
 
-    public IReadOnlyList<Student> getAll()
+    public IReadOnlyList<Student> GetAll()
     {
         return _repository.FindAll();
+    }
+
+    public IReadOnlyList<Group> GetAllGroups()
+    {
+        return _repository.FindAllGroups();
+    }
+
+    public Group GetGroupByCode(string code)
+    {
+        return _repository.FindGroupByCode(code);
     }
 
     public void Add(Student student)
