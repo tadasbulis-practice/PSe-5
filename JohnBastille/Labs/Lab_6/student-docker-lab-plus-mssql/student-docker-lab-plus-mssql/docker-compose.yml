@@ -1,0 +1,30 @@
+networks:
+  student-net:
+    external: true  # created and owned by docker-compose.infra.yml
+
+services:
+  simplestudentapi:
+    build:
+      context: ./SimpleStudentApi
+    container_name: simplestudentapi
+    environment:
+      ASPNETCORE_HTTP_PORTS: 8080
+      ConnectionStrings__DefaultConnection: "Server=mssqlserver,1433;Database=StudentDb;User Id=sa;Password=1Secure*Password1;TrustServerCertificate=True"
+    ports:
+      - "6001:8080"
+    networks:
+      - student-net
+
+  simplestudentfrontend:
+    build:
+      context: ./SimpleStudentFrontend
+    container_name: simplestudentfrontend
+    environment:
+      ASPNETCORE_HTTP_PORTS: 8080
+      ApiSettings__BaseUrl: http://simplestudentapi:8080
+    ports:
+      - "6011:8080"
+    networks:
+      - student-net
+    depends_on:
+      - simplestudentapi
