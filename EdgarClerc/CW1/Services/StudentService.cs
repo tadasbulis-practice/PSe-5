@@ -16,4 +16,19 @@ public class StudentService
     {
         return _repository.FindAll();
     }
+
+    public void Add(Student student)
+    {
+        _repository.Add(student);
+    }
+
+    public void Remove(Student student)
+    {
+        _repository.Remove(student);
+    }
+
+    public Student GetById(int id)
+    {
+        return _repository.FindById(id);
+    }
 }
