@@ -35,14 +35,19 @@ public static class LinqDrills
     //   Surasti visus numerius, kurie >= 5.
     //   Find all numbers >= 5.
     // -------------------------------------------------------------------------
-    public static List<int> AtLeast5_Linq(List<int> input) =>
-        input.Where(n => n >= 5).ToList();
+    public static List<int> AtLeast5_Linq(List<int> input) => input.Where(n => n >= 5).ToList();
 
     public static List<int> AtLeast5_Plain(List<int> input)
     {
-        // TODO: parasykite ekvivalencia versija be LINQ
-        // TODO: write the equivalent version without LINQ
-        throw new NotImplementedException();
+        List<int> result = new();
+
+        foreach (var num in input)
+        {
+            if (num >= 5)
+                result.Add(num);
+        }
+
+        return result;
     }
 
     // -------------------------------------------------------------------------
@@ -55,12 +60,22 @@ public static class LinqDrills
 
     public static List<int> Top3Desc_Plain(List<int> input)
     {
-        // TODO: parasykite ekvivalencia versija be LINQ.
-        //       Patarimas: nukopijuokite saraso, paeiliui randekite max,
-        //       isimkite ji ir pakartokite 3 kartus.
-        // TODO: write the equivalent without LINQ.
-        //       Hint: copy the list, find max, remove it, repeat 3 times.
-        throw new NotImplementedException();
+        var copy = input.ToList();
+        
+        for (int i = 0; i < 3; i++)
+        {
+            int maxIndex = copy[0]
+            for (int j = 0; j < copy.Count; j++)
+            {
+                if (copy[j] > copy[maxIndex])
+                {
+                    maxIndex = j;
+                }
+            }
+            
+        }
+        
+        return copy
     }
 
     // -------------------------------------------------------------------------
@@ -73,9 +88,15 @@ public static class LinqDrills
 
     public static (int Sum, double Avg) SumAndAvg_Plain(List<int> input)
     {
-        // TODO: parasykite ekvivalencia versija be LINQ
-        // TODO: write the equivalent without LINQ
-        throw new NotImplementedException();
+        int sum = 0;
+        int count = 0;
+        for (int i = 0, sum = 0; i < input.Count; i++)
+        {
+            sum += input[i];
+            count++;
+        }
+        
+        return (sum, count == 0 ? 0.0 : (double)sum / count);
     }
 
     // -------------------------------------------------------------------------
@@ -89,9 +110,20 @@ public static class LinqDrills
 
     public static (int Above7, bool AnyNegative, bool AllNonNegative) Bools_Plain(List<int> input)
     {
-        // TODO: parasykite ekvivalencia versija be LINQ
-        // TODO: write the equivalent without LINQ
-        throw new NotImplementedException();
+        bool anyNegative = false;
+        
+        int above7 = 0;
+
+        foreach (var num in input)
+        {
+            if (num >= 7)
+                above7++;
+            if (num < 0)
+                anyNegative = true;
+        }
+
+        return (above7, anyNegative, !anyNegative);
+        
     }
 
     // -------------------------------------------------------------------------
@@ -110,8 +142,37 @@ public static class LinqDrills
 
     public static List<string> TopNames_Plain(List<MiniStudent> input)
     {
-        // TODO: parasykite ekvivalencia versija be LINQ
-        // TODO: write the equivalent without LINQ
-        throw new NotImplementedException();
+        //keep > 7
+        var filtered = new List<MiniStudent>();
+        foreach (var s in input)
+        {
+            if (s.Avg > 7)
+            {
+                filtered.Add(s);
+            }
+        }
+        
+        //sort
+        for (int i = 0; i < filtered.Count - 1; i++)
+        {
+            for (int j = 0; j < filtered.Count - i - 1; j++)
+            {
+                if (filtered[j].Avg < filtered[j + 1].Avg)
+                {
+                    var temp = filtered[j];
+                    filtered[j] = filtered[j + 1];
+                    filtered[j + 1] = temp;
+                }
+            }
+        }
+
+        // lowercase
+        var result = new List<string>();
+        foreach (var s in filtered)
+        {
+            result.Add(s.Name.ToLowerInvariant());
+        }
+
+        return result;
     }
 }
