@@ -7,5 +7,5 @@ public interface IStudentRepository
     IReadOnlyList<Student> FindAll();
     void Add(Student student);
     void Remove(Student student);
-    Student? FindById(int id);
+    Student FindById(int id);
 }

@@ -19,6 +19,6 @@ public class Student
 
     public override string ToString()
     {
-        return $"[{Id}] {Name} ({GroupCode}) email={Email}";
+        return $"[{Id}] {Name} ({GroupCode}) email={Email} grades={Grades}";
     }
 }

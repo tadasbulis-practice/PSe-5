@@ -6,10 +6,12 @@ namespace CW1.Services;
 public class StudentService
 {
     private readonly IStudentRepository _repository;
+    private readonly AverageStategy _averageStategy;
 
-    public StudentService(IStudentRepository repository)
+    public StudentService(IStudentRepository repository, AverageStategy averageStategy)
     {
         _repository = repository;
+        _averageStategy = averageStategy;
     }
 
     public IReadOnlyList<Student> getAll()
@@ -30,5 +32,20 @@ public class StudentService
     public Student GetById(int id)
     {
         return _repository.FindById(id);
+    }
+
+    public double GetAverage(Student student)
+    {
+        return _averageStategy.GetAverage(student);
+    }
+
+    public List<(Student student, double avg)> GetTop3Avg()
+    {
+        return _repository
+            .FindAll()
+            .Select(s => (student: s, avg: _averageStategy.GetAverage(s)))
+            .OrderByDescending(x => x.avg)
+            .Take(3)
+            .ToList();
     }
 }
