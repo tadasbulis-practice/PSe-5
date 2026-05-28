@@ -32,7 +32,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using CW1.Interface;
 using CW1.Models;
+using CW1.Repository;
 using CW1.Services;
 using CW1.UI;
 
@@ -42,8 +44,11 @@ public static class Program
 {
     public static void Main()
     {
-        var studentService = new StudentService();
+        IStudentRepository repository = new StudentRepository();
+
+        var studentService = new StudentService(repository);
 
         ConsoleMenu menu = new ConsoleMenu(studentService);
+        menu.StartMenu();
     }
 }
