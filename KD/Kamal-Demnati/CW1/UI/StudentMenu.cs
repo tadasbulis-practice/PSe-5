@@ -1,10 +1,11 @@
-﻿using System;
+﻿using CW1.Models;
+using CW1.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using CW1.Models;
-using CW1.Services;
+using System.Xml.Linq;
 
 namespace CW1.UI;
 
@@ -14,17 +15,21 @@ public class ConsoleMenu
     private readonly ReportService _reportService;
     private readonly StudentValidator _validator;
     private readonly AverageCalculator _calculator;
+    private readonly QueryMode _mode;
+
 
     public ConsoleMenu(
         StudentService studentService,
         ReportService reportService,
         StudentValidator validator,
-        AverageCalculator calculator)
+        AverageCalculator calculator,
+        QueryMode mode)
     {
         _studentService = studentService;
         _reportService = reportService;
         _validator = validator;
         _calculator = calculator;
+        _mode = mode;
     }
 
     public void Run()
@@ -89,6 +94,8 @@ public class ConsoleMenu
 
     private void PrintMenu()
     {
+
+        Console.WriteLine("\n");
         Console.WriteLine("===== CW1 MENU =====");
         Console.WriteLine("1 - List students");
         Console.WriteLine("2 - Add student");
@@ -244,9 +251,14 @@ public class ConsoleMenu
             : string.Join("; ", errors));
     }
 
+
     private void ShowTop3()
     {
-        var top = _reportService.GetTopByAverageWithoutLinq(3);
+        var top = _mode == QueryMode.Linq
+            ? _reportService.GetTopByAverage(3)
+            : _reportService.GetTopByAverageWithoutLinq(3);
+
+        Console.WriteLine($"=== {_mode} ===");
 
         foreach (var s in top)
         {
@@ -259,8 +271,11 @@ public class ConsoleMenu
         Console.Write("Group: ");
         string code = Console.ReadLine() ?? "";
 
-        var students = _reportService
-            .GetStudentsInGroupSortedByNameWithoutLinq(code);
+        var students = _mode == QueryMode.Linq
+            ? _reportService.GetStudentsInGroupSortedByName(code)
+            : _reportService.GetStudentsInGroupSortedByNameWithoutLinq(code);
+
+        Console.WriteLine($"=== {_mode} ===");
 
         foreach (var s in students)
         {
@@ -270,7 +285,11 @@ public class ConsoleMenu
 
     private void ShowStats()
     {
-        var stats = _reportService.GetStatisticsWithoutLinq();
+        var stats = _mode == QueryMode.Linq
+            ? _reportService.GetStatistics()
+            : _reportService.GetStatisticsWithoutLinq();
+
+        Console.WriteLine($"=== {_mode} ===");
 
         Console.WriteLine($"Students: {stats.TotalStudents}");
         Console.WriteLine($"Grades: {stats.TotalGrades}");
