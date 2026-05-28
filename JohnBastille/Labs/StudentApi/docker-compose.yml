@@ -1,0 +1,35 @@
+version: "3.9"
+
+services:
+  studentapi:
+    build:
+      context: ./StudentApi
+      dockerfile: Dockerfile
+    container_name: studentapi
+    environment:
+      ASPNETCORE_HTTP_PORTS: "8080"
+
+      # Lab‑5 runtime switching
+      AVERAGE_STRATEGY: "simple"     # simple | median | weighted
+      REPOSITORY: "memory"           # memory | file | api
+      VALIDATOR: "basic"             # basic | strict | legacy
+      PRINTER: "simple"              # simple | json | file
+
+    ports:
+      - "6001:8080"
+
+  studentfrontend:
+    build:
+      context: ./StudentFrontend
+      dockerfile: Dockerfile
+    container_name: studentfrontend
+    environment:
+      ASPNETCORE_HTTP_PORTS: "8080"
+
+      # URL to backend API (IMPORTANT: use service name, not localhost)
+      API_BASE_URL: "http://studentapi:8080"
+
+    ports:
+      - "6011:8080"
+    depends_on:
+      - studentapi
