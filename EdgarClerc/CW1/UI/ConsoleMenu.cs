@@ -6,7 +6,7 @@ public class ConsoleMenu
 {
     StudentService _service;
 
-    ConsoleMenu(StudentService service)
+    public ConsoleMenu(StudentService service)
     {
         _service = service;
     }
