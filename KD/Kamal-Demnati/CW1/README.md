@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿full name : kamal demnati
 task drills completed : 1/2/3/4/5
 
@@ -14,3 +15,14 @@ Examples:
 - `dotnet run -- --nolinq` → runs with non-LINQ mode
 - `dotnet run -- --stub --nolinq` → runs with stub data and non-LINQ mode
 
+=======
+full name : kamal demnati
+
+date: 05/21/2026
+
+task drills completed : 1/2/3/4/5
+
+
+dotnet run, dotnet run --stub
+dotnet run, dotnet run -- --stub
+>>>>>>> 8260edcd0cf686f63af00cdb01734e2dcf6c8ef4
