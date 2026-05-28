@@ -57,4 +57,20 @@ public class StudentRepository : IStudentRepository
     }
 
     public IReadOnlyList<Student> FindAll() => _students.AsReadOnly();
+
+    public Student FindById(int id)
+    {
+        var student = _students.Find(s => s.Id == id);
+        return student ?? throw new Exception("Student not found");
+    }
+
+    public void Add(Student student)
+    {
+        _students.Add(student);
+    }
+
+    public void Remove(Student student)
+    {
+        _students.Remove(student);
+    }
 }
