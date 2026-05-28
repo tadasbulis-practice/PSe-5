@@ -1,11 +1,21 @@
 # Control Work 1
 
-## Made By Edgar Clerc
+**Author:** Edgar Clerc
 
-The 28/05/2026
+**Date** 28/05/2026
 
+## Result
 
-## Instalation 
+Task 1 finished, rework of project to multiple files
+
+Task 2 finished Used an interface to separate report with and without linq
+
+Task 3 finished: Added argument in program.cs to disable linq or use stub Repository instead of default one
+Added Print in the console to know which report or repository is used
+
+Drills : finished : available in file LINQ_Drills.cs
+
+## Instalation / Launch
 
 To launch the project use :
 ```dotnet run```
@@ -13,7 +23,7 @@ To launch the project use :
 Some Argument can be use to change some properties of the project.
 
 
-Arguments available : 
+### Arguments available : 
 
 ```--nolinq```
 To disable the use of Linq in the report Service
