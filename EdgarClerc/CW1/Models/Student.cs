@@ -6,9 +6,9 @@ public class Student
     public string Name { get; }
     public string Email { get; }
     public string GroupCode { get; }
-    public List<int> Grades { get; } = new List<int>();
+    public List<float> Grades { get; } = new();
 
-    public Student(int id, string name, string email, string groupCode, List<int> grades)
+    public Student(int id, string name, string email, string groupCode, List<float> grades)
     {
         Id = id;
         Name = name;
@@ -19,6 +19,6 @@ public class Student
 
     public override string ToString()
     {
-        return $"[{Id}] {Name} ({GroupCode}) email={Email} grades={Grades}";
+        return $"[{Id}] {Name} ({GroupCode}) email={Email} grades=[{string.Join(',', Grades)}]";
     }
 }

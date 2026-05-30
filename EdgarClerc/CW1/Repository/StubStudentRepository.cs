@@ -21,7 +21,7 @@ public class StubStudentRepository : IStudentRepository
                 name: "Test Student",
                 email: "test@test.lt",
                 groupCode: "TEST",
-                grades: new List<int> { 10, 10, 10 }
+                grades: new List<float> { 10, 10, 10 }
             ),
         };
     }

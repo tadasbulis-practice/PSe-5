@@ -91,7 +91,7 @@ public class ReportServiceWithoutLinq : IReportService
         int totalStudents,
         int totalGrades,
         double meanOfMeans,
-        int maxGrade,
+        float maxGrade,
         bool hasFailing,
         bool allHaveEmail
     ) GetStatistics()
@@ -100,7 +100,7 @@ public class ReportServiceWithoutLinq : IReportService
 
         int totalStudents = students.Count;
         int totalGrades = 0;
-        int maxGrade = 0;
+        float maxGrade = 0;
         bool hasFailing = false;
         bool allHaveEmail = true;
 
@@ -121,7 +121,7 @@ public class ReportServiceWithoutLinq : IReportService
             // Calculate student average manually for Mean of Means
             if (s.Grades.Count > 0)
             {
-                int studentGradeSum = 0;
+                float studentGradeSum = 0;
                 foreach (var g in s.Grades)
                 {
                     studentGradeSum += g;

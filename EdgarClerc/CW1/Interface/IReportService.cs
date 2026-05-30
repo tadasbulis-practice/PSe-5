@@ -12,7 +12,7 @@ public interface IReportService
         int totalStudents,
         int totalGrades,
         double meanOfMeans,
-        int maxGrade,
+        float maxGrade,
         bool hasFailing,
         bool allHaveEmail
     ) GetStatistics();

@@ -17,35 +17,35 @@ public class StudentRepository : IStudentRepository
                 name: "Jonas Jonaitis",
                 email: "jonas@kauko.lt",
                 groupCode: "PI23",
-                grades: new List<int> { 8, 9, 7, 10 }
+                grades: new List<float> { 8, 9, 7, 10 }
             ),
             new Student(
                 id: 2,
                 name: "Greta Petraityte",
                 email: "greta@kauko.lt",
                 groupCode: "PI23",
-                grades: new List<int> { 6, 5, 7, 8 }
+                grades: new List<float> { 6, 5, 7, 8 }
             ),
             new Student(
                 id: 3,
                 name: "Mantas Kazlauskas",
                 email: "mantas@kauko.lt",
                 groupCode: "PI24",
-                grades: new List<int> { 9, 9, 10, 8 }
+                grades: new List<float> { 9, 9, 10, 8 }
             ),
             new Student(
                 id: 4,
                 name: "Ieva Andriukaityte",
                 email: "ieva@kauko.lt",
                 groupCode: "PI23",
-                grades: new List<int> { 10, 10, 9, 9 }
+                grades: new List<float> { 10, 10, 9, 9 }
             ),
             new Student(
                 id: 5,
                 name: "Tomas Bagdonas",
                 email: "tomas@kauko.lt",
                 groupCode: "PI24",
-                grades: new List<int> { 5, 6, 6, 7 }
+                grades: new List<float> { 5, 6, 6, 7 }
             ),
         ]);
 

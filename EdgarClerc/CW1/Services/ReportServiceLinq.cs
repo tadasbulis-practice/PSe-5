@@ -33,7 +33,7 @@ public class ReportServiceLinq : IReportService
         int totalStudents,
         int totalGrades,
         double meanOfMeans,
-        int maxGrade,
+        float maxGrade,
         bool hasFailing,
         bool allHaveEmail
     ) GetStatistics()
@@ -48,7 +48,7 @@ public class ReportServiceLinq : IReportService
                 ? 0.0
                 : students.Average(s => s.Grades.Count == 0 ? 0.0 : s.Grades.Average());
 
-        int maxGrade = students.SelectMany(s => s.Grades).DefaultIfEmpty(0).Max();
+        float maxGrade = students.SelectMany(s => s.Grades).DefaultIfEmpty(0).Max();
         bool hasFailing = students.Any(s => s.Grades.Any(g => g < 5));
         bool allHaveEmail = students.All(s => !string.IsNullOrWhiteSpace(s.Email));
 
