@@ -1,0 +1,10 @@
+
+services:
+  api:
+    build:
+      context: ./Lab7.Api
+      dockerfile: Dockerfile
+    container_name: lab7-api
+    ports:
+      - "6001:6001"
+    restart: unless-stopped
