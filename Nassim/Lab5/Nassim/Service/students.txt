@@ -1,0 +1,4 @@
+=== Group: Erasmus ===
+[1] Nassim Barad | nassim@email.com | Avg: 14.1
+[2] Edgar Clerc | edgar@email.com | Avg: 3.1
+[3] Ibrahim ??? | ibrahim@email.com | Avg: 17.8
