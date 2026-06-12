@@ -10,3 +10,6 @@ public class AverageStrategy : IGradeStrategy
         return student.Grades.Average();
     }
 }
+
+
+
