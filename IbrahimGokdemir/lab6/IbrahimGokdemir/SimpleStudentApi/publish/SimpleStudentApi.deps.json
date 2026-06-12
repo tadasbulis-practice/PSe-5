@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "SimpleStudentApi/1.0.0": {
+        "runtime": {
+          "SimpleStudentApi.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "SimpleStudentApi/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
