@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <RootNamespace>CW1</RootNamespace>
+  </PropertyGroup>
+
+  <!--
+    LT: LINQ_Drills.cs anksciau buvo issluoste atskirti is kompiliacijos
+        (kol _Plain metodai buvo NotImplementedException). Visi 5 drill'ai
+        dabar parasyti, todel failas vel dalyvauja standartiniame build'e
+        (SDK-style projektas automatiskai itraukia visus *.cs failus).
+    EN: LINQ_Drills.cs used to be excluded from compilation while the
+        _Plain methods were still NotImplementedException. All 5 drills
+        are implemented now, so the file is back in the normal build
+        (SDK-style projects include every *.cs file automatically).
+  -->
+
+</Project>

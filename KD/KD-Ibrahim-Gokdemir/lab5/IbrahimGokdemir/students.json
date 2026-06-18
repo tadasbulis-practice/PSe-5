@@ -1,0 +1,22 @@
+[
+  {
+    "Id": 101,
+    "Name": "ApiAlice",
+    "Email": "apialice@test.com",
+    "Grades": [
+      10,
+      8,
+      9
+    ]
+  },
+  {
+    "Id": 102,
+    "Name": "ApiBob",
+    "Email": "apibob@test.com",
+    "Grades": [
+      7,
+      7,
+      8
+    ]
+  }
+]
