@@ -1099,22 +1099,43 @@ namespace SimpleStudentFrontend.ApiClient
         [System.Text.Json.Serialization.JsonPropertyName("id")]
         public int Id { get; set; }
 
+        /// <summary>
+        /// First name.
+        /// </summary>
         [System.Text.Json.Serialization.JsonPropertyName("firstName")]
+        [System.ComponentModel.DataAnnotations.Required(AllowEmptyStrings = true)]
+        [System.ComponentModel.DataAnnotations.StringLength(100)]
         public string FirstName { get; set; }
 
+        /// <summary>
+        /// Last name.
+        /// </summary>
         [System.Text.Json.Serialization.JsonPropertyName("lastName")]
+        [System.ComponentModel.DataAnnotations.Required(AllowEmptyStrings = true)]
+        [System.ComponentModel.DataAnnotations.StringLength(100)]
         public string LastName { get; set; }
 
+        /// <summary>
+        /// University email address.
+        /// </summary>
         [System.Text.Json.Serialization.JsonPropertyName("email")]
+        [System.ComponentModel.DataAnnotations.Required(AllowEmptyStrings = true)]
+        [System.ComponentModel.DataAnnotations.StringLength(200)]
         public string Email { get; set; }
 
+        /// <summary>
+        /// Study program, e.g. Computer Science.
+        /// </summary>
         [System.Text.Json.Serialization.JsonPropertyName("studyProgram")]
+        [System.ComponentModel.DataAnnotations.Required(AllowEmptyStrings = true)]
+        [System.ComponentModel.DataAnnotations.StringLength(100)]
         public string StudyProgram { get; set; }
 
         /// <summary>
         /// Year the student started studying (2000–2100).
         /// </summary>
         [System.Text.Json.Serialization.JsonPropertyName("enrollmentYear")]
+        [System.ComponentModel.DataAnnotations.Range(2000, 2100)]
         public int EnrollmentYear { get; set; }
 
     }

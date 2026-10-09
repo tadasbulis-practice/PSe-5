@@ -1,38 +1,38 @@
-# Student Docker Lab (.NET 8 + MSSQL)
+# Student Docker Lab (.NET 8 + MSSQL + PHP)
 
-This repository contains three Docker services:
+This repository contains four Docker services:
 
 - **SimpleStudentApi** — .NET 8 Minimal API with full CRUD, backed by SQL Server, documented with **Swagger / OpenAPI**
 - **SimpleStudentFrontend** — .NET 8 Razor Pages app that calls the API through a **typed client generated from Swagger**
+- **SimpleStudentPhpFrontend** — the same Students CRUD in **PHP 8.3**, built at runtime from the Swagger document (no hard-coded URLs or fields)
 - **mssqlserver** — SQL Server 2022 Express, managed separately so it survives app rebuilds
+
+One API, one contract (`swagger.json`), two frontends in two technologies working on the same data.
 
 ---
 
 ## Architecture
 
 ```
-Browser
-   |
-   v
-localhost:6011
-   |
-   v
-Frontend container (SimpleStudentFrontend)
-   |
-   v
-http://simplestudentapi:8080/api/students  (Docker internal network)
-   |
-   v
-API container (SimpleStudentApi)
-   |
-   v
-mssqlserver:1433  (Docker internal network)
-   |
-   v
-SQL Server container  <-->  mssql_data volume (persistent)
+                 Browser
+          /         |          \
+   localhost:6011  localhost:6021  localhost:6001/swagger
+         |              |                 |
+ .NET frontend     PHP frontend           |
+ (Razor Pages)     (PHP 8.3 + Apache)     |
+ generated C#      reads swagger.json     |
+ client (NSwag)    at runtime             |
+         \              |                 /
+          http://simplestudentapi:8080  (Docker internal network)
+                        |
+              API container (SimpleStudentApi)  ── serves /swagger/v1/swagger.json
+                        |
+              mssqlserver:1433  (Docker internal network)
+                        |
+              SQL Server container  <-->  mssql_data volume (persistent)
 ```
 
-All three containers communicate on a shared Docker network called **`student-net`**.
+All containers communicate on a shared Docker network called **`student-net`**.
 The database volume (`mssql_data`) is managed by the infra compose file, so your data
 is never lost when rebuilding the app.
 
@@ -43,7 +43,7 @@ is never lost when rebuilding the app.
 ```
 .
 ├── docker-compose.infra.yml     <- SQL Server (start once, leave running)
-├── docker-compose.yml           <- API + Frontend (rebuild freely)
+├── docker-compose.yml           <- API + both frontends (rebuild freely)
 ├── SimpleStudentApi/
 │   ├── Data/
 │   │   └── AppDbContext.cs      <- EF Core DbContext
@@ -66,6 +66,14 @@ is never lost when rebuilding the app.
         ├── Student.cshtml       <- Student details (/Student?id=1)
         ├── StudentCreate.cshtml <- Add new student
         └── StudentEdit.cshtml   <- Edit existing student
+└── SimpleStudentPhpFrontend/
+    ├── Dockerfile               <- php:8.3-apache, no Composer packages needed
+    ├── public/index.php         <- router: list, details, create, edit, delete, info, operations
+    ├── lib/OpenApi.php          <- reads swagger.json: operations + schema fields/rules
+    ├── lib/ApiClient.php        <- calls the API BY operationId (CreateStudent, GetStudent ...)
+    ├── lib/Form.php             <- builds form inputs from the Student schema
+    ├── views/*.php              <- HTML templates
+    └── openapi/swagger.json     <- saved copy, used only if the API is not reachable
 ```
 
 ---
@@ -135,6 +143,8 @@ docker-compose -f docker-compose.infra.yml up -d
 |-------------------------------|----------------------------------|
 | Frontend (home / info)        | http://localhost:6011            |
 | Frontend (students CRUD)      | http://localhost:6011/Students   |
+| **PHP frontend (students CRUD)** | http://localhost:6021          |
+| PHP frontend — API operations | http://localhost:6021/?page=operations |
 | API — list students           | http://localhost:6001/api/students |
 | API — info                    | http://localhost:6001/api/info   |
 | **API — Swagger UI**          | http://localhost:6001/swagger    |
@@ -244,6 +254,83 @@ docker-compose up --build                    # rebuild frontend with the new cli
 If the API contract changed (renamed field, new endpoint), the frontend **will not compile**
 until you fix it – the compiler shows you every place that must change.
 
+## Second client: PHP frontend driven by Swagger
+
+`SimpleStudentPhpFrontend` shows that the contract is **technology-independent**: the same
+`swagger.json` that produced the C# client is used by a PHP application. It goes one step further:
+it does not generate code at all — it reads the contract **at runtime**.
+
+```php
+$spec = OpenApi::load("$apiBaseUrl/swagger/v1/swagger.json", ...);   // download the contract
+$api  = new ApiClient($spec, $apiBaseUrl);
+
+$students = $api->call('GetStudents');                       // GET    /api/students
+$student  = $api->call('GetStudent',    ['id' => 5]);        // GET    /api/students/5
+$created  = $api->call('CreateStudent', [], $data);          // POST   /api/students
+$api->call('UpdateStudent', ['id' => 5], $data);             // PUT    /api/students/5
+$api->call('DeleteStudent', ['id' => 5]);                    // DELETE /api/students/5
+
+$fields = $spec->fields('Student');   // table columns + form inputs + validation rules
+```
+
+The PHP code contains **no URLs and no field names**. Method and path are looked up by
+`operationId`; columns and inputs come from `components.schemas.Student`, including the rules
+from the C# attributes:
+
+| C# attribute on `Student` | in `swagger.json`        | PHP form input              |
+|---------------------------|--------------------------|-----------------------------|
+| `[Required]`              | `required: [...]`        | `required`                  |
+| `[StringLength(100)]`     | `maxLength: 100`         | `maxlength="100"`           |
+| `[EmailAddress]`          | `format: email`          | `type="email"`              |
+| `[Range(2000, 2100)]`     | `minimum` / `maximum`    | `type="number" min max`     |
+| `[ReadOnly(true)]`        | `readOnly: true`         | not shown in the form       |
+
+The API still validates everything itself (400 with field errors); the PHP form shows those
+errors under the right inputs. Tick *"skip browser validation"* to see the API's answer.
+
+### Demo: add a field only in C#
+
+1. In `SimpleStudentApi/Models/Student.cs` add:
+   ```csharp
+   /// <summary>Phone number.</summary>
+   /// <example>+370 600 00000</example>
+   [StringLength(30)]
+   public string? Phone { get; set; }
+   ```
+2. The table has no `Phone` column yet and the API creates tables with `EnsureCreated()`
+   (no migrations), so recreate the database — **this deletes all data**:
+   ```bash
+   docker-compose down
+   docker-compose -f docker-compose.infra.yml down -v
+   docker-compose -f docker-compose.infra.yml up -d
+   docker-compose up --build
+   ```
+3. Open http://localhost:6021 — the **PHP** table and form already have a *Phone* field.
+   No PHP file was changed.
+4. The **.NET** frontend needs the compile-time path: run `generate-client.sh`, then add the
+   field to `StudentDto` and the Razor pages.
+
+| | .NET frontend | PHP frontend |
+|---|---|---|
+| How it uses swagger.json | generates C# code once (NSwag) | reads it on every request |
+| New field in the API | regenerate client + edit pages | appears automatically |
+| Renamed / removed field | **compile error** shows every place to fix | adapts automatically; code that names a field by hand (here only `id`) would fail at runtime |
+| Best for | large apps, strong typing, refactoring | admin tools, prototypes, generic UIs |
+
+### Other technologies (optional)
+
+The same contract can generate clients for most languages with
+[OpenAPI Generator](https://openapi-generator.tech) — no installation, just Docker:
+
+```bash
+cd SimpleStudentFrontend/ApiClient       # folder with swagger.json
+docker run --rm -v "$PWD:/local" openapitools/openapi-generator-cli generate \
+  -i /local/swagger.json -g php -o /local/generated-php-client
+# other generators: typescript-fetch, python, java, kotlin, swift5, dart, go ...
+```
+
+---
+
 ## Run without Docker (from IDE / terminal)
 
 SQL Server must run (Step 1). Then in two terminals:
@@ -251,6 +338,7 @@ SQL Server must run (Step 1). Then in two terminals:
 ```bash
 cd SimpleStudentApi      && dotnet run    # http://localhost:6001/swagger (Development connection string)
 cd SimpleStudentFrontend && dotnet run    # http://localhost:6011
+cd SimpleStudentPhpFrontend && php -S localhost:6021 -t public   # needs PHP 8.1+
 ```
 
 ## How Docker networking works here
@@ -285,3 +373,4 @@ why containers defined in different files can still talk to each other.
 - Full CRUD: Create, Read, Update, Delete from a browser UI
 - Documenting an API with Swagger / OpenAPI and testing it in the browser
 - Generating a typed API client from the OpenAPI contract
+- Reusing the same contract from a second technology (PHP) — at runtime, without generated code
