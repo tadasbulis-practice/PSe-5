@@ -1,3 +1,4 @@
+<?php defined('APP_ROOT') || exit('No direct access.'); ?>
 <?php /** @var string $view */ ?>
 <!DOCTYPE html>
 <html lang="en">

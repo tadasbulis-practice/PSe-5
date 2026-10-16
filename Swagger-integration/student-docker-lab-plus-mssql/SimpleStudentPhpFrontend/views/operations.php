@@ -1,3 +1,4 @@
+<?php defined('APP_ROOT') || exit('No direct access.'); ?>
 <?php /** @var OpenApi $spec */ ?>
 <h1>API operations</h1>
 <p>Everything this frontend can call, read live from <code>swagger.json</code>. The PHP code uses only the

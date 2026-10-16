@@ -1,6 +1,8 @@
 <?php
 declare(strict_types=1);
 
+defined('APP_ROOT') || exit('No direct access.');
+
 require_once __DIR__ . '/OpenApi.php';
 
 /** Thrown for every HTTP status >= 400. Holds the problem details the API returned. */

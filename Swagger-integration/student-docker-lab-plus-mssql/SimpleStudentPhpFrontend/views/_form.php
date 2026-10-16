@@ -1,3 +1,4 @@
+<?php defined('APP_ROOT') || exit('No direct access.'); ?>
 <?php /** @var array $fields @var array $values @var array $errors @var string $action */ ?>
 <form method="post" action="?page=<?= $action === 'update' ? 'edit' : 'create' ?>&id=<?= (int)$id ?>">
     <input type="hidden" name="action" value="<?= h($action) ?>">

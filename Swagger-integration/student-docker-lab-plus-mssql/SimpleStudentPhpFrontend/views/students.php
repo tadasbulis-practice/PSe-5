@@ -1,3 +1,4 @@
+<?php defined('APP_ROOT') || exit('No direct access.'); ?>
 <?php /** @var array $students @var array $fields */ ?>
 <h1>Students</h1>
 <a class="btn btn-create" href="?page=create">+ Add Student</a>

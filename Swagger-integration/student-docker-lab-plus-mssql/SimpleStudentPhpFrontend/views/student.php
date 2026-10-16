@@ -1,3 +1,4 @@
+<?php defined('APP_ROOT') || exit('No direct access.'); ?>
 <?php /** @var array|null $student @var array $fields */ ?>
 <h1>Student details</h1>
 <?php if (!empty($student)): ?>

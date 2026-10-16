@@ -1,13 +1,20 @@
-# Student Docker Lab (.NET 8 + MSSQL + PHP)
+# Student Docker Lab (.NET 8 + MSSQL + PHP + MySQL)
 
-This repository contains four Docker services:
+This repository contains five Docker services:
 
 - **SimpleStudentApi** — .NET 8 Minimal API with full CRUD, backed by SQL Server, documented with **Swagger / OpenAPI**
 - **SimpleStudentFrontend** — .NET 8 Razor Pages app that calls the API through a **typed client generated from Swagger**
 - **SimpleStudentPhpFrontend** — the same Students CRUD in **PHP 8.3**, built at runtime from the Swagger document (no hard-coded URLs or fields)
+- **SimpleStudentPhpApi** — the **same API in PHP**, same contract; database **SQL Server or MySQL**, chosen in `config.php`
 - **mssqlserver** — SQL Server 2022 Express, managed separately so it survives app rebuilds
 
-One API, one contract (`swagger.json`), two frontends in two technologies working on the same data.
+One contract (`swagger.json`), two APIs, two frontends, two databases — any frontend works with any API:
+
+| | .NET API (6001) | PHP API (6002 / XAMPP) |
+|---|---|---|
+| .NET frontend (6011) | ✔ default | ✔ change `ApiSettings__BaseUrl` |
+| PHP frontend (6021 / XAMPP) | ✔ default | ✔ change `apiBaseUrl` in config.php |
+| Database | SQL Server | SQL Server (Docker) or MySQL (XAMPP) |
 
 ---
 
@@ -30,7 +37,12 @@ One API, one contract (`swagger.json`), two frontends in two technologies workin
               mssqlserver:1433  (Docker internal network)
                         |
               SQL Server container  <-->  mssql_data volume (persistent)
+                        |
+              PHP API container (SimpleStudentPhpApi, :6002)  ── same contract, same table
 ```
+
+In XAMPP the PHP API uses MySQL instead:
+`PHP frontend (htdocs/simpleStudentClient) → PHP API (htdocs/simpleStudentApi) → MySQL (XAMPP)`.
 
 All containers communicate on a shared Docker network called **`student-net`**.
 The database volume (`mssql_data`) is managed by the infra compose file, so your data
@@ -43,7 +55,7 @@ is never lost when rebuilding the app.
 ```
 .
 ├── docker-compose.infra.yml     <- SQL Server (start once, leave running)
-├── docker-compose.yml           <- API + both frontends (rebuild freely)
+├── docker-compose.yml           <- both APIs + both frontends (rebuild freely)
 ├── SimpleStudentApi/
 │   ├── Data/
 │   │   └── AppDbContext.cs      <- EF Core DbContext
@@ -66,14 +78,23 @@ is never lost when rebuilding the app.
         ├── Student.cshtml       <- Student details (/Student?id=1)
         ├── StudentCreate.cshtml <- Add new student
         └── StudentEdit.cshtml   <- Edit existing student
-└── SimpleStudentPhpFrontend/
-    ├── Dockerfile               <- php:8.3-apache, no Composer packages needed
-    ├── public/index.php         <- router: list, details, create, edit, delete, info, operations
+└── SimpleStudentPhpFrontend/    <- flat folder: copy it as it is to XAMPP htdocs, or run it in Docker
+    ├── index.php                <- the only page: list, details, create, edit, delete, info, operations
+    ├── config.php               <- API address (Docker: env variables, XAMPP: edit the defaults)
     ├── lib/OpenApi.php          <- reads swagger.json: operations + schema fields/rules
     ├── lib/ApiClient.php        <- calls the API BY operationId (CreateStudent, GetStudent ...)
     ├── lib/Form.php             <- builds form inputs from the Student schema
     ├── views/*.php              <- HTML templates
-    └── openapi/swagger.json     <- saved copy, used only if the API is not reachable
+    ├── openapi/swagger.json     <- saved copy, used only if the API is not reachable
+    ├── .htaccess                <- hides lib/, views/, config.php from the browser
+    └── README.md                <- XAMPP / Docker / php -S instructions
+└── SimpleStudentPhpApi/         <- flat folder: XAMPP htdocs or Docker
+    ├── index.php                <- routes /api/... and /swagger
+    ├── config.php               <- DATABASE: driver mysql | sqlsrv, host, port, user, password
+    ├── openapi/openapi.json     <- the contract (same as the .NET swagger.json)
+    ├── lib/                     <- Database (PDO), StudentRepository (SQL), Validator, Http
+    ├── database/mysql/create.sql, database/mssql/create.sql   <- create database + table + demo data
+    └── README.md                <- XAMPP + MySQL, Docker + SQL Server, all combinations
 ```
 
 ---
@@ -145,6 +166,8 @@ docker-compose -f docker-compose.infra.yml up -d
 | Frontend (students CRUD)      | http://localhost:6011/Students   |
 | **PHP frontend (students CRUD)** | http://localhost:6021          |
 | PHP frontend — API operations | http://localhost:6021/?page=operations |
+| **PHP API — Swagger UI**      | http://localhost:6002/swagger    |
+| PHP API in XAMPP              | http://localhost/simpleStudentApi/swagger |
 | API — list students           | http://localhost:6001/api/students |
 | API — info                    | http://localhost:6001/api/info   |
 | **API — Swagger UI**          | http://localhost:6001/swagger    |
@@ -317,6 +340,32 @@ errors under the right inputs. Tick *"skip browser validation"* to see the API's
 | Renamed / removed field | **compile error** shows every place to fix | adapts automatically; code that names a field by hand (here only `id`) would fail at runtime |
 | Best for | large apps, strong typing, refactoring | admin tools, prototypes, generic UIs |
 
+### The same API in PHP (SQL Server or MySQL)
+
+`SimpleStudentPhpApi` implements the contract of the .NET API in plain PHP — **contract-first**:
+`openapi/openapi.json` is written by hand and `Validator.php` reads the validation rules from it.
+The database is chosen in `config.php`:
+
+```php
+'driver' => 'mysql',    // XAMPP: MySQL / MariaDB   (database/mysql/create.sql)
+'driver' => 'sqlsrv',   // Docker: SQL Server        (same table as the .NET API)
+```
+
+In Docker it runs on http://localhost:6002/swagger against the SQL Server container and shares the
+`Students` table with the .NET API. In XAMPP: import `database/mysql/create.sql` in phpMyAdmin,
+copy the folder to `htdocs/simpleStudentApi`, open http://localhost/simpleStudentApi/swagger.
+Point any frontend at it by changing only its API URL. Details: `SimpleStudentPhpApi/README.md`.
+
+### Run the PHP frontend in XAMPP
+
+The folder is flat, so it can be copied directly into `htdocs`:
+
+1. Start SQL Server and the API (`docker-compose up -d simplestudentapi`) – it must answer on http://localhost:6001.
+2. Copy `SimpleStudentPhpFrontend` to `htdocs/simpleStudentClient`.
+3. Open http://localhost/simpleStudentClient/ (or `:8080`, depending on your XAMPP port).
+
+Details and troubleshooting (e.g. 403 on macOS): `SimpleStudentPhpFrontend/README.md`.
+
 ### Other technologies (optional)
 
 The same contract can generate clients for most languages with
@@ -338,7 +387,7 @@ SQL Server must run (Step 1). Then in two terminals:
 ```bash
 cd SimpleStudentApi      && dotnet run    # http://localhost:6001/swagger (Development connection string)
 cd SimpleStudentFrontend && dotnet run    # http://localhost:6011
-cd SimpleStudentPhpFrontend && php -S localhost:6021 -t public   # needs PHP 8.1+
+cd SimpleStudentPhpFrontend && php -S localhost:6021   # needs PHP 8.1+
 ```
 
 ## How Docker networking works here
@@ -374,3 +423,5 @@ why containers defined in different files can still talk to each other.
 - Documenting an API with Swagger / OpenAPI and testing it in the browser
 - Generating a typed API client from the OpenAPI contract
 - Reusing the same contract from a second technology (PHP) — at runtime, without generated code
+- Implementing one contract twice (.NET code-first, PHP contract-first) and swapping backends
+- One data-access layer for two databases (PDO: SQL Server and MySQL) chosen by configuration

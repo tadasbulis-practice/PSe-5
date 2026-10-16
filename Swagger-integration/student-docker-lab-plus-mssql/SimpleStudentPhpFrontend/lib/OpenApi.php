@@ -1,6 +1,8 @@
 <?php
 declare(strict_types=1);
 
+defined('APP_ROOT') || exit('No direct access.');
+
 /**
  * Reads the API's OpenAPI document (swagger.json) and answers questions about it:
  *   - which HTTP method and path belong to an operationId  (e.g. "CreateStudent" → POST /api/students)

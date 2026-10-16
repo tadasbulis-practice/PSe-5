@@ -1,3 +1,4 @@
+<?php defined('APP_ROOT') || exit('No direct access.'); ?>
 <?php /** @var array $info */ ?>
 <h1>API info</h1>
 <?php foreach (($info ?? []) as $k => $v): ?>

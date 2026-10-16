@@ -1,6 +1,8 @@
 <?php
 declare(strict_types=1);
 
+defined('APP_ROOT') || exit('No direct access.');
+
 /**
  * Builds HTML form inputs from an OpenAPI schema.
  * The rules come from swagger.json, which gets them from the C# attributes on the API model:
