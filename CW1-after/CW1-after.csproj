@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <RootNamespace>CW1</RootNamespace>
+  </PropertyGroup>
+
+  <!--
+    LINQ_Drills.cs is included in the build (all TODOs are now complete).
+    Remove the ItemGroup below if you want to exclude it again.
+  -->
+
+</Project>
