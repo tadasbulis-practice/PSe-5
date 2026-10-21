@@ -28,6 +28,3 @@ Then we make feature final commit and push changes to remote feature branch.
 	- Press Create Pull Request again.
 6.Code Review:
 	- to be added later by all team.
-
-# PSe-5
-PSe-5 workshops
