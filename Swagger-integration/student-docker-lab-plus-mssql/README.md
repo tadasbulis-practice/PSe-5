@@ -7,6 +7,7 @@ This repository contains five Docker services:
 - **SimpleStudentPhpFrontend** — the same Students CRUD in **PHP 8.3**, built at runtime from the Swagger document (no hard-coded URLs or fields)
 - **SimpleStudentPhpApi** — the **same API in PHP**, same contract; database **SQL Server or MySQL**, chosen in `config.php`
 - **mssqlserver** — SQL Server 2022 Express, managed separately so it survives app rebuilds
+- **SimpleStudentMobile** — **Flutter** mobile client (Android + iOS phones and tablets): Home tab + Students CRUD, calls the same API. Not a Docker service – runs on an emulator or a phone, see `SimpleStudentMobile/README.md`; Flutter setup guide: `SimpleStudentMobile/docs/Flutter-Setup_Guide_EN.md` (EN) / `Flutter-Setup_Gidas_LT.md` (LT)
 
 One contract (`swagger.json`), two APIs, two frontends, two databases — any frontend works with any API:
 
@@ -168,6 +169,7 @@ docker-compose -f docker-compose.infra.yml up -d
 | PHP frontend — API operations | http://localhost:6021/?page=operations |
 | **PHP API — Swagger UI**      | http://localhost:6002/swagger    |
 | PHP API in XAMPP              | http://localhost/simpleStudentApi/swagger |
+| **Flutter app** (Android emulator → API) | http://10.0.2.2:6001 |
 | API — list students           | http://localhost:6001/api/students |
 | API — info                    | http://localhost:6001/api/info   |
 | **API — Swagger UI**          | http://localhost:6001/swagger    |
