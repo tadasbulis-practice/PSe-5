@@ -12,6 +12,7 @@
 // * The repository keeps only the Dart code (lib/, test/, pubspec.yaml).
 //   `flutter create .` generates the native Android / iOS projects for the
 //   Flutter version installed on YOUR computer.
+// * Minimum iOS version is set to 17.0 (Xcode project + Podfile).
 // * The lab API runs on plain HTTP (http://...:6001). Android 9+ and iOS block
 //   plain HTTP by default, so we allow it (for development only!).
 
@@ -20,6 +21,7 @@ import 'dart:io';
 const org = 'lt.kaunokolegija';
 const projectName = 'simple_student_mobile';
 const appLabel = 'Simple Student';
+const iosMinVersion = '17.0';
 
 Future<void> main() async {
   if (!File('pubspec.yaml').existsSync()) {
@@ -30,6 +32,7 @@ Future<void> main() async {
   await _createPlatformFolders();
   _patchAndroidManifest();
   _patchInfoPlist();
+  _patchIosMinVersion();
 
   stdout.writeln('\nDone. Next steps:');
   stdout.writeln('  flutter devices');
@@ -151,5 +154,46 @@ void _patchInfoPlist() {
     stdout.writeln('✔ ${file.path}: HTTP + local network allowed.');
   } else {
     stdout.writeln('✔ ${file.path}: already configured.');
+  }
+}
+
+/// Minimum iOS version: ios/Runner.xcodeproj (IPHONEOS_DEPLOYMENT_TARGET)
+/// and ios/Podfile (platform :ios + the same target for every pod).
+void _patchIosMinVersion() {
+  final project = File('ios/Runner.xcodeproj/project.pbxproj');
+  if (project.existsSync()) {
+    final text = project.readAsStringSync();
+    final patched = text.replaceAll(
+      RegExp(r'IPHONEOS_DEPLOYMENT_TARGET = [0-9.]+;'),
+      'IPHONEOS_DEPLOYMENT_TARGET = $iosMinVersion;',
+    );
+    if (patched != text) {
+      project.writeAsStringSync(patched);
+      stdout.writeln('✔ ${project.path}: minimum iOS $iosMinVersion.');
+    }
+  }
+
+  final podfile = File('ios/Podfile');
+  if (!podfile.existsSync()) return;
+  var pods = podfile.readAsStringSync();
+  final original = pods;
+  pods = pods.replaceFirst(
+    RegExp(r"^#?\s*platform :ios, '[0-9.]+'", multiLine: true),
+    "platform :ios, '$iosMinVersion'",
+  );
+  if (!pods.contains("config.build_settings['IPHONEOS_DEPLOYMENT_TARGET']")) {
+    pods = pods.replaceFirst(
+      '    flutter_additional_ios_build_settings(target)\n',
+      '    flutter_additional_ios_build_settings(target)\n'
+          '    target.build_configurations.each do |config|\n'
+          "      config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '$iosMinVersion'\n"
+          '    end\n',
+    );
+  }
+  if (pods != original) {
+    podfile.writeAsStringSync(pods);
+    stdout.writeln('✔ ${podfile.path}: platform :ios, \'$iosMinVersion\'.');
+  } else {
+    stdout.writeln('✔ ${podfile.path}: already configured.');
   }
 }

@@ -187,6 +187,13 @@ Full steps: section 11.6 of the setup guide in `docs/`.
 - iOS on a real iPhone/iPad: open `ios/Runner.xcworkspace` in Xcode → **Runner → Signing & Capabilities** →
   select your **Team** (a free Apple ID works) and change the **Bundle Identifier** to something unique,
   e.g. `lt.kaunokolegija.simpleStudentMobile.vardenis`.
+- **Minimum iOS version: 17.0** – set in `ios/Runner.xcodeproj` (`IPHONEOS_DEPLOYMENT_TARGET`) and `ios/Podfile`
+  (`platform :ios, '17.0'`), so you do not need to change it in Xcode. Android: minimum API 24.
+- **iPhone/iPad – open the app from the home screen:** a debug build only starts from Flutter tooling or Xcode
+  (iOS 14+ restriction: *"debug mode Flutter apps can only be launched from Flutter tooling…"*).
+  Install a release build instead – it stays on the device and opens like a normal app:
+  `flutter run --release -d <iPhone ID> --dart-define=API_BASE_URL=http://<computer IP>:6001`
+  (no hot reload; with a free Apple account it works for 7 days).
 - iPad and Android tablets are supported out of the box (`TARGETED_DEVICE_FAMILY = "1,2"` on iOS).
 
 ## Tests
@@ -235,4 +242,7 @@ Compared with the other clients:
 | `✗ CocoaPods not installed` (flutter doctor, macOS) | `brew install cocoapods` (needs Homebrew), reopen the terminal, `flutter doctor` – see *iOS prerequisites* above |
 | `brew: command not found` / `pod: command not found` | Run the two `brew shellenv` lines above, open a new terminal; `which pod` should print `/opt/homebrew/bin/pod` |
 | `pod install` errors | `cd ios && rm -rf Pods Podfile.lock && cd ..`, then `flutter clean`, `flutter pub get`, `flutter run` |
+| iPhone: *"In iOS 14+, debug mode Flutter apps can only be launched…"* | Install a release build: `flutter run --release -d <iPhone ID>` |
+| Xcode: `could not find included file 'Generated.xcconfig'` | Run `flutter pub get` in `SimpleStudentMobile` first (it creates `ios/Flutter/Generated.xcconfig`), then open `ios/Runner.xcworkspace` |
+| iPhone app uses `http://localhost:6001` | Correct only for the iOS Simulator. On a real iPhone: **Home → Change** → `http://<computer IP>:6001`, allow **Local Network** |
 | `flutter create` says the name is invalid | Use the script – it passes `--project-name simple_student_mobile` |

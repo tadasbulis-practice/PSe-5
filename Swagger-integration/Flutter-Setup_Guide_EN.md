@@ -547,8 +547,26 @@ If the page does not open in step 2, the problem is the network, not the app:
 | Android App Bundle (Google Play) | `flutter build appbundle` | `build/app/outputs/bundle/release/app-release.aab` |
 | Install on a connected device | `flutter install` | Installs the last built APK |
 | iOS (macOS + Xcode only) | `flutter build ios --release` | Then in Xcode: **Product → Archive** |
+| Install on iPhone/iPad so it opens from the home screen | `flutter run --release -d <ID>` | The release build stays on the device; `q` in the terminal to stop |
 
 For the lab an APK is enough – you can send it and install it on a phone (allow “Install unknown apps”). The release APK is signed with the debug key, so it is not suitable for Google Play; that needs a separate signing key.
+
+### 12.1 iOS: the app does not open from the home screen
+
+When you open a **debug** build from the home screen, the iPhone shows: “In iOS 14+, debug mode Flutter apps can only be launched from Flutter tooling, IDEs with Flutter plugins or from Xcode.” This is an iOS restriction: a debug build (JIT, hot reload) only runs while a debugger is attached. No project setting can change that.
+
+The fix is to install a **release** (or profile) build. It opens like a normal app:
+
+```bash
+flutter devices
+flutter run --release -d <iPhone ID> --dart-define=API_BASE_URL=http://<computer IP>:6001
+```
+
+- After it is installed you can press `q` in the terminal – the app stays on the iPhone and opens from the home screen.
+- Release builds have no hot reload – for development keep using the normal `flutter run` (debug).
+- With a free Apple account the app works for 7 days – then install it again with the same command.
+- From Xcode: **Product → Scheme → Edit Scheme… → Run → Build Configuration → Release**, then **Run**.
+- Android has no such restriction – a debug APK opens from the home screen.
 
 ---
 
@@ -567,6 +585,8 @@ For the lab an APK is enough – you can send it and install it on a phone (allo
 | On a real device: “... Is the address http://10.0.2.2:6001 correct?” | `10.0.2.2` works only in the emulator. USB: `adb reverse tcp:6001 tcp:6001` and address `http://localhost:6001`; Wi-Fi: `http://<computer IP>:6001` (see 11.6). |
 | `Cleartext HTTP traffic not permitted` (Android) | Run `dart run tool/configure_platforms.dart` and restart the app fully (not hot reload). |
 | `App Transport Security has blocked a cleartext HTTP` (iOS) | Same script; check `ios/Runner/Info.plist`. |
+| iPhone: “In iOS 14+, debug mode Flutter apps can only be launched…” | Install a release build: `flutter run --release -d <ID>` (see 12.1). |
+| Xcode: `could not find included file 'Generated.xcconfig'` | Run `flutter pub get` in the project folder first, then open `ios/Runner.xcworkspace`. |
 | `CocoaPods not installed` (macOS) | Install it as in 9.2 (Homebrew → `brew install cocoapods`), then `flutter doctor`. |
 | iOS: “No valid code signing certificates” | Xcode → Runner → Signing & Capabilities → choose a Team, change the Bundle Identifier. |
 | Strange package / build errors after an update | `flutter clean`, then `flutter pub get` and run again. |

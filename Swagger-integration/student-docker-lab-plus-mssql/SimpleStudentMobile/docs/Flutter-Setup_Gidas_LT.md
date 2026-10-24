@@ -547,8 +547,26 @@ Jei 2 žingsnyje puslapis neatsidaro – problema ne programėlėje, o tinkle:
 | Android App Bundle (Google Play) | `flutter build appbundle` | `build/app/outputs/bundle/release/app-release.aab` |
 | Įdiegti į prijungtą įrenginį | `flutter install` | Įdiegia paskutinį sukurtą APK |
 | iOS (tik macOS + Xcode) | `flutter build ios --release` | Toliau Xcode: **Product → Archive** |
+| Įdiegti į iPhone/iPad, kad atsidarytų iš pradžios ekrano | `flutter run --release -d <ID>` | Release versija lieka įrenginyje; terminale `q` – baigti |
 
 Laboratoriniam darbui pakanka APK – jį galima nusiųsti ir įdiegti telefone (reikia leisti „Install unknown apps“). Release APK pasirašomas debug raktu, todėl Google Play netinka; tam reikia atskiro pasirašymo rakto.
+
+### 12.1 iOS: programėlė neatsidaro iš pradžios ekrano
+
+Paleidus **debug** versiją iš pradžios ekrano, iPhone rodo: „In iOS 14+, debug mode Flutter apps can only be launched from Flutter tooling, IDEs with Flutter plugins or from Xcode.“ Tai iOS apribojimas: debug versija (JIT, hot reload) veikia tik prijungus derinimo įrankį. Projekto nustatymais to pakeisti negalima.
+
+Sprendimas – įdiegti **release** (arba profile) versiją. Ji atsidaro kaip įprasta programėlė:
+
+```bash
+flutter devices
+flutter run --release -d <iPhone ID> --dart-define=API_BASE_URL=http://<kompiuterio IP>:6001
+```
+
+- Įdiegus terminale galima spausti `q` – programėlė lieka iPhone ir atsidaro iš pradžios ekrano.
+- Release versijoje nėra hot reload – kūrimui naudokite įprastą `flutter run` (debug).
+- Su nemokama Apple paskyra programėlė veikia 7 dienas – po to įdiekite iš naujo ta pačia komanda.
+- Per Xcode: **Product → Scheme → Edit Scheme… → Run → Build Configuration → Release**, tada **Run**.
+- Android šio apribojimo neturi – debug APK atsidaro iš pradžios ekrano.
 
 ---
 
@@ -567,6 +585,8 @@ Laboratoriniam darbui pakanka APK – jį galima nusiųsti ir įdiegti telefone 
 | Tikrame įrenginyje: „... Is the address http://10.0.2.2:6001 correct?“ | `10.0.2.2` veikia tik emuliatoriuje. USB: `adb reverse tcp:6001 tcp:6001` ir adresas `http://localhost:6001`; Wi-Fi: `http://<kompiuterio IP>:6001` (11.6 sk.). |
 | `Cleartext HTTP traffic not permitted` (Android) | Paleiskite `dart run tool/configure_platforms.dart` ir programą paleiskite iš naujo (ne hot reload). |
 | `App Transport Security has blocked a cleartext HTTP` (iOS) | Tas pats skriptas; patikrinkite `ios/Runner/Info.plist`. |
+| iPhone: „In iOS 14+, debug mode Flutter apps can only be launched…“ | Įdiekite release versiją: `flutter run --release -d <ID>` (12.1 sk.). |
+| Xcode: `could not find included file 'Generated.xcconfig'` | Pirma paleiskite `flutter pub get` projekto aplanke, tada atidarykite `ios/Runner.xcworkspace`. |
 | `CocoaPods not installed` (macOS) | Įdiekite pagal 9.2 sk. (Homebrew → `brew install cocoapods`), tada `flutter doctor`. |
 | iOS: „No valid code signing certificates“ | Xcode → Runner → Signing & Capabilities → pasirinkite Team, pakeiskite Bundle Identifier. |
 | Keisti paketų / build klaidos po atnaujinimo | `flutter clean`, tada `flutter pub get` ir paleisti iš naujo. |
