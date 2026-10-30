@@ -1,21 +1,22 @@
-# Student Docker Lab (.NET 8 + MSSQL + PHP + MySQL)
+# Student Docker Lab (.NET 8 + MSSQL + PHP + Python + MySQL)
 
-This repository contains five Docker services:
+This repository contains six Docker services:
 
 - **SimpleStudentApi** — .NET 8 Minimal API with full CRUD, backed by SQL Server, documented with **Swagger / OpenAPI**
 - **SimpleStudentFrontend** — .NET 8 Razor Pages app that calls the API through a **typed client generated from Swagger**
 - **SimpleStudentPhpFrontend** — the same Students CRUD in **PHP 8.3**, built at runtime from the Swagger document (no hard-coded URLs or fields)
 - **SimpleStudentPhpApi** — the **same API in PHP**, same contract; database **SQL Server or MySQL**, chosen in `config.php`
+- **SimpleStudentPythonApi** — the **same API in Python (FastAPI)**, same contract; database **SQL Server, MySQL or SQLite**, chosen with `DB_DRIVER`
 - **mssqlserver** — SQL Server 2022 Express, managed separately so it survives app rebuilds
 - **SimpleStudentMobile** — **Flutter** mobile client (Android + iOS phones and tablets): Home tab + Students CRUD, calls the same API. Not a Docker service – runs on an emulator or a phone, see `SimpleStudentMobile/README.md`; Flutter setup guide: `SimpleStudentMobile/docs/Flutter-Setup_Guide_EN.md` (EN) / `Flutter-Setup_Gidas_LT.md` (LT)
 
-One contract (`swagger.json`), two APIs, two frontends, two databases — any frontend works with any API:
+One contract (`swagger.json`), three APIs, two frontends, three databases — any frontend works with any API:
 
-| | .NET API (6001) | PHP API (6002 / XAMPP) |
-|---|---|---|
-| .NET frontend (6011) | ✔ default | ✔ change `ApiSettings__BaseUrl` |
-| PHP frontend (6021 / XAMPP) | ✔ default | ✔ change `apiBaseUrl` in config.php |
-| Database | SQL Server | SQL Server (Docker) or MySQL (XAMPP) |
+| | .NET API (6001) | PHP API (6002 / XAMPP) | Python API (6003 / local) |
+|---|---|---|---|
+| .NET frontend (6011) | ✔ default | ✔ change `ApiSettings__BaseUrl` | ✔ change `ApiSettings__BaseUrl` |
+| PHP frontend (6021 / XAMPP) | ✔ default | ✔ change `apiBaseUrl` in config.php | ✔ change `apiBaseUrl` in config.php |
+| Database | SQL Server | SQL Server (Docker) or MySQL (XAMPP) | SQL Server (Docker), MySQL (XAMPP) or SQLite |
 
 ---
 
@@ -40,6 +41,7 @@ One contract (`swagger.json`), two APIs, two frontends, two databases — any fr
               SQL Server container  <-->  mssql_data volume (persistent)
                         |
               PHP API container (SimpleStudentPhpApi, :6002)  ── same contract, same table
+              Python API container (SimpleStudentPythonApi, :6003)  ── same contract, same table
 ```
 
 In XAMPP the PHP API uses MySQL instead:
@@ -169,6 +171,7 @@ docker-compose -f docker-compose.infra.yml up -d
 | PHP frontend — API operations | http://localhost:6021/?page=operations |
 | **PHP API — Swagger UI**      | http://localhost:6002/swagger    |
 | PHP API in XAMPP              | http://localhost/simpleStudentApi/swagger |
+| **Python API — Swagger UI**   | http://localhost:6003/swagger    |
 | **Flutter app** (Android emulator → API) | http://10.0.2.2:6001 |
 | API — list students           | http://localhost:6001/api/students |
 | API — info                    | http://localhost:6001/api/info   |
@@ -357,6 +360,17 @@ In Docker it runs on http://localhost:6002/swagger against the SQL Server contai
 `Students` table with the .NET API. In XAMPP: import `database/mysql/create.sql` in phpMyAdmin,
 copy the folder to `htdocs/simpleStudentApi`, open http://localhost/simpleStudentApi/swagger.
 Point any frontend at it by changing only its API URL. Details: `SimpleStudentPhpApi/README.md`.
+
+### The same API in Python (SQL Server, MySQL or SQLite)
+
+`SimpleStudentPythonApi` implements the same contract with **FastAPI** — **code-first**, like the .NET API:
+the Pydantic models in `models.py` generate `swagger.json`. FastAPI's defaults differ from .NET
+(422 instead of 400, `snake_case`, `/docs`), and `problems.py` / `main.py` show how to align them with the contract.
+The database is chosen with `DB_DRIVER` (`sqlsrv`, `mysql` or `sqlite`).
+
+In Docker it runs on http://localhost:6003/swagger and shares the `Students` table with the .NET and PHP APIs.
+Locally (next to XAMPP): `pip install -r requirements.txt`, `python main.py`, open http://localhost:6003/swagger.
+Details (EN / LT): `SimpleStudentPythonApi/README.md`, `SimpleStudentPythonApi/README_LT.md`.
 
 ### Run the PHP frontend in XAMPP
 

@@ -73,3 +73,29 @@ services:
       - student-net
     depends_on:
       - simplestudentapi                # the .NET API creates StudentDb + Students on start-up
+
+  # The same API contract implemented in Python (FastAPI). Database chosen with DB_DRIVER (sqlsrv | mysql | sqlite).
+  simplestudentpythonapi:
+    build:
+      context: ./SimpleStudentPythonApi
+    container_name: simplestudentpythonapi
+    environment:
+      DB_DRIVER: sqlsrv                 # SQL Server container (same database as the .NET and PHP APIs)
+      DB_HOST: mssqlserver
+      DB_PORT: "1433"
+      DB_NAME: StudentDb
+      DB_USER: sa
+      DB_PASSWORD: "1Secure*Password1"
+      APP_ENVIRONMENT: Docker
+      # --- or use the MySQL of XAMPP on your computer instead (run database/mysql/create-user.sql first):
+      # DB_DRIVER: mysql
+      # DB_HOST: host.docker.internal
+      # DB_PORT: "3306"
+      # DB_USER: student_api
+      # DB_PASSWORD: "StudentApi*2026"
+    ports:
+      - "6003:8080"
+    networks:
+      - student-net
+    depends_on:
+      - simplestudentapi                # the .NET API creates StudentDb + Students on start-up
