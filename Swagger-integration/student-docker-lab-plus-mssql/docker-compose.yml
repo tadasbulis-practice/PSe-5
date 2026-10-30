@@ -99,3 +99,38 @@ services:
       - student-net
     depends_on:
       - simplestudentapi                # the .NET API creates StudentDb + Students on start-up
+
+  # Frontend in Blazor, render mode Interactive Server: components run in this container,
+  # the browser gets UI updates over SignalR. The SERVER calls the APIs → Docker service names.
+  simplestudentblazorserver:
+    build:
+      context: ./SimpleStudentBlazorServer
+    container_name: simplestudentblazorserver
+    environment:
+      ASPNETCORE_HTTP_PORTS: 8080
+      Backends__0__Name: ".NET"
+      Backends__0__BaseUrl: http://simplestudentapi:8080           # container → container (server side)
+      Backends__0__PublicUrl: http://localhost:6001                # browser → API (Swagger link)
+      Backends__1__Name: "PHP"
+      Backends__1__BaseUrl: http://simplestudentphpapi
+      Backends__1__PublicUrl: http://localhost:6002
+      Backends__2__Name: "Python"
+      Backends__2__BaseUrl: http://simplestudentpythonapi:8080
+      Backends__2__PublicUrl: http://localhost:6003
+    ports:
+      - "6031:8080"
+    networks:
+      - student-net
+    depends_on:
+      - simplestudentapi
+
+  # Frontend in Blazor WebAssembly: nginx only serves static files, the C# code runs in the BROWSER
+  # and calls the APIs directly at localhost:6001/6002/6003 (see wwwroot/appsettings.json) – needs CORS.
+  simplestudentblazorwasm:
+    build:
+      context: ./SimpleStudentBlazorWasm
+    container_name: simplestudentblazorwasm
+    ports:
+      - "6041:80"
+    networks:
+      - student-net

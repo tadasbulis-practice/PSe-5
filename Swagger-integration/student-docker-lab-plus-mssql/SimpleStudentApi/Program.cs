@@ -31,6 +31,18 @@ builder.Services.AddSwaggerGen(options =>
     options.SupportNonNullableReferenceTypes();
 });
 
+// ── CORS ──────────────────────────────────────────────────────────────────────
+// Lets JavaScript / Blazor WebAssembly apps on OTHER addresses (e.g. http://localhost:6041)
+// call this API directly from the browser. Server-side frontends (Razor Pages, Blazor Server, PHP)
+// do not need it – the browser only enforces CORS for its own requests.
+// For a real public API list the allowed origins instead of AllowAnyOrigin().
+builder.Services.AddCors(options =>
+    options.AddDefaultPolicy(policy => policy
+        .AllowAnyOrigin()
+        .AllowAnyHeader()
+        .AllowAnyMethod()
+        .WithExposedHeaders("Location")));
+
 var app = builder.Build();
 
 // Auto-create DB on startup (with retry for slow MSSQL boot)
@@ -60,6 +72,8 @@ using (var scope = app.Services.CreateScope())
 // NOTE: enabled in every environment so it also works inside Docker (Production).
 //       In a real production system you would usually wrap this in
 //       if (app.Environment.IsDevelopment()) { ... } or protect it.
+app.UseCors();
+
 app.UseSwagger();
 app.UseSwaggerUI(options =>
 {

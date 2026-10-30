@@ -1,21 +1,25 @@
-# Student Docker Lab (.NET 8 + MSSQL + PHP + Python + MySQL)
+# Student Docker Lab (.NET 8 + Blazor + MSSQL + PHP + Python + MySQL)
 
-This repository contains six Docker services:
+This repository contains eight Docker services:
 
 - **SimpleStudentApi** — .NET 8 Minimal API with full CRUD, backed by SQL Server, documented with **Swagger / OpenAPI**
 - **SimpleStudentFrontend** — .NET 8 Razor Pages app that calls the API through a **typed client generated from Swagger**
+- **SimpleStudentBlazorServer** — the same Students CRUD in **Blazor (Interactive Server)**: components run on the server, the browser gets UI updates over SignalR; API switcher .NET / PHP / Python
+- **SimpleStudentBlazorWasm** — the same Students CRUD in **Blazor WebAssembly**: the C# code runs in the browser and calls the API directly (CORS); served by nginx
 - **SimpleStudentPhpFrontend** — the same Students CRUD in **PHP 8.3**, built at runtime from the Swagger document (no hard-coded URLs or fields)
 - **SimpleStudentPhpApi** — the **same API in PHP**, same contract; database **SQL Server or MySQL**, chosen in `config.php`
 - **SimpleStudentPythonApi** — the **same API in Python (FastAPI)**, same contract; database **SQL Server, MySQL or SQLite**, chosen with `DB_DRIVER`
 - **mssqlserver** — SQL Server 2022 Express, managed separately so it survives app rebuilds
 - **SimpleStudentMobile** — **Flutter** mobile client (Android + iOS phones and tablets): Home tab + Students CRUD, calls the same API. Not a Docker service – runs on an emulator or a phone, see `SimpleStudentMobile/README.md`; Flutter setup guide: `SimpleStudentMobile/docs/Flutter-Setup_Guide_EN.md` (EN) / `Flutter-Setup_Gidas_LT.md` (LT)
 
-One contract (`swagger.json`), three APIs, two frontends, three databases — any frontend works with any API:
+One contract (`swagger.json`), three APIs, four web frontends, three databases — any frontend works with any API:
 
 | | .NET API (6001) | PHP API (6002 / XAMPP) | Python API (6003 / local) |
 |---|---|---|---|
 | .NET frontend (6011) | ✔ default | ✔ change `ApiSettings__BaseUrl` | ✔ change `ApiSettings__BaseUrl` |
 | PHP frontend (6021 / XAMPP) | ✔ default | ✔ change `apiBaseUrl` in config.php | ✔ change `apiBaseUrl` in config.php |
+| Blazor Server (6031) | ✔ API switcher | ✔ API switcher | ✔ API switcher |
+| Blazor WebAssembly (6041) | ✔ API switcher (CORS) | ✔ API switcher (CORS) | ✔ API switcher (CORS) |
 | Database | SQL Server | SQL Server (Docker) or MySQL (XAMPP) | SQL Server (Docker), MySQL (XAMPP) or SQLite |
 
 ---
@@ -172,6 +176,8 @@ docker-compose -f docker-compose.infra.yml up -d
 | **PHP API — Swagger UI**      | http://localhost:6002/swagger    |
 | PHP API in XAMPP              | http://localhost/simpleStudentApi/swagger |
 | **Python API — Swagger UI**   | http://localhost:6003/swagger    |
+| **Blazor Server frontend**    | http://localhost:6031            |
+| **Blazor WebAssembly frontend** | http://localhost:6041          |
 | **Flutter app** (Android emulator → API) | http://10.0.2.2:6001 |
 | API — list students           | http://localhost:6001/api/students |
 | API — info                    | http://localhost:6001/api/info   |
@@ -371,6 +377,23 @@ The database is chosen with `DB_DRIVER` (`sqlsrv`, `mysql` or `sqlite`).
 In Docker it runs on http://localhost:6003/swagger and shares the `Students` table with the .NET and PHP APIs.
 Locally (next to XAMPP): `pip install -r requirements.txt`, `python main.py`, open http://localhost:6003/swagger.
 Details (EN / LT): `SimpleStudentPythonApi/README.md`, `SimpleStudentPythonApi/README_LT.md`.
+
+### The same frontend in Blazor (Server and WebAssembly)
+
+Two more .NET frontends use the same generated client and the same **Blazor components**; only the place
+where the C# code runs is different:
+
+| | Razor Pages (6011) | Blazor Server (6031) | Blazor WebAssembly (6041) |
+|---|---|---|---|
+| C# UI code runs | on the server, per request | on the server, per browser tab (SignalR) | in the browser (WebAssembly) |
+| Who calls the API | server | server | **browser** – the API needs **CORS** |
+| Page updates | full page reload | only changed parts | only changed parts |
+| Hosting | ASP.NET Core | ASP.NET Core | any static web server (nginx) |
+
+Both Blazor apps have an **API switcher** (.NET / PHP / Python), live search, validation while typing and
+API errors next to the form fields. For WebAssembly the .NET API now allows CORS (`AddCors()` /
+`UseCors()` in `SimpleStudentApi/Program.cs`); the PHP and Python APIs already did.
+Details (EN / LT): `SimpleStudentBlazorServer/README.md`, `SimpleStudentBlazorWasm/README.md` (+ `README_LT.md`).
 
 ### Run the PHP frontend in XAMPP
 
