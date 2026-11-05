@@ -83,6 +83,10 @@ phpstan.neon.local
 .env.*
 !.env.example
 
+# ---------- Node.js ----------
+node_modules/
+npm-debug.log*
+
 # ---------- Flutter / Dart ----------
 .dart_tool/
 .packages

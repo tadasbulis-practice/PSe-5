@@ -100,6 +100,44 @@ services:
     depends_on:
       - simplestudentapi                # the .NET API creates StudentDb + Students on start-up
 
+  # The same API contract implemented in Node.js (Express). Database chosen with DB_DRIVER (sqlsrv | postgres).
+  # Instance 1: SQL Server container (same database as the .NET, PHP and Python APIs)
+  simplestudentnodeapi:
+    build:
+      context: ./SimpleStudentNodeApi
+    container_name: simplestudentnodeapi
+    environment:
+      DB_DRIVER: sqlsrv
+      DB_HOST: mssqlserver
+      DB_PORT: "1433"
+      DB_NAME: StudentDb
+      DB_USER: sa
+      DB_PASSWORD: "1Secure*Password1"
+      APP_ENVIRONMENT: Docker
+    ports:
+      - "6004:8080"
+    networks:
+      - student-net
+
+  # Instance 2: the SAME image, only the configuration is different → PostgreSQL container
+  # (start it first: docker-compose -f docker-compose.postgres.yml up -d)
+  simplestudentnodeapi-pg:
+    build:
+      context: ./SimpleStudentNodeApi
+    container_name: simplestudentnodeapi-pg
+    environment:
+      DB_DRIVER: postgres
+      DB_HOST: postgres
+      DB_PORT: "5432"
+      DB_NAME: StudentDb
+      DB_USER: postgres
+      DB_PASSWORD: "1Secure*Password1"
+      APP_ENVIRONMENT: Docker
+    ports:
+      - "6005:8080"
+    networks:
+      - student-net
+
   # Frontend in Blazor, render mode Interactive Server: components run in this container,
   # the browser gets UI updates over SignalR. The SERVER calls the APIs → Docker service names.
   simplestudentblazorserver:
@@ -120,6 +158,12 @@ services:
       Backends__3__Name: "PHP (XAMPP)"
       Backends__3__BaseUrl: http://host.docker.internal:8080/simpleStudentApi/   # container → XAMPP on your computer
       Backends__3__PublicUrl: http://localhost:8080/simpleStudentApi/
+      Backends__4__Name: "Node.js (SQL Server)"
+      Backends__4__BaseUrl: http://simplestudentnodeapi:8080
+      Backends__4__PublicUrl: http://localhost:6004
+      Backends__5__Name: "Node.js (PostgreSQL)"
+      Backends__5__BaseUrl: http://simplestudentnodeapi-pg:8080
+      Backends__5__PublicUrl: http://localhost:6005
     extra_hosts:
       - "host.docker.internal:host-gateway"   # needed on Linux; Docker Desktop (macOS/Windows) has it built in
     ports:

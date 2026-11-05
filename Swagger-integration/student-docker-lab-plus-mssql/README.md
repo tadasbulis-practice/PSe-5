@@ -1,6 +1,6 @@
-# Student Docker Lab (.NET 8 + Blazor + MSSQL + PHP + Python + MySQL)
+# Student Docker Lab (.NET 8 + Blazor + MSSQL + PostgreSQL + PHP + Python + Node.js + MySQL)
 
-This repository contains eight Docker services:
+This repository contains these Docker services:
 
 - **SimpleStudentApi** — .NET 8 Minimal API with full CRUD, backed by SQL Server, documented with **Swagger / OpenAPI**
 - **SimpleStudentFrontend** — .NET 8 Razor Pages app that calls the API through a **typed client generated from Swagger**
@@ -9,18 +9,20 @@ This repository contains eight Docker services:
 - **SimpleStudentPhpFrontend** — the same Students CRUD in **PHP 8.3**, built at runtime from the Swagger document (no hard-coded URLs or fields)
 - **SimpleStudentPhpApi** — the **same API in PHP**, same contract; database **SQL Server or MySQL**, chosen in `config.php`
 - **SimpleStudentPythonApi** — the **same API in Python (FastAPI)**, same contract; database **SQL Server, MySQL or SQLite**, chosen with `DB_DRIVER`
+- **SimpleStudentNodeApi** — the **same API in Node.js (Express)**, same contract (written by hand, contract-first); database **SQL Server or PostgreSQL**, chosen with `DB_DRIVER`. Runs twice in Docker: on SQL Server (6004) and on PostgreSQL (6005)
 - **mssqlserver** — SQL Server 2022 Express, managed separately so it survives app rebuilds
+- **postgres** — PostgreSQL 17, the second database server (`docker-compose.postgres.yml`), also used in the cloud through **Supabase**
 - **SimpleStudentMobile** — **Flutter** mobile client (Android + iOS phones and tablets): Home tab + Students CRUD, calls the same API. Not a Docker service – runs on an emulator or a phone, see `SimpleStudentMobile/README.md`; Flutter setup guide: `SimpleStudentMobile/docs/Flutter-Setup_Guide_EN.md` (EN) / `Flutter-Setup_Gidas_LT.md` (LT)
 
-One contract (`swagger.json`), three APIs, four web frontends, three databases — any frontend works with any API:
+One contract (`swagger.json`), four APIs, four web frontends, four databases — any frontend works with any API:
 
-| | .NET API (6001) | PHP API (6002 / XAMPP) | Python API (6003 / local) |
-|---|---|---|---|
-| .NET frontend (6011) | ✔ default | ✔ change `ApiSettings__BaseUrl` | ✔ change `ApiSettings__BaseUrl` |
-| PHP frontend (6021 / XAMPP) | ✔ default | ✔ change `apiBaseUrl` in config.php | ✔ change `apiBaseUrl` in config.php |
-| Blazor Server (6031) | ✔ API switcher | ✔ API switcher | ✔ API switcher |
-| Blazor WebAssembly (6041) | ✔ API switcher (CORS) | ✔ API switcher (CORS) | ✔ API switcher (CORS) |
-| Database | SQL Server | SQL Server (Docker) or MySQL (XAMPP) | SQL Server (Docker), MySQL (XAMPP) or SQLite |
+| | .NET API (6001) | PHP API (6002 / XAMPP) | Python API (6003 / local) | Node.js API (6004 / 6005 / npm start) |
+|---|---|---|---|---|
+| .NET frontend (6011) | ✔ default | ✔ change `ApiSettings__BaseUrl` | ✔ change `ApiSettings__BaseUrl` | ✔ change `ApiSettings__BaseUrl` |
+| PHP frontend (6021 / XAMPP) | ✔ default | ✔ change `apiBaseUrl` in config.php | ✔ change `apiBaseUrl` in config.php | ✔ change `apiBaseUrl` in config.php |
+| Blazor Server (6031) | ✔ API switcher | ✔ API switcher | ✔ API switcher | ✔ API switcher |
+| Blazor WebAssembly (6041) | ✔ API switcher (CORS) | ✔ API switcher (CORS) | ✔ API switcher (CORS) | ✔ API switcher (CORS) |
+| Database | SQL Server | SQL Server (Docker) or MySQL (XAMPP) | SQL Server (Docker), MySQL (XAMPP) or SQLite | SQL Server (6004) or PostgreSQL / Supabase (6005) |
 
 ---
 
@@ -62,6 +64,9 @@ is never lost when rebuilding the app.
 ```
 .
 ├── docker-compose.infra.yml     <- SQL Server (start once, leave running)
+├── docker-compose.postgres.yml  <- PostgreSQL (optional, start once, leave running)
+├── database/postgres/create.sql <- PostgreSQL table + demo data (Docker and Supabase)
+├── deploy/                      <- CI/CD workflows + cloud deployment guides
 ├── docker-compose.yml           <- both APIs + both frontends (rebuild freely)
 ├── SimpleStudentApi/
 │   ├── Data/
@@ -129,6 +134,16 @@ docker logs mssqlserver --tail 20
 
 Look for: `SQL Server is now ready for client connections.`
 
+### Step 1b — PostgreSQL (optional, for the Node.js API on port 6005)
+
+```bash
+docker-compose -f docker-compose.postgres.yml up -d --build
+```
+
+Native image (no Rosetta needed). On the first start it runs `database/postgres/create.sql`
+(table `Students` + 3 demo students). Connect with psql / DBeaver / pgAdmin / VS Code:
+`localhost:5432`, database `StudentDb`, user `postgres`, password `1Secure*Password1`.
+
 ### Step 2 — Build and start the app
 
 ```bash
@@ -176,6 +191,9 @@ docker-compose -f docker-compose.infra.yml up -d
 | **PHP API — Swagger UI**      | http://localhost:6002/swagger    |
 | PHP API in XAMPP              | http://localhost/simpleStudentApi/swagger |
 | **Python API — Swagger UI**   | http://localhost:6003/swagger    |
+| **Node.js API (SQL Server) — Swagger UI** | http://localhost:6004/swagger |
+| **Node.js API (PostgreSQL) — Swagger UI** | http://localhost:6005/swagger |
+| PostgreSQL (host access)      | localhost:5432 (user postgres)   |
 | **Blazor Server frontend**    | http://localhost:6031            |
 | **Blazor WebAssembly frontend** | http://localhost:6041          |
 | **Flutter app** (Android emulator → API) | http://10.0.2.2:6001 |
@@ -378,6 +396,24 @@ In Docker it runs on http://localhost:6003/swagger and shares the `Students` tab
 Locally (next to XAMPP): `pip install -r requirements.txt`, `python main.py`, open http://localhost:6003/swagger.
 Details (EN / LT): `SimpleStudentPythonApi/README.md`, `SimpleStudentPythonApi/README_LT.md`.
 
+### The same API in Node.js (SQL Server or PostgreSQL)
+
+`SimpleStudentNodeApi` implements the same contract with **Express** — **contract-first**, like the PHP API:
+`openapi/openapi.json` is served to Swagger UI (`swagger-ui-express`) and `validator.js` reads the validation rules from it.
+The database is chosen with `DB_DRIVER` (`sqlsrv` or `postgres`); `src/db/sqlsrv.js` and `src/db/postgres.js`
+show the same SQL in both dialects.
+
+Docker starts **the same image twice** with different settings: http://localhost:6004/swagger (SQL Server, shares the
+`Students` table with the other APIs) and http://localhost:6005/swagger (PostgreSQL container).
+Without Docker: `npm install`, `cp .env.example .env`, `npm start` → http://localhost:6004/swagger.
+Details (EN / LT): `SimpleStudentNodeApi/README.md`, `SimpleStudentNodeApi/README_LT.md`.
+
+## Deploying to the cloud (Test and Production)
+
+`deploy/` contains GitHub Actions workflows and step-by-step guides: Supabase (PostgreSQL), Render (Docker images),
+classic gitflow — `release/vX.Y.Z` → **Test**, tag `vX.Y.Z` on `main` → **Production**.
+Start with `deploy/DEPLOYMENT.md` (EN) / `deploy/DEPLOYMENT_LT.md` (LT).
+
 ### The same frontend in Blazor (Server and WebAssembly)
 
 Two more .NET frontends use the same generated client and the same **Blazor components**; only the place
@@ -427,6 +463,7 @@ SQL Server must run (Step 1). Then in two terminals:
 cd SimpleStudentApi      && dotnet run    # http://localhost:6001/swagger (Development connection string)
 cd SimpleStudentFrontend && dotnet run    # http://localhost:6011
 cd SimpleStudentPhpFrontend && php -S localhost:6021   # needs PHP 8.1+
+cd SimpleStudentNodeApi && npm install && npm start  # needs Node.js 18+, http://localhost:6004/swagger
 ```
 
 ## How Docker networking works here
@@ -464,3 +501,5 @@ why containers defined in different files can still talk to each other.
 - Reusing the same contract from a second technology (PHP) — at runtime, without generated code
 - Implementing one contract twice (.NET code-first, PHP contract-first) and swapping backends
 - One data-access layer for two databases (PDO: SQL Server and MySQL) chosen by configuration
+- One Docker image, two configurations (Node.js API on SQL Server and on PostgreSQL)
+- CI/CD with GitHub Actions and gitflow: release branch → Test, release tag on main → Production
