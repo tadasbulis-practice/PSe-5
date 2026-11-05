@@ -117,6 +117,11 @@ services:
       Backends__2__Name: "Python"
       Backends__2__BaseUrl: http://simplestudentpythonapi:8080
       Backends__2__PublicUrl: http://localhost:6003
+      Backends__3__Name: "PHP (XAMPP)"
+      Backends__3__BaseUrl: http://host.docker.internal:8080/simpleStudentApi/   # container → XAMPP on your computer
+      Backends__3__PublicUrl: http://localhost:8080/simpleStudentApi/
+    extra_hosts:
+      - "host.docker.internal:host-gateway"   # needed on Linux; Docker Desktop (macOS/Windows) has it built in
     ports:
       - "6031:8080"
     networks:

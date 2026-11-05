@@ -53,7 +53,17 @@ public class ApiConnection
     {
         // IHttpClientFactory manages the connections; we only set the base address.
         var http = _httpClientFactory.CreateClient();
-        http.BaseAddress = new Uri(backend.BaseUrl);
+        http.BaseAddress = ToBaseUri(backend.BaseUrl);
         return new StudentApiClient(http);
     }
+
+    /// <summary>
+    /// The generated client uses relative paths ("api/students"). With a sub-folder base address
+    /// (XAMPP: http://localhost:8080/simpleStudentApi) the trailing "/" is required, otherwise
+    /// .NET replaces the last segment: .../simpleStudentApi + api/students → .../api/students.
+    /// </summary>
+    public static Uri ToBaseUri(string url) => new(url.EndsWith('/') ? url : url + "/");
+
+    /// <summary>Swagger UI of the selected API (works with and without a sub-folder).</summary>
+    public string SwaggerUrl => Current.PublicUrl.TrimEnd('/') + "/swagger";
 }

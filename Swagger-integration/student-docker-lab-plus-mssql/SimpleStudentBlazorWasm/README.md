@@ -11,7 +11,7 @@ typed client (generated from `swagger.json`) as `SimpleStudentBlazorServer`, and
                  1. downloads index.html, app .dll files and the .NET runtime (.wasm)
 Browser ◄──────────────────────────────────────────── nginx container (static files only, no .NET)
 
-Browser ──HTTP + JSON (fetch)──► API (.NET :6001 / PHP :6002 / Python :6003)
+Browser ──HTTP + JSON (fetch)──► API (.NET :6001 / PHP :6002 / Python :6003 / PHP in XAMPP :8080/simpleStudentApi)
    ▲  2. the C# code runs HERE and calls the API directly – the API must allow it with CORS
 ```
 
@@ -73,8 +73,10 @@ The APIs must be running; the addresses are in `wwwroot/appsettings.json`.
 dotnet run
 ```
 
-Open **http://localhost:6041**. A PHP API in XAMPP runs at another address — change its `Url` in
-`wwwroot/appsettings.json`, e.g. `http://localhost/simpleStudentApi`.
+Open **http://localhost:6041**. The **PHP (XAMPP)** option calls `http://localhost:8080/simpleStudentApi/`
+straight from the browser (the PHP API already sends CORS headers). If your XAMPP Apache uses another
+port or folder, change that `Url` in `wwwroot/appsettings.json` (e.g. `http://localhost/simpleStudentApi/`
+for port 80); in Docker rebuild the image afterwards, because the file is baked into it.
 
 ## Troubleshooting
 

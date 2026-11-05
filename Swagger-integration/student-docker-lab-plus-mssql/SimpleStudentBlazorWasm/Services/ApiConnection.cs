@@ -34,7 +34,20 @@ public class ApiConnection
     /// <summary>Raised after the backend was switched – pages reload their data.</summary>
     public event Action? Changed;
 
-    public IStudentApiClient Client => _client ??= new StudentApiClient(new HttpClient { BaseAddress = new Uri(Current.Url) });
+    public IStudentApiClient Client => _client ??= new StudentApiClient(new HttpClient { BaseAddress = ToBaseUri(Current.Url) });
+
+    /// <summary>
+    /// The generated client uses relative paths ("api/students"). With a sub-folder base address
+    /// (XAMPP: http://localhost:8080/simpleStudentApi) the trailing "/" is required, otherwise
+    /// .NET replaces the last segment: .../simpleStudentApi + api/students → .../api/students.
+    /// </summary>
+    public static Uri ToBaseUri(string url) => new(url.EndsWith('/') ? url : url + "/");
+
+    /// <summary>Base address without the trailing "/" – for links and text on the pages.</summary>
+    public string CurrentUrl => Current.Url.TrimEnd('/');
+
+    /// <summary>Swagger UI of the selected API (works with and without a sub-folder).</summary>
+    public string SwaggerUrl => CurrentUrl + "/swagger";
 
     public void Select(string name)
     {

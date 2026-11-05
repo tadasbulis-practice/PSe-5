@@ -11,7 +11,7 @@ English: [README.md](README.md).
                  1. atsisiunčia index.html, programos .dll failus ir .NET runtime (.wasm)
 Naršyklė ◄─────────────────────────────────────────── nginx konteineris (tik statiniai failai, be .NET)
 
-Naršyklė ──HTTP + JSON (fetch)──► API (.NET :6001 / PHP :6002 / Python :6003)
+Naršyklė ──HTTP + JSON (fetch)──► API (.NET :6001 / PHP :6002 / Python :6003 / PHP XAMPP'e :8080/simpleStudentApi)
    ▲  2. C# kodas vykdomas ČIA ir kviečia API tiesiogiai – API turi tai leisti per CORS
 ```
 
@@ -73,8 +73,10 @@ API turi veikti; adresai nurodyti `wwwroot/appsettings.json`.
 dotnet run
 ```
 
-Atidarykite **http://localhost:6041**. XAMPP'e PHP API veikia kitu adresu: pakeiskite jo `Url` faile
-`wwwroot/appsettings.json`, pvz. `http://localhost/simpleStudentApi`.
+Atidarykite **http://localhost:6041**. Pasirinkimas **PHP (XAMPP)** kviečia `http://localhost:8080/simpleStudentApi/`
+tiesiai iš naršyklės (PHP API jau siunčia CORS antraštes). Jei jūsų XAMPP Apache naudoja kitą prievadą ar
+katalogą, pakeiskite tą `Url` faile `wwwroot/appsettings.json` (pvz. `http://localhost/simpleStudentApi/`
+prievadui 80); Docker'yje po to perbuildinkite image'ą, nes failas įdedamas į jį.
 
 ## Problemų sprendimas
 

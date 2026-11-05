@@ -60,19 +60,22 @@ docker-compose up --build
 
 Open **http://localhost:6031**. In `docker-compose.yml` the backend addresses are Docker service names
 (`Backends__0__BaseUrl: http://simplestudentapi:8080`, …), because the Blazor server calls the APIs
-inside the Docker network.
+inside the Docker network. The fourth option, **PHP (XAMPP)**, is the PHP API in XAMPP on your own
+computer: the container reaches it as `http://host.docker.internal:8080/simpleStudentApi/`.
 
 ## Run locally (dotnet run)
 
 The APIs must be running (Docker, XAMPP or `python main.py`); the defaults in `appsettings.json` are
-`localhost:6001` (.NET), `localhost:6002` (PHP) and `localhost:6003` (Python).
+`localhost:6001` (.NET), `localhost:6002` (PHP), `localhost:6003` (Python) and
+`localhost:8080/simpleStudentApi/` (PHP in XAMPP, Apache on port 8080).
 
 ```bash
 dotnet run
 ```
 
-Open **http://localhost:6031**. A PHP API in XAMPP runs at another address — change its `BaseUrl` and
-`PublicUrl` in `appsettings.json`, e.g. `http://localhost/simpleStudentApi`.
+Open **http://localhost:6031**. If your XAMPP Apache uses another port or folder, change the
+`PHP (XAMPP)` entry in `appsettings.json` (e.g. `http://localhost/simpleStudentApi/` for port 80).
+A sub-folder address works with or without the trailing `/` – `ApiConnection.ToBaseUri` adds it.
 
 ## Regenerate the API client
 

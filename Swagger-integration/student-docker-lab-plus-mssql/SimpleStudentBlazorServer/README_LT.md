@@ -59,19 +59,22 @@ docker-compose up --build
 ```
 
 Atidarykite **http://localhost:6031**. `docker-compose.yml` faile backend'ų adresai yra Docker servisų vardai
-(`Backends__0__BaseUrl: http://simplestudentapi:8080`, …), nes Blazor serveris kviečia API Docker tinklo viduje.
+(`Backends__0__BaseUrl: http://simplestudentapi:8080`, …), nes Blazor serveris kviečia API Docker tinklo viduje. Ketvirtas pasirinkimas, **PHP (XAMPP)**, yra PHP API
+XAMPP'e jūsų kompiuteryje: konteineris jį pasiekia adresu `http://host.docker.internal:8080/simpleStudentApi/`.
 
 ## Paleidimas lokaliai (dotnet run)
 
 API turi veikti (Docker, XAMPP arba `python main.py`). Numatytieji adresai `appsettings.json` faile:
-`localhost:6001` (.NET), `localhost:6002` (PHP) ir `localhost:6003` (Python).
+`localhost:6001` (.NET), `localhost:6002` (PHP), `localhost:6003` (Python) ir
+`localhost:8080/simpleStudentApi/` (PHP XAMPP'e, Apache prievadas 8080).
 
 ```bash
 dotnet run
 ```
 
-Atidarykite **http://localhost:6031**. XAMPP'e PHP API veikia kitu adresu: pakeiskite jo `BaseUrl` ir
-`PublicUrl` faile `appsettings.json`, pvz. `http://localhost/simpleStudentApi`.
+Atidarykite **http://localhost:6031**. Jei jūsų XAMPP Apache naudoja kitą prievadą ar katalogą, pakeiskite
+`PHP (XAMPP)` įrašą faile `appsettings.json` (pvz. `http://localhost/simpleStudentApi/` prievadui 80).
+Adresas su katalogu veikia ir be galinio `/` – jį prideda `ApiConnection.ToBaseUri`.
 
 ## API kliento pergeneravimas
 
